@@ -8,7 +8,7 @@ declare module "@vx/axis" {
   import React from "react";
   import { ScaleBand, ScaleLinear, ScaleTime } from "d3-scale";
 
-  type ORIENT = {
+  type Orient = {
     left: "left";
     right: "right";
     top: "top";
@@ -52,7 +52,10 @@ declare module "@vx/axis" {
   }
   type TickComponentFunction = (options: TickOptions) => any;
   type TickFormatFunction = (value: any, index: number) => string;
-  type TickLabelPropsFunction = (value: any, index: number) => TickLabelProps;
+  type TickLabelPropsFunction = (
+    tickValue: any,
+    index: number
+  ) => TickLabelProps;
 
   export interface AxisProps {
     axisClassName?: string;
@@ -66,7 +69,6 @@ declare module "@vx/axis" {
     labelProps?: LabelProps;
     left?: number;
     numTicks?: number;
-    // orientation: ORIENT.left,
     rangePadding?: number;
     scale: ScaleFunction;
     stroke?: string;
@@ -104,8 +106,26 @@ declare module "@vx/axis" {
     ) => React.ReactNode;
   }
 
-  const AxisLeft: React.ComponentType<AxisProps>;
+  // interface AxisTopProps extends AxisProps {
+  //   orientation: "top"
+  // }
+
+  // interface AxisRightProps extends AxisProps {
+  //   orientation: Pick<Orient, "right">
+  // }
+
+  // interface AxisBottomProps extends AxisProps {
+  //   orientation: "bottom"
+  // }
+
+  // interface AxisLeftProps extends AxisProps {
+  //   orientation: Pick<Orient, "left">
+  // }
+
+  // TODO: double check whether an Axis component can be either a class
+  // component or a function component
+  const AxisTop: React.ComponentType<AxisProps>;
   const AxisRight: React.ComponentType<AxisProps>;
   const AxisBottom: React.ComponentType<AxisProps>;
-  const AxisTop: React.ComponentType<AxisProps>;
+  const AxisLeft: React.ComponentType<AxisProps>;
 }
