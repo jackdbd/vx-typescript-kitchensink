@@ -2,21 +2,38 @@
   "name": "vx-kitchensink",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "format": "prettier --write '{,!(node_modules)/}**/*.{js,jsx,ts,tsx,json}'",
+    "nuke": "rm -rf node_modules && rm -f yarn.lock",
+    "start": "react-scripts start",
+    "test": "react-scripts test"
+  },
   "dependencies": {
+    "@vx/axis": "0.0.182",
+    "@vx/curve": "0.0.182",
+    "@vx/gradient": "0.0.182",
+    "@vx/grid": "0.0.182",
+    "@vx/group": "0.0.182",
+    "@vx/mock-data": "0.0.182",
+    "@vx/scale": "0.0.182",
+    "@vx/shape": "0.0.182",
+    "d3-array": "2.0.3",
+    "d3-scale": "2.1.2",
+    "react": "16.7.0",
+    "react-dom": "16.7.0",
+    "react-scripts": "2.1.2",
+    "typescript": "3.2.2"
+  },
+  "devDependencies": {
+    "@types/d3-array": "1.2.4",
+    "@types/d3-scale": "2.1.0",
     "@types/jest": "23.3.10",
     "@types/node": "10.12.18",
     "@types/react": "16.7.18",
     "@types/react-dom": "16.0.11",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-scripts": "2.1.2",
-    "typescript": "3.2.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "prettier": "1.15.3"
   },
   "eslintConfig": {
     "extends": "react-app"
