@@ -4,11 +4,11 @@ import { Group } from "@vx/group";
 import { curveBasis } from "@vx/curve";
 import { GradientOrangeRed } from "@vx/gradient";
 import { genDateValue, DateValueDatum } from "@vx/mock-data";
-import { AxisLeft, AxisRight, AxisBottom, TickOptions } from "@vx/axis";
+import { AxisLeft, AxisRight, AxisBottom } from "@vx/axis";
 import { Area, LinePath, Line } from "@vx/shape";
 import { scaleTime, scaleLinear } from "@vx/scale";
-import { ScaleLinear, ScaleTime } from "d3-scale";
-// import { Text } from '@vx/text';
+// import { ScaleLinear, ScaleTime } from "d3-scale";
+// import { Text } from "@vx/text";
 import { extent } from "d3-array";
 
 const data = genDateValue(20);
@@ -43,7 +43,7 @@ interface IProps {
   margin: IMargin;
 }
 
-const Demo = (props: IProps) => {
+const AxisDemo = (props: IProps) => {
   const { width, height, margin } = props;
 
   const xMax = width - margin.left - margin.right;
@@ -133,9 +133,9 @@ const Demo = (props: IProps) => {
             dx: "-0.25em",
             dy: "0.25em",
           })}
-          // tickComponent={({ formattedValue, ...tickProps }) => (
-          //   <Text {...tickProps}>{formattedValue}</Text>
-          // )}
+          tickComponent={({ formattedValue, ...tickProps }) => (
+            <text {...tickProps}>{formattedValue}</text>
+          )}
         />
         <AxisRight
           top={margin.top}
@@ -152,14 +152,14 @@ const Demo = (props: IProps) => {
           }}
           stroke="#1b1a1e"
           tickStroke="#8e205f"
-          // tickLabelProps={(value, index) => ({
-          //   fill: '#8e205f',
-          //   textAnchor: 'start',
-          //   fontSize: 10,
-          //   fontFamily: 'Arial',
-          //   dx: '0.25em',
-          //   dy: '0.25em'
-          // })}
+          tickLabelProps={(value, index) => ({
+            fill: "#8e205f",
+            textAnchor: "start",
+            fontSize: 10,
+            fontFamily: "Arial",
+            dx: "0.25em",
+            dy: "0.25em",
+          })}
         />
         <AxisBottom
           top={height - margin.bottom}
@@ -211,4 +211,4 @@ const Demo = (props: IProps) => {
   );
 };
 
-export default Demo;
+export default AxisDemo;
