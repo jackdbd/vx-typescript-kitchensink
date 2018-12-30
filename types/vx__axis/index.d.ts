@@ -57,6 +57,28 @@ declare module "@vx/axis" {
     index: number
   ) => TickLabelProps;
 
+  interface Tick {
+    value: any;
+    index: number;
+    from: Point;
+    to: Point;
+    formattedValue: string;
+  }
+
+  interface RenderProps {
+    axisFromPoint: Point;
+    axisToPoint: Point;
+    horizontal: boolean;
+    tickSign: 1 | -1;
+    numTicks: number;
+    label: string;
+    rangePadding: number;
+    tickLength: number;
+    tickFormat: TickFormatFunction;
+    tickPosition: (value: number) => number;
+    ticks: Tick[];
+  }
+
   export interface AxisProps {
     axisClassName?: string;
     axisLineClassName?: string;
@@ -83,27 +105,7 @@ declare module "@vx/axis" {
     tickValues?: string[] | number[];
     tickComponent?: TickComponentFunction | React.ReactNode;
     top?: number;
-    children?: (
-      renderProps: {
-        axisFromPoint: Point;
-        axisToPoint: Point;
-        horizontal: boolean;
-        tickSign: 1 | -1;
-        numTicks: number;
-        label: string;
-        rangePadding: number;
-        tickLength: number;
-        tickFormat: TickFormatFunction;
-        tickPosition: (value: number) => number;
-        ticks: {
-          value: any;
-          index: number;
-          from: Point;
-          to: Point;
-          formattedValue: string;
-        };
-      }
-    ) => React.ReactNode;
+    children?: (renderProps: RenderProps) => React.ReactNode;
   }
 
   // interface AxisTopProps extends AxisProps {

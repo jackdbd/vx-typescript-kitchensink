@@ -4,7 +4,7 @@ import { Group } from "@vx/group";
 import { curveBasis } from "@vx/curve";
 import { GradientOrangeRed } from "@vx/gradient";
 import { genDateValue, DateValueDatum } from "@vx/mock-data";
-import { AxisLeft, AxisRight, AxisBottom } from "@vx/axis";
+import { AxisLeft, AxisRight, AxisBottom, RenderProps } from "@vx/axis";
 import { Area, LinePath, Line } from "@vx/shape";
 import { scaleTime, scaleLinear } from "@vx/scale";
 // import { ScaleLinear, ScaleTime } from "d3-scale";
@@ -168,7 +168,7 @@ const AxisDemo = (props: IProps) => {
           numTicks={numTicksForWidth(width)}
           label="Time"
         >
-          {(axis: any) => {
+          {(axis: RenderProps) => {
             const tickLabelSize = 10;
             const tickRotate = 45;
             const tickColor = "#8e205f";

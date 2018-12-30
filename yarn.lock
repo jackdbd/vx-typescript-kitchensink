@@ -1035,7 +1035,7 @@
     d3-shape "^1.2.0"
     prop-types "^15.5.10"
 
-"@vx/text@0.0.182", "@vx/text@^0.0.182":
+"@vx/text@0.0.182":
   version "0.0.182"
   resolved "https://registry.yarnpkg.com/@vx/text/-/text-0.0.182.tgz#cf3e0e2687fcd83fb832d0faae52c503f18d451c"
   integrity sha512-sHb2UHQZaMNB0HmBfUnxYvc59/8Gjr6F3F2D1xinsWs0Bwb6H5fU1temMz+1XFHLul8OEDqIA5F5DYKt3trcWg==
