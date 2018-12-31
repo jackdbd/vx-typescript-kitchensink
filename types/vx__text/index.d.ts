@@ -1,4 +1,4 @@
-// Type definitions for @vx/axis 0.0.182
+// Type definitions for @vx/text 0.0.182
 // Project: https://github.com/hshoff/vx
 // Definitions by: Sean Lynch <https://github.com/techniq>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped

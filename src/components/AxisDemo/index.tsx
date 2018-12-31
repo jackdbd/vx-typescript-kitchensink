@@ -1,23 +1,19 @@
 import React from "react";
-import { Grid, GridColumns } from "@vx/grid";
+import { Grid } from "@vx/grid";
 import { Group } from "@vx/group";
 import { curveBasis } from "@vx/curve";
 import { GradientOrangeRed } from "@vx/gradient";
 import { genDateValue, DateValueDatum } from "@vx/mock-data";
 import { AxisLeft, AxisRight, AxisBottom, RenderProps } from "@vx/axis";
 import { Area, LinePath, Line } from "@vx/shape";
-import { scaleTime, scaleLinear } from "@vx/scale";
-// import { ScaleLinear, ScaleTime } from "d3-scale";
+import { scaleTime, scaleLinear, Accessor } from "@vx/scale";
 // import { Text } from "@vx/text";
-import { extent } from "d3-array";
+import { extent, Numeric } from "d3-array";
 
 const data = genDateValue(20);
+const x: Accessor<DateValueDatum, Date> = d => d.date;
+const y: Accessor<DateValueDatum, number> = d => d.value;
 
-// accessors
-const x = (d: DateValueDatum) => d.date;
-const y = (d: DateValueDatum) => d.value;
-
-// responsive utils for axis ticks
 function numTicksForHeight(height: number) {
   if (height <= 300) return 3;
   if (300 < height && height <= 600) return 5;
@@ -51,7 +47,7 @@ const AxisDemo = (props: IProps) => {
 
   const scaleTimeOptions = {
     range: [0, xMax],
-    domain: extent(data, x),
+    domain: extent(data, x) as [Date, Date],
   };
   const xScale = scaleTime(scaleTimeOptions);
 
@@ -90,7 +86,6 @@ const AxisDemo = (props: IProps) => {
         numTicksColumns={numTicksForWidth(width)}
       />
       <Group top={margin.top} left={margin.left}>
-        {"coap"}
         <Area
           data={data}
           x={(d: DateValueDatum) => xScale(x(d))}

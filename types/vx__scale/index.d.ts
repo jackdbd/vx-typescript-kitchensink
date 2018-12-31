@@ -4,41 +4,52 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 declare module "@vx/scale" {
-  type Range = (range: ReadonlyArray<any>) => this;
   import {
+    ScaleBand as D3ScaleBand,
     ScaleLinear as D3ScaleLinear,
     ScaleTime as D3ScaleTime,
   } from "d3-scale";
 
-  interface VxRef {
-    range?: any;
-    rangeRound?: any;
-    domain?: any;
-    nice?: boolean;
-    clamp?: boolean;
-  }
-
-  interface ScaleLinear extends D3ScaleLinear<any, any> {
-    type: string;
-  }
-
-  interface ScaleTime extends D3ScaleTime<any, any> {
-    type: string;
-  }
-
+  type NumberLike = number | { valueOf(): number };
   type ScaleFunction = ScaleLinear | ScaleTime;
+  type Accessor<T, R> = (datum: T) => R;
 
-  // export type AccessorFunction = (d: object) => Pick<object, K>
+  interface SharedOptions {
+    clamp?: boolean;
+    nice?: boolean;
+  }
 
-  export function scaleBand(): any;
-  export function scalePoint(): any;
-  export function scaleLinear(_ref?: VxRef): D3ScaleLinear;
-  export function scaleTime(_ref?: VxRef): D3ScaleTime;
-  export function scaleUtc(): any;
-  export function scaleLog(): any;
-  export function scalePower(): any;
-  export function scaleOrdinal(): any;
-  export function scaleQuantize(): any;
-  export function scaleQuantile(): any;
-  export function scaleThreshold(): any;
+  interface LinearScaleOptions extends SharedOptions {
+    domain: number[];
+    range: number[];
+    rangeRound?: NumberLike[]; // TODO: this should be optional in vx-scale
+  }
+
+  interface TimeScaleOptions extends SharedOptions {
+    domain: Date[] | number[];
+    range: Date[] | number[];
+    rangeRound?: NumberLike[]; // TODO: this should be optional in vx-scale
+  }
+
+  interface ScaleLinear<Range, Output> extends D3ScaleLinear<Range, Output> {
+    type: string;
+  }
+
+  interface ScaleTime<Range, Output> extends D3ScaleTime<Range, Output> {
+    type: string;
+  }
+
+  function scaleBand(): any;
+  function scalePoint(): any;
+  function scaleLinear(
+    scaleOptions: LinearScaleOptions
+  ): ScaleLinear<number, number>;
+  function scaleTime(scaleOptions: TimeScaleOptions): ScaleTime<any, any>;
+  function scaleUtc(): any;
+  function scaleLog(): any;
+  function scalePower(): any;
+  function scaleOrdinal(): any;
+  function scaleQuantize(): any;
+  function scaleQuantile(): any;
+  function scaleThreshold(): any;
 }

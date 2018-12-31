@@ -109,35 +109,28 @@ declare module "@vx/mock-data" {
     binData: BinDatum[];
   }
 
-  export function genDateValue(n: number): DateValueDatum[];
-  export function genRandomNormalPoints(): [
-    ToConsumableArray,
-    ToConsumableArray
-  ];
-  export function genRandomNormalPoints(
+  function genDateValue(n: number): DateValueDatum[];
+  function genRandomNormalPoints(): [ToConsumableArray, ToConsumableArray];
+  function genRandomNormalPoints(
     count: number
   ): [ToConsumableArray, ToConsumableArray];
-  export function genBin(n: number): Bin;
-  export function genBin(n: number, bin: BinFunction): Bin;
-  export function genBin(
-    n: number,
-    bin: BinFunction,
-    count: CountFunction
-  ): Bin;
-  export function genBins(
+  function genBin(n: number): Bin;
+  function genBin(n: number, bin: BinFunction): Bin;
+  function genBin(n: number, bin: BinFunction, count: CountFunction): Bin;
+  function genBins(
     x: number,
     y: number,
     bin: BinFunction,
     count: CountFunction
   ): Bin[];
-  export function genStats(number: number): StatsDatum[];
-  export const appleStock: AppleStockDatum[];
-  export const letterFrequency: LetterFrequencyDatum[];
-  export const browserUsage: BrowserUsageDatum[];
-  export const groupDateValue: GroupDateValueDatum[];
-  export const cityTemperature: CityTemperaturDatum[];
-  export const lesMiserables: LesMiserablesGraph;
-  export const exoplanets: PlanetDatum[];
-  export const planets: PlanetDatum[];
-  export const shakespeare: ShakespeareDatum[];
+  function genStats(number: number): StatsDatum[];
+  const appleStock: AppleStockDatum[];
+  const letterFrequency: LetterFrequencyDatum[];
+  const browserUsage: BrowserUsageDatum[];
+  const groupDateValue: GroupDateValueDatum[];
+  const cityTemperature: CityTemperaturDatum[];
+  const lesMiserables: LesMiserablesGraph;
+  const exoplanets: PlanetDatum[];
+  const planets: PlanetDatum[];
+  const shakespeare: ShakespeareDatum[];
 }

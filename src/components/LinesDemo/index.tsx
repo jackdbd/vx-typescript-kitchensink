@@ -1,10 +1,10 @@
 import React from "react";
 import { Group } from "@vx/group";
-import { GridRows, GridColumns } from "@vx/grid";
+import { GridRows } from "@vx/grid";
 import { LinePath } from "@vx/shape";
 import { curveMonotoneX } from "@vx/curve";
-import { genDateValue } from "@vx/mock-data";
-import { scaleTime, scaleLinear } from "@vx/scale";
+import { genDateValue, DateValueDatum } from "@vx/mock-data";
+import { scaleTime, scaleLinear, Accessor } from "@vx/scale";
 import { extent, max } from "d3-array";
 
 function genLines(num: number) {
@@ -18,9 +18,8 @@ const data = series.reduce((rec, d) => {
   return rec.concat(d);
 }, []);
 
-// accessors
-const x = (d: any) => d.date;
-const y = (d: any) => d.value;
+const x: Accessor<DateValueDatum, Date> = d => d.date;
+const y: Accessor<DateValueDatum, number> = d => d.value;
 
 interface IMargin {
   left: number;
@@ -37,19 +36,23 @@ interface IProps {
 
 const LinesDemo = (props: IProps) => {
   const { height, width, margin } = props;
-  // bounds
   const xMax = width;
   const yMax = height / 8;
 
-  // scales
-  const xScale = scaleTime({
+  const [minDate, maxDate] = extent(data, x) as [Date, Date];
+  const scaleTimeOptions = {
+    domain: [minDate, maxDate],
     range: [0, xMax],
-    domain: extent(data, x),
-  });
-  const yScale = scaleLinear({
+  };
+  const xScale = scaleTime(scaleTimeOptions);
+
+  const maxValue = max(data, y) as number;
+  const scaleLinearOptions = {
+    domain: [0, maxValue],
     range: [yMax, 0],
-    domain: [0, max(data, y)],
-  });
+    rangeRound: [1, 2],
+  };
+  const yScale = scaleLinear(scaleLinearOptions);
 
   return (
     <svg width={width} height={height}>
@@ -58,13 +61,8 @@ const LinesDemo = (props: IProps) => {
         top={margin.top}
         left={margin.left}
         scale={xScale}
-        // xScale={xScale}
-        // yScale={yScale}
         stroke="rgba(142, 32, 95, 0.9)"
         width={xMax}
-        // height={yMax}
-        // numTicksRows={numTicksForHeight(height)}
-        // numTicksColumns={numTicksForWidth(width)}
       />
       {xMax > 8 &&
         series.map((d, i) => {
