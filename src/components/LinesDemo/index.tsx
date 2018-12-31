@@ -1,5 +1,6 @@
 import React from "react";
 import { Group } from "@vx/group";
+import { GridRows, GridColumns } from "@vx/grid";
 import { LinePath } from "@vx/shape";
 import { curveMonotoneX } from "@vx/curve";
 import { genDateValue } from "@vx/mock-data";
@@ -35,7 +36,7 @@ interface IProps {
 }
 
 const LinesDemo = (props: IProps) => {
-  const { height, width } = props;
+  const { height, width, margin } = props;
   // bounds
   const xMax = width;
   const yMax = height / 8;
@@ -53,6 +54,18 @@ const LinesDemo = (props: IProps) => {
   return (
     <svg width={width} height={height}>
       <rect x={0} y={0} width={width} height={height} fill="#242424" rx={14} />
+      <GridRows
+        top={margin.top}
+        left={margin.left}
+        scale={xScale}
+        // xScale={xScale}
+        // yScale={yScale}
+        stroke="rgba(142, 32, 95, 0.9)"
+        width={xMax}
+        // height={yMax}
+        // numTicksRows={numTicksForHeight(height)}
+        // numTicksColumns={numTicksForWidth(width)}
+      />
       {xMax > 8 &&
         series.map((d, i) => {
           return (

@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@vx/grid";
+import { Grid, GridColumns } from "@vx/grid";
 import { Group } from "@vx/group";
 import { curveBasis } from "@vx/curve";
 import { GradientOrangeRed } from "@vx/gradient";
@@ -90,6 +90,7 @@ const AxisDemo = (props: IProps) => {
         numTicksColumns={numTicksForWidth(width)}
       />
       <Group top={margin.top} left={margin.left}>
+        {"coap"}
         <Area
           data={data}
           x={(d: DateValueDatum) => xScale(x(d))}

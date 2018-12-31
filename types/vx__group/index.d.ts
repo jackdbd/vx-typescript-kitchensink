@@ -4,7 +4,7 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 declare module "@vx/group" {
-  import React, { Props, Attributes } from "react";
+  import React from "react";
 
   interface GroupProps {
     top?: number;
@@ -12,8 +12,15 @@ declare module "@vx/group" {
     transform?: string;
     className?: string;
     children: React.ReactElement | React.ReactElement[];
-    key?: string;
-    [prop: string]: any;
+    key?: React.Key;
+    [prop: string]: any; // ...restProps
   }
-  const Group: React.ComponentType<GroupProps>;
+
+  // interface GroupComponent<P> extends FunctionComponent<P> {
+  //   (
+  //     props: P & { children: React.ReactNode },
+  //     context?: any
+  //   ): JSX.IntrinsicElements.g;
+  // }
+  const Group: React.FunctionComponent<GroupProps>;
 }
