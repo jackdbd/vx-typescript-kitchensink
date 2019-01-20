@@ -1,12 +1,13 @@
 import { curveMonotoneX } from "@vx/curve";
 import { GridRows } from "@vx/grid";
 import { Group } from "@vx/group";
-import { genDateValue, DateValueDatum } from "@vx/mock-data";
+import { DateValueDatum, genDateValue } from "@vx/mock-data";
 import { withParentSize, WithParentSizeProps } from "@vx/responsive";
-import { scaleTime, scaleLinear, Accessor } from "@vx/scale";
+import { Accessor, scaleLinear, scaleTime } from "@vx/scale";
 import { LinePath } from "@vx/shape";
 import { extent, max } from "d3-array";
 import React from "react";
+import { IMargin } from "../../interfaces";
 
 function genLines(num: number) {
   return new Array(num).fill(1).map(() => {
@@ -19,23 +20,16 @@ const data = series.reduce((rec, d) => {
   return rec.concat(d);
 }, []);
 
-const x: Accessor<DateValueDatum, Date> = d => d.date;
-const y: Accessor<DateValueDatum, number> = d => d.value;
+const x: Accessor<DateValueDatum, Date> = (d: DateValueDatum) => d.date;
+const y: Accessor<DateValueDatum, number> = (d: DateValueDatum) => d.value;
 
-interface Margin {
-  left: number;
-  right: number;
-  top: number;
-  bottom: number;
-}
-
-interface Props {
+interface IProps {
   width: number;
   height: number;
-  margin: Margin;
+  margin: IMargin;
 }
 
-const LinesDemo = (props: Props) => {
+const LinesDemo = (props: IProps) => {
   const { height, width, margin } = props;
   const xMax = width;
   const yMax = height / 8;
@@ -71,11 +65,11 @@ const LinesDemo = (props: Props) => {
             <Group key={`lines-${i}`} top={(i * yMax) / 2}>
               <LinePath
                 data={d}
-                x={(d: any) => xScale(x(d))}
-                y={(d: any) => yScale(y(d))}
+                x={(dd: any) => xScale(x(dd))}
+                y={(dd: any) => yScale(y(dd))}
                 stroke={"#ffffff"}
                 strokeWidth={1}
-                curve={i % 2 == 0 ? curveMonotoneX : undefined}
+                curve={i % 2 === 0 ? curveMonotoneX : undefined}
               />
             </Group>
           );
@@ -84,12 +78,12 @@ const LinesDemo = (props: Props) => {
   );
 };
 
-interface LinesDemoResponsiveProps extends WithParentSizeProps {
-  margin: Margin;
+interface ILinesDemoResponsiveProps extends WithParentSizeProps {
+  margin: IMargin;
 }
 
 const LinesDemoResponsive = withParentSize(
-  (props: LinesDemoResponsiveProps) => {
+  (props: ILinesDemoResponsiveProps) => {
     const { margin, parentWidth } = props;
     // TODO: parentHeight causes a resize every time
     return <LinesDemo height={400} width={parentWidth} margin={margin} />;

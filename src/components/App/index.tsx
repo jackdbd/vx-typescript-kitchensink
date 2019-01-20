@@ -1,9 +1,9 @@
 import { ParentProps, ParentSize } from "@vx/responsive";
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import logo from "./logo.svg";
 import AxisDemo, { AxisDemoResponsive } from "../AxisDemo";
 import LinesDemo, { LinesDemoResponsive } from "../LinesDemo";
+import logo from "./logo.svg";
 
 const Div = styled.div`
   text-align: center;
@@ -36,16 +36,17 @@ const Header = styled.header`
 
 /*
   CSS Grid auto-fit for responsiveness: https://gridbyexample.com/examples/example37/
-  Common CSS breakpoints: https://stackoverflow.com/questions/6370690/media-queries-how-to-target-desktop-tablet-and-mobile#7354648
+  Common CSS breakpoints:
+  https://stackoverflow.com/questions/6370690/media-queries-how-to-target-desktop-tablet-and-mobile#7354648
 */
-interface GridProps {
+interface IGridProps {
   gridGap: number;
 }
 const Grid = styled.div`
   background-color: #282c34;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
-  grid-gap: ${(props: GridProps) => `${props.gridGap}` + "rem"};
+  grid-gap: ${(props: IGridProps) => `${props.gridGap}` + "rem"};
 `;
 
 interface IMargin {
@@ -68,7 +69,7 @@ class App extends React.Component<IProps> {
       top: 10,
     },
   };
-  render() {
+  public render() {
     const { margin } = this.props;
     return (
       <Div>

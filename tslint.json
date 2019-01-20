@@ -1,0 +1,10 @@
+{
+  "extends": ["tslint:recommended", "tslint:latest"],
+  "rules": {
+    "no-console": {
+      "options": ["debug", "log"]
+    },
+    "quotemark": false,
+    "trailing-comma": false
+  }
+}

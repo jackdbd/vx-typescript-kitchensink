@@ -1,61 +1,63 @@
-import { AxisLeft, AxisRight, AxisBottom, RenderProps } from "@vx/axis";
+import { AxisBottom, AxisLeft, AxisRight, RenderProps } from "@vx/axis";
 import { curveBasis } from "@vx/curve";
 import { GradientOrangeRed } from "@vx/gradient";
 import { Grid } from "@vx/grid";
 import { Group } from "@vx/group";
-import { genDateValue, DateValueDatum } from "@vx/mock-data";
+import { DateValueDatum, genDateValue } from "@vx/mock-data";
 import { withParentSize, WithParentSizeProps } from "@vx/responsive";
-import { scaleTime, scaleLinear, Accessor } from "@vx/scale";
-import { Area, LinePath, Line } from "@vx/shape";
+import { Accessor, scaleLinear, scaleTime } from "@vx/scale";
+import { Area, Line, LinePath } from "@vx/shape";
 import { extent, Numeric } from "d3-array";
 import React from "react";
 // import { Text } from "@vx/text";
+import { IMargin } from "../../interfaces";
 
 const data = genDateValue(20);
-const x: Accessor<DateValueDatum, Date> = d => d.date;
-const y: Accessor<DateValueDatum, number> = d => d.value;
+const x: Accessor<DateValueDatum, Date> = (d: DateValueDatum) => d.date;
+const y: Accessor<DateValueDatum, number> = (d: DateValueDatum) => d.value;
 
 function numTicksForHeight(height: number) {
-  if (height <= 300) return 3;
-  if (300 < height && height <= 600) return 5;
+  if (height <= 300) {
+    return 3;
+  }
+  if (300 < height && height <= 600) {
+    return 5;
+  }
   return 10;
 }
 
 function numTicksForWidth(width: number) {
-  if (width <= 300) return 2;
-  if (300 < width && width <= 400) return 5;
+  if (width <= 300) {
+    return 2;
+  }
+  if (300 < width && width <= 400) {
+    return 5;
+  }
   return 10;
 }
 
-interface Margin {
-  left: number;
-  right: number;
-  top: number;
-  bottom: number;
-}
-
-export interface Props {
+export interface IProps {
   width: number;
   height: number;
-  margin: Margin;
+  margin: IMargin;
 }
 
-const AxisDemo = (props: Props) => {
+const AxisDemo = (props: IProps) => {
   const { width, height, margin } = props;
 
   const xMax = width - margin.left - margin.right;
   const yMax = height - margin.top - margin.bottom;
 
   const scaleTimeOptions = {
-    range: [0, xMax],
     domain: extent(data, x) as [Date, Date],
+    range: [0, xMax],
   };
   const xScale = scaleTime(scaleTimeOptions);
 
   const linearScaleOptions = {
-    range: [yMax, 0],
     domain: [0, Math.max(...data.map(y))],
     nice: true,
+    range: [yMax, 0],
   };
   const yScale = scaleLinear(linearScaleOptions);
 
@@ -116,19 +118,19 @@ const AxisDemo = (props: Props) => {
           label="Axis Left Label"
           labelProps={{
             fill: "#8e205f",
-            textAnchor: "middle",
-            fontSize: 12,
             fontFamily: "Arial",
+            fontSize: 12,
+            textAnchor: "middle",
           }}
           stroke="#1b1a1e"
           tickStroke="#8e205f"
           tickLabelProps={(value: any, index: number) => ({
-            fill: "#8e205f",
-            textAnchor: "end",
-            fontSize: 10,
-            fontFamily: "Arial",
             dx: "-0.25em",
             dy: "0.25em",
+            fill: "#8e205f",
+            fontFamily: "Arial",
+            fontSize: 10,
+            textAnchor: "end",
           })}
           tickComponent={({ formattedValue, ...tickProps }) => (
             <text {...tickProps}>{formattedValue}</text>
@@ -143,19 +145,19 @@ const AxisDemo = (props: Props) => {
           label="Axis Right Label"
           labelProps={{
             fill: "#8e205f",
-            textAnchor: "middle",
-            fontSize: 12,
             fontFamily: "Arial",
+            fontSize: 12,
+            textAnchor: "middle",
           }}
           stroke="#1b1a1e"
           tickStroke="#8e205f"
           tickLabelProps={(value, index) => ({
-            fill: "#8e205f",
-            textAnchor: "start",
-            fontSize: 10,
-            fontFamily: "Arial",
             dx: "0.25em",
             dy: "0.25em",
+            fill: "#8e205f",
+            fontFamily: "Arial",
+            fontSize: 10,
+            textAnchor: "start",
           })}
         />
         <AxisBottom
@@ -208,11 +210,11 @@ const AxisDemo = (props: Props) => {
   );
 };
 
-interface AxisDemoResponsiveProps extends WithParentSizeProps {
-  margin: Margin;
+interface IAxisDemoResponsiveProps extends WithParentSizeProps {
+  margin: IMargin;
 }
 
-const AxisDemoResponsive = withParentSize((props: AxisDemoResponsiveProps) => {
+const AxisDemoResponsive = withParentSize((props: IAxisDemoResponsiveProps) => {
   const { margin, parentWidth } = props;
   // TODO: parentHeight causes a resize every time
   return <AxisDemo height={400} width={parentWidth} margin={margin} />;

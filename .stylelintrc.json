@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-styled-components"
+  ],
+  "processors": ["stylelint-processor-styled-components"],
+  "rules": {
+    "unit-whitelist": ["em", "deg", "fr", "px", "rem", "s", "vh", "vmin"]
+  }
+}

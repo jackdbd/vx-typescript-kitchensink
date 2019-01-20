@@ -16,6 +16,9 @@
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "format": "prettier --write '{,!(node_modules)/}**/*.{js,jsx,ts,tsx}'",
+    "lint": "yarn lint:css && yarn && yarn lint:ts",
+    "lint:css": "stylelint --config .stylelintrc.json --formatter verbose './src/**/*.{css,js,jsx,ts,tsx}'",
+    "lint:ts": "tslint --config tslint.json --project tsconfig.json",
     "ncu": "ncu",
     "ncuu": "ncu --upgrade",
     "nuke": "rimraf node_modules && rm yarn.lock",
@@ -53,10 +56,12 @@
     "gh-pages": "2.0.1",
     "npm-check-updates": "2.15.0",
     "prettier": "1.16.0",
-    "rimraf": "2.6.3"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "rimraf": "2.6.3",
+    "stylelint": "9.10.1",
+    "stylelint-config-recommended": "2.1.0",
+    "stylelint-config-styled-components": "0.1.1",
+    "stylelint-processor-styled-components": "1.5.2",
+    "tslint": "5.12.1"
   },
   "browserslist": [
     ">0.2%",
