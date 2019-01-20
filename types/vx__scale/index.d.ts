@@ -7,6 +7,7 @@ declare module "@vx/scale" {
   import {
     ScaleBand as D3ScaleBand,
     ScaleLinear as D3ScaleLinear,
+    ScaleLogarithmic as D3ScaleLogarithmic,
     ScaleTime as D3ScaleTime,
   } from "d3-scale";
 
@@ -24,19 +25,38 @@ declare module "@vx/scale" {
     padding: number;
   }
 
-  interface LinearScaleOptions extends SharedOptions {
+  interface ScalePointOptions extends SharedOptions {
     domain: number[];
-    range: number[];
+  }
+
+  interface ScaleLinearOptions extends SharedOptions {
+    domain: number[];
+    range?: number[] | string[];
     rangeRound?: NumberLike[]; // TODO: this should be optional in vx-scale
   }
 
-  interface TimeScaleOptions extends SharedOptions {
+  interface ScaleLogOptions extends SharedOptions {
+    domain: number[];
+    range?: number[] | string[];
+    rangeRound?: NumberLike[]; // TODO: this should be optional in vx-scale
+  }
+
+  interface ScaleTimeOptions extends SharedOptions {
     domain: Date[] | number[];
     range: Date[] | number[];
     rangeRound?: NumberLike[]; // TODO: this should be optional in vx-scale
   }
 
+  interface ScaleUtcOptions extends SharedOptions {
+    domain: Date[] | number[];
+    range: Date[] | number[];
+  }
+
   interface ScaleLinear<Range, Output> extends D3ScaleLinear<Range, Output> {
+    type: string;
+  }
+
+  interface ScaleLog<Range, Output> extends D3ScaleLogarithmic<Range, Output> {
     type: string;
   }
 
@@ -45,16 +65,16 @@ declare module "@vx/scale" {
   }
 
   function scaleBand(scaleOptions: ScaleBandOptions): any;
-  function scalePoint(): any;
+  function scalePoint(scaleOptions: ScalePointOptions): any;
   function scaleLinear(
-    scaleOptions: LinearScaleOptions
+    scaleOptions: ScaleLinearOptions
   ): ScaleLinear<number, number>;
-  function scaleTime(scaleOptions: TimeScaleOptions): ScaleTime<any, any>;
-  function scaleUtc(): any;
-  function scaleLog(): any;
-  function scalePower(): any;
-  function scaleOrdinal(): any;
-  function scaleQuantize(): any;
-  function scaleQuantile(): any;
-  function scaleThreshold(): any;
+  function scaleTime(scaleOptions: ScaleTimeOptions): ScaleTime<any, any>;
+  function scaleUtc(scaleOptions: ScaleUtcOptions): any;
+  function scaleLog(scaleOptions: ScaleLogOptions): ScaleLog<number, number>;
+  function scalePower(scaleOptions: any): any;
+  function scaleOrdinal(scaleOptions: any): any;
+  function scaleQuantize(scaleOptions: any): any;
+  function scaleQuantile(scaleOptions: any): any;
+  function scaleThreshold(scaleOptions: any): any;
 }

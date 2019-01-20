@@ -120,8 +120,8 @@ declare module "@vx/mock-data" {
   function genBins(
     x: number,
     y: number,
-    bin: BinFunction,
-    count: CountFunction
+    bin?: BinFunction,
+    count?: CountFunction
   ): Bin[];
   function genStats(number: number): StatsDatum[];
   const appleStock: AppleStockDatum[];

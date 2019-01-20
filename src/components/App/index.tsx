@@ -3,6 +3,7 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import AxisDemo, { AxisDemoResponsive } from "../AxisDemo";
 import GradientsDemo from "../GradientsDemo";
+import HeatmapsDemo from "../HeatmapsDemo";
 import LinesDemo, { LinesDemoResponsive } from "../LinesDemo";
 import PatternsDemo from "../PatternsDemo";
 import PolygonsDemo from "../PolygonsDemo";
@@ -60,11 +61,13 @@ interface IMargin {
 }
 
 interface IProps {
+  height: number;
   margin: IMargin;
 }
 
 class App extends React.Component<IProps> {
   public static defaultProps: Partial<IProps> = {
+    height: 400,
     margin: {
       bottom: 10,
       left: 10,
@@ -73,7 +76,7 @@ class App extends React.Component<IProps> {
     },
   };
   public render() {
-    const { margin } = this.props;
+    const { height, margin } = this.props;
     return (
       <Div>
         <Header>
@@ -86,31 +89,32 @@ class App extends React.Component<IProps> {
           <ParentSize>
             {(props: ParentProps) => {
               const { width } = props;
-              return <AxisDemo width={width} height={400} margin={margin} />;
+              return <GradientsDemo height={height} width={width} />;
             }}
           </ParentSize>
           <ParentSize>
             {(props: ParentProps) => {
               const { width } = props;
-              return <LinesDemo width={width} height={400} margin={margin} />;
+              return <PatternsDemo height={height} width={width} />;
             }}
           </ParentSize>
           <ParentSize>
             {(props: ParentProps) => {
               const { width } = props;
-              return <GradientsDemo height={300} width={width} />;
+              return <PolygonsDemo height={height} width={width} />;
             }}
           </ParentSize>
           <ParentSize>
             {(props: ParentProps) => {
               const { width } = props;
-              return <PatternsDemo height={300} width={width} />;
-            }}
-          </ParentSize>
-          <ParentSize>
-            {(props: ParentProps) => {
-              const { width } = props;
-              return <PolygonsDemo height={300} width={width} />;
+              return (
+                <HeatmapsDemo
+                  height={height}
+                  margin={margin}
+                  separation={20}
+                  width={width}
+                />
+              );
             }}
           </ParentSize>
         </Grid>
