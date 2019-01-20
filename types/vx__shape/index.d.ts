@@ -43,9 +43,16 @@ declare module "@vx/shape" {
     x: Accessor;
     y: Accessor;
   }
+  interface PolygonProps {
+    fill: string;
+    rotate: number;
+    sides: number;
+    size: number;
+  }
 
   const Area: React.ComponentType<AreaProps>;
   const Bar: React.ComponentType<BarProps>;
   const Line: React.ComponentType<LineProps>;
   const LinePath: React.ComponentType<LinePathProps>;
+  const Polygon: React.ComponentType<PolygonProps>;
 }

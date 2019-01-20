@@ -5,6 +5,7 @@ import AxisDemo, { AxisDemoResponsive } from "../AxisDemo";
 import GradientsDemo from "../GradientsDemo";
 import LinesDemo, { LinesDemoResponsive } from "../LinesDemo";
 import PatternsDemo from "../PatternsDemo";
+import PolygonsDemo from "../PolygonsDemo";
 import logo from "./logo.svg";
 
 const Div = styled.div`
@@ -104,6 +105,12 @@ class App extends React.Component<IProps> {
             {(props: ParentProps) => {
               const { width } = props;
               return <PatternsDemo height={300} width={width} />;
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return <PolygonsDemo height={300} width={width} />;
             }}
           </ParentSize>
         </Grid>

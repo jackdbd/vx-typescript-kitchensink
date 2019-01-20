@@ -19,6 +19,11 @@ declare module "@vx/scale" {
     nice?: boolean;
   }
 
+  interface ScaleBandOptions extends SharedOptions {
+    domain: number[];
+    padding: number;
+  }
+
   interface LinearScaleOptions extends SharedOptions {
     domain: number[];
     range: number[];
@@ -39,7 +44,7 @@ declare module "@vx/scale" {
     type: string;
   }
 
-  function scaleBand(): any;
+  function scaleBand(scaleOptions: ScaleBandOptions): any;
   function scalePoint(): any;
   function scaleLinear(
     scaleOptions: LinearScaleOptions
