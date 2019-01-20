@@ -1,0 +1,8 @@
+{
+  "editor.formatOnSave": true,
+  "tslint.autoFixOnSave": true,
+  "editor.rulers": [80, 120],
+  "files.exclude": {
+    "node_modules/": true
+  }
+}

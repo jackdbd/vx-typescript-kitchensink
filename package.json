@@ -11,12 +11,14 @@
     "test": "react-scripts test"
   },
   "dependencies": {
+    "@types/styled-components": "^4.1.6",
     "@vx/axis": "0.0.182",
     "@vx/curve": "0.0.182",
     "@vx/gradient": "0.0.182",
     "@vx/grid": "0.0.182",
     "@vx/group": "0.0.182",
     "@vx/mock-data": "0.0.182",
+    "@vx/responsive": "0.0.183",
     "@vx/scale": "0.0.182",
     "@vx/shape": "0.0.182",
     "@vx/text": "0.0.182",
@@ -25,6 +27,7 @@
     "react": "16.7.0",
     "react-dom": "16.7.0",
     "react-scripts": "2.1.2",
+    "styled-components": "4.1.3",
     "typescript": "3.2.2"
   },
   "devDependencies": {

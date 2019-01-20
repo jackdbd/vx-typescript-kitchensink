@@ -1,14 +1,15 @@
-import React from "react";
-import { Grid } from "@vx/grid";
-import { Group } from "@vx/group";
+import { AxisLeft, AxisRight, AxisBottom, RenderProps } from "@vx/axis";
 import { curveBasis } from "@vx/curve";
 import { GradientOrangeRed } from "@vx/gradient";
+import { Grid } from "@vx/grid";
+import { Group } from "@vx/group";
 import { genDateValue, DateValueDatum } from "@vx/mock-data";
-import { AxisLeft, AxisRight, AxisBottom, RenderProps } from "@vx/axis";
-import { Area, LinePath, Line } from "@vx/shape";
+import { withParentSize, WithParentSizeProps } from "@vx/responsive";
 import { scaleTime, scaleLinear, Accessor } from "@vx/scale";
-// import { Text } from "@vx/text";
+import { Area, LinePath, Line } from "@vx/shape";
 import { extent, Numeric } from "d3-array";
+import React from "react";
+// import { Text } from "@vx/text";
 
 const data = genDateValue(20);
 const x: Accessor<DateValueDatum, Date> = d => d.date;
@@ -26,20 +27,20 @@ function numTicksForWidth(width: number) {
   return 10;
 }
 
-interface IMargin {
+interface Margin {
   left: number;
   right: number;
   top: number;
   bottom: number;
 }
 
-interface IProps {
+export interface Props {
   width: number;
   height: number;
-  margin: IMargin;
+  margin: Margin;
 }
 
-const AxisDemo = (props: IProps) => {
+const AxisDemo = (props: Props) => {
   const { width, height, margin } = props;
 
   const xMax = width - margin.left - margin.right;
@@ -121,7 +122,7 @@ const AxisDemo = (props: IProps) => {
           }}
           stroke="#1b1a1e"
           tickStroke="#8e205f"
-          tickLabelProps={(value, index) => ({
+          tickLabelProps={(value: any, index: number) => ({
             fill: "#8e205f",
             textAnchor: "end",
             fontSize: 10,
@@ -206,5 +207,17 @@ const AxisDemo = (props: IProps) => {
     </svg>
   );
 };
+
+interface AxisDemoResponsiveProps extends WithParentSizeProps {
+  margin: Margin;
+}
+
+const AxisDemoResponsive = withParentSize((props: AxisDemoResponsiveProps) => {
+  const { margin, parentWidth } = props;
+  // TODO: parentHeight causes a resize every time
+  return <AxisDemo height={400} width={parentWidth} margin={margin} />;
+});
+
+export { AxisDemo, AxisDemoResponsive };
 
 export default AxisDemo;

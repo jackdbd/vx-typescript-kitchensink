@@ -1,11 +1,12 @@
-import React from "react";
-import { Group } from "@vx/group";
-import { GridRows } from "@vx/grid";
-import { LinePath } from "@vx/shape";
 import { curveMonotoneX } from "@vx/curve";
+import { GridRows } from "@vx/grid";
+import { Group } from "@vx/group";
 import { genDateValue, DateValueDatum } from "@vx/mock-data";
+import { withParentSize, WithParentSizeProps } from "@vx/responsive";
 import { scaleTime, scaleLinear, Accessor } from "@vx/scale";
+import { LinePath } from "@vx/shape";
 import { extent, max } from "d3-array";
+import React from "react";
 
 function genLines(num: number) {
   return new Array(num).fill(1).map(() => {
@@ -21,20 +22,20 @@ const data = series.reduce((rec, d) => {
 const x: Accessor<DateValueDatum, Date> = d => d.date;
 const y: Accessor<DateValueDatum, number> = d => d.value;
 
-interface IMargin {
+interface Margin {
   left: number;
   right: number;
   top: number;
   bottom: number;
 }
 
-interface IProps {
+interface Props {
   width: number;
   height: number;
-  margin: IMargin;
+  margin: Margin;
 }
 
-const LinesDemo = (props: IProps) => {
+const LinesDemo = (props: Props) => {
   const { height, width, margin } = props;
   const xMax = width;
   const yMax = height / 8;
@@ -82,5 +83,19 @@ const LinesDemo = (props: IProps) => {
     </svg>
   );
 };
+
+interface LinesDemoResponsiveProps extends WithParentSizeProps {
+  margin: Margin;
+}
+
+const LinesDemoResponsive = withParentSize(
+  (props: LinesDemoResponsiveProps) => {
+    const { margin, parentWidth } = props;
+    // TODO: parentHeight causes a resize every time
+    return <LinesDemo height={400} width={parentWidth} margin={margin} />;
+  }
+);
+
+export { LinesDemo, LinesDemoResponsive };
 
 export default LinesDemo;
