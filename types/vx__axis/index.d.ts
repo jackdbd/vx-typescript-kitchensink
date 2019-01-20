@@ -1,4 +1,4 @@
-// Type definitions for @vx/axis 0.0.182
+// Type definitions for @vx/axis 0.0.183
 // Project: https://github.com/hshoff/vx
 // Definitions by: Giacomo Debidda <https://github.com/jackdbd>
 //                 Sean Lynch <https://github.com/techniq>

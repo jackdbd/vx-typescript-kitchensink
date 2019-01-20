@@ -36,7 +36,7 @@ declare module "@vx/responsive" {
     | ReactFunctionComponent
     | ReactPureComponent;
 
-  function ParentSize(props: any): JSX.Element<PropsResponsive>;
+  function ParentSize(props: any): JSX.Element<ParentProps>;
 
   interface SVGProps {
     children: JSX.Element;
@@ -45,7 +45,10 @@ declare module "@vx/responsive" {
   }
   function ScaleSVG(props: SVGProps): any;
 
-  //   interface WrappedComponent extends BaseComponent extends PropsResponsive {}
-  function withParentSize(BaseComponent: BaseComponent): any;
+  // interface WrappedComponent extends BaseComponent extends PropsResponsive {}
+  // type WrappedComponent = BaseComponent<P = {}>;
+  type WrappedComponent<P = {}> = BaseComponent<P & WithParentSizeProps>;
+  // interface WrappedComponent<P = {}> extends BaseComponent< P & WithParentSizeProps>
+  function withParentSize(WrappedComponent): (props) => JSX.Element;
   function withScreenSize(BaseComponent: BaseComponent): JSX.Element;
 }
