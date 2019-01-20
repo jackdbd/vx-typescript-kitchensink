@@ -2,7 +2,9 @@ import { ParentProps, ParentSize } from "@vx/responsive";
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import AxisDemo, { AxisDemoResponsive } from "../AxisDemo";
+import GradientsDemo from "../GradientsDemo";
 import LinesDemo, { LinesDemoResponsive } from "../LinesDemo";
+import PatternsDemo from "../PatternsDemo";
 import logo from "./logo.svg";
 
 const Div = styled.div`
@@ -95,7 +97,13 @@ class App extends React.Component<IProps> {
           <ParentSize>
             {(props: ParentProps) => {
               const { width } = props;
-              return <AxisDemo width={width} height={200} margin={margin} />;
+              return <GradientsDemo height={300} width={width} />;
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return <PatternsDemo height={300} width={width} />;
             }}
           </ParentSize>
         </Grid>

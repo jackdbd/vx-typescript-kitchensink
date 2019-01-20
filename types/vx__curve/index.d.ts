@@ -3,4 +3,8 @@
 // Definitions by: Giacomo Debidda <https://github.com/jackdbd>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-declare module "@vx/curve";
+declare module "@vx/curve" {
+  type Curve = any;
+  function curveBasis(): any;
+  function curveMonotoneX(): any;
+}

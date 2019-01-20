@@ -7,7 +7,7 @@ import { DateValueDatum, genDateValue } from "@vx/mock-data";
 import { withParentSize, WithParentSizeProps } from "@vx/responsive";
 import { Accessor, scaleLinear, scaleTime } from "@vx/scale";
 import { Area, Line, LinePath } from "@vx/shape";
-import { extent, Numeric } from "d3-array";
+import { extent } from "d3-array";
 import React from "react";
 // import { Text } from "@vx/text";
 import { IMargin } from "../../interfaces";
@@ -94,8 +94,8 @@ const AxisDemo = (props: IProps) => {
           x={(d: DateValueDatum) => xScale(x(d))}
           y0={(d: DateValueDatum) => yScale.range()[0]}
           y1={(d: DateValueDatum) => yScale(y(d))}
-          strokeWidth={2}
           stroke={"transparent"}
+          strokeWidth={2}
           fill={"url(#linear)"}
           curve={curveBasis}
         />
