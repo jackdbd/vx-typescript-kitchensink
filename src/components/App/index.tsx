@@ -1,13 +1,37 @@
 import { ParentProps, ParentSize } from "@vx/responsive";
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import logo from "./logo.svg";
 import AxisDemo, { AxisDemoResponsive } from "../AxisDemo";
 import LinesDemo, { LinesDemoResponsive } from "../LinesDemo";
-// import "./App.css";
 
 const Div = styled.div`
   text-align: center;
+`;
+
+const rotate = () => keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
+const RotatingLogo = styled.img`
+  animation: ${rotate()} infinite 20s linear;
+  height: 40vmin;
+`;
+
+const Header = styled.header`
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 `;
 
 /*
@@ -48,7 +72,10 @@ class App extends React.Component<IProps> {
     const { margin } = this.props;
     return (
       <Div>
-        <h1>vx-kitchensink</h1>
+        <Header>
+          <h1>vx-kitchensink</h1>
+          <RotatingLogo src={logo} alt="logo" />
+        </Header>
         <Grid gridGap={2}>
           <AxisDemoResponsive margin={margin} />
           <LinesDemoResponsive margin={margin} />
@@ -71,10 +98,6 @@ class App extends React.Component<IProps> {
             }}
           </ParentSize>
         </Grid>
-        <footer className="App-header">
-          <h1>vx-kitchensink</h1>
-          <img src={logo} className="App-logo" alt="logo" />
-        </footer>
       </Div>
     );
   }
