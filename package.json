@@ -1,6 +1,12 @@
 {
   "name": "vx-kitchensink",
-  "version": "0.1.0",
+  "description": "Repo to test type definitions for vx",
+  "author": "jackdbd <jackdebidda@gmail.com> (http://www.giacomodebidda.com/)",
+  "homepage": "https://jackdbd.github.io/vx-typescript-kitchensink",
+  "repository": "git@github.com:jackdbd/vx-typescript-kitchensink.git",
+  "version": "1.0.0",
+  "main": "src/index.tsx",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "build": "react-scripts build",
@@ -57,5 +63,12 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
+  ],
+  "keywords": [
+    "d3",
+    "react",
+    "typescript",
+    "visualization",
+    "vx"
   ]
 }
