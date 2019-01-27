@@ -10,6 +10,7 @@ import HeatmapsDemo from "../HeatmapsDemo";
 import { LinesDemoResponsive } from "../LinesDemo";
 import PatternsDemo from "../PatternsDemo";
 import PolygonsDemo from "../PolygonsDemo";
+import TextDemo from "../TextDemo";
 import logo from "./logo.svg";
 
 const Div = styled.div`
@@ -143,6 +144,18 @@ class App extends React.Component<IProps> {
                 <AreaDemoWithTooltip
                   height={height}
                   margin={margin}
+                  width={width}
+                />
+              );
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return (
+                <TextDemo
+                  height={height}
+                  text={"This is a test"}
                   width={width}
                 />
               );

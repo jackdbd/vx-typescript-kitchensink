@@ -7,18 +7,19 @@ declare module "@vx/text" {
   import React from "react";
 
   interface TextProps extends React.SVGAttributes<SVGTextElement> {
-    children: string;
-    scaleToFit?: boolean;
     angle?: number;
+    capHeight?: number | string;
+    children: string;
+    dx?: number | string;
+    dy?: number | string;
+    lineHeight?: number | string;
+    scaleToFit?: boolean;
     textAnchor?: "start" | "middle" | "end" | "inherit";
     verticalAnchor?: "start" | "middle" | "end";
     x?: number | string;
     y?: number | string;
-    dx?: number | string;
-    dy?: number | string;
-    lineHeight?: number | string;
-    capHeight?: number | string;
   }
 
+  function getStringWidth(): any;
   const Text: React.ComponentType<TextProps>;
 }
