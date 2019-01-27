@@ -3,4 +3,6 @@
 // Definitions by: Giacomo Debidda <https://github.com/jackdbd>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-declare module "@vx/event" {}
+declare module "@vx/event" {
+  const localPoint: any;
+}

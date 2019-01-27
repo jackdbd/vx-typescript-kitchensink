@@ -5,16 +5,9 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 declare module "@vx/grid" {
-  import React from "react";
-  // TODO: import from vx-scale?
+  import { ScaleFunction } from "@vx/scale";
   import { ScaleBand, ScaleLinear, ScaleTime } from "d3-scale";
-  // import { scaleBand } from "@vx/scale";
-
-  // TODO: add all d3 scale function combinations?
-  type ScaleFunction =
-    | ScaleBand<any>
-    | ScaleLinear<any, any>
-    | ScaleTime<any, any>;
+  import React from "react";
 
   interface SharedProps {
     className?: string;
@@ -25,9 +18,13 @@ declare module "@vx/grid" {
     top?: number;
   }
 
+  interface ExtraProps {
+    pointerEvents: string;
+  }
+
   interface GridColumnsProps extends SharedProps {
     height: number;
-    lineStyle?: React.StyleHTMLAttributes<SVGLineElement>;
+    lineStyle?: React.StyleHTMLAttributes<SVGLineElement> & ExtraProps;
     numTicks?: number;
     offset?: number;
     scale: ScaleFunction;
@@ -35,7 +32,7 @@ declare module "@vx/grid" {
   }
 
   interface GridRowsProps extends SharedProps {
-    lineStyle?: React.StyleHTMLAttributes<SVGLineElement>;
+    lineStyle?: React.StyleHTMLAttributes<SVGLineElement> & ExtraProps;
     numTicks?: number;
     offset?: number;
     scale: ScaleFunction;

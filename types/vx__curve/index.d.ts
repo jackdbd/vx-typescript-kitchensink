@@ -4,7 +4,7 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 declare module "@vx/curve" {
-  type Curve = any;
+  type Curve = any; // TODO
   function curveBasis(): any;
   function curveMonotoneX(): any;
 }

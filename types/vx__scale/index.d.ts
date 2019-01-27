@@ -12,7 +12,12 @@ declare module "@vx/scale" {
   } from "d3-scale";
 
   type NumberLike = number | { valueOf(): number };
-  type ScaleFunction = ScaleLinear | ScaleTime;
+
+  type ScaleFunction =
+    | ScaleBand<any>
+    | ScaleLinear<any, any>
+    | ScaleTime<any, any>;
+
   type Accessor<T, R> = (datum: T) => R;
 
   interface SharedOptions {

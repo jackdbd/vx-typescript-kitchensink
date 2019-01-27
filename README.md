@@ -1,4 +1,4 @@
-# vx-kitchensink
+# vx-typescript-kitchensink
 
 [![Build Status](https://travis-ci.com/jackdbd/vx-typescript-kitchensink.svg?branch=master)](https://travis-ci.com/jackdbd/vx-typescript-kitchensink) [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovateapp.com/) [![Code style prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 

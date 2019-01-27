@@ -5,7 +5,7 @@
 
 declare module "@vx/shape" {
   import { Curve } from "@vx/curve";
-  import { Accessor } from "@vx/scale";
+  import { Accessor, ScaleFunction } from "@vx/scale";
 
   type Datum = any; // TODO
 
@@ -19,9 +19,26 @@ declare module "@vx/shape" {
     y0: Accessor;
     y1: Accessor;
   }
+
+  interface AreaClosedProps {
+    curve: Curve;
+    data: Datum[];
+    fill: string;
+    stroke?: string;
+    strokeWidth?: number;
+    x: Accessor;
+    y: Accessor;
+    yScale: ScaleFunction;
+  }
+
   interface BarProps {
+    data?: Datum[];
     fill: string;
     height: number;
+    onMouseLeave?: (event: MouseEvent) => void;
+    onMouseMove?: (event: MouseEvent) => void;
+    onTouchMove?: EventListener;
+    onTouchStart?: EventListener;
     rx?: number;
     ry?: number;
     stroke?: string;
@@ -30,11 +47,25 @@ declare module "@vx/shape" {
     x: number;
     y: number;
   }
-  interface LineProps {
-    from: boolean;
-    stroke?: string;
-    to: boolean;
+
+  interface Point {
+    x: number;
+    y: number;
   }
+
+  interface ExtraProps {
+    pointerEvents: string;
+  }
+
+  interface LineProps {
+    from: Point;
+    stroke?: string;
+    strokeDasharray?: string;
+    strokeWidth?: number;
+    style?: React.StyleHTMLAttributes<SVGLineElement> & ExtraProps;
+    to: Point;
+  }
+
   interface LinePathProps {
     curve: Curve;
     data: Datum[];
@@ -43,6 +74,7 @@ declare module "@vx/shape" {
     x: Accessor;
     y: Accessor;
   }
+
   interface PolygonProps {
     fill: string;
     rotate: number;
@@ -51,6 +83,7 @@ declare module "@vx/shape" {
   }
 
   const Area: React.ComponentType<AreaProps>;
+  const AreaClosed: React.ComponentType<AreaClosedProps>;
   const Bar: React.ComponentType<BarProps>;
   const Line: React.ComponentType<LineProps>;
   const LinePath: React.ComponentType<LinePathProps>;

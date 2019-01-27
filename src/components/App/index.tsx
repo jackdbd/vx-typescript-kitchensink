@@ -1,10 +1,13 @@
+import { appleStock } from "@vx/mock-data";
 import { ParentProps, ParentSize } from "@vx/responsive";
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import AxisDemo, { AxisDemoResponsive } from "../AxisDemo";
+
+import { AreaDemo, AreaDemoWithTooltip } from "../AreaDemo";
+import { AxisDemoResponsive } from "../AxisDemo";
 import GradientsDemo from "../GradientsDemo";
 import HeatmapsDemo from "../HeatmapsDemo";
-import LinesDemo, { LinesDemoResponsive } from "../LinesDemo";
+import { LinesDemoResponsive } from "../LinesDemo";
 import PatternsDemo from "../PatternsDemo";
 import PolygonsDemo from "../PolygonsDemo";
 import logo from "./logo.svg";
@@ -65,6 +68,8 @@ interface IProps {
   margin: IMargin;
 }
 
+const stock = appleStock.slice(800);
+
 class App extends React.Component<IProps> {
   public static defaultProps: Partial<IProps> = {
     height: 400,
@@ -112,6 +117,32 @@ class App extends React.Component<IProps> {
                   height={height}
                   margin={margin}
                   separation={20}
+                  width={width}
+                />
+              );
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return (
+                <AreaDemo
+                  height={height}
+                  ruler={{ left: width / 2, top: height / 2 }}
+                  margin={margin}
+                  onMouseMove={(event: Event) => console.warn("Move", event)}
+                  width={width}
+                />
+              );
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return (
+                <AreaDemoWithTooltip
+                  height={height}
+                  margin={margin}
                   width={width}
                 />
               );
