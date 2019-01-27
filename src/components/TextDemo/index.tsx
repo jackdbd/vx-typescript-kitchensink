@@ -1,4 +1,4 @@
-import { getStringWidth, Text } from "@vx/text";
+import { Text } from "@vx/text";
 import React from "react";
 
 interface IProps {
@@ -6,8 +6,6 @@ interface IProps {
   text: string;
   width: number;
 }
-
-console.warn("getStringWidth", getStringWidth);
 
 const TextDemo = (props: IProps) => {
   const { height, text, width } = props;

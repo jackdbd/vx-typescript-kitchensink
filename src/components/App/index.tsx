@@ -7,6 +7,7 @@ import { AreaDemo, AreaDemoWithTooltip } from "../AreaDemo";
 import { AxisDemoResponsive } from "../AxisDemo";
 import GradientsDemo from "../GradientsDemo";
 import HeatmapsDemo from "../HeatmapsDemo";
+import LegendDemo from "../LegendDemo";
 import { LinesDemoResponsive } from "../LinesDemo";
 import PatternsDemo from "../PatternsDemo";
 import PolygonsDemo from "../PolygonsDemo";
@@ -159,6 +160,12 @@ class App extends React.Component<IProps> {
                   width={width}
                 />
               );
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return <LegendDemo height={height} width={width} />;
             }}
           </ParentSize>
         </Grid>

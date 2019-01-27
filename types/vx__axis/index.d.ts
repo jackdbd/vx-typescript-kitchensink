@@ -6,7 +6,7 @@
 
 declare module "@vx/axis" {
   import React from "react";
-  import { ScaleBand, ScaleLinear, ScaleTime } from "d3-scale";
+  import { ScaleBand, ScaleLinear, ScaleThreshold, ScaleTime } from "d3-scale";
 
   type Orient = {
     left: "left";
@@ -42,9 +42,12 @@ declare module "@vx/axis" {
   type ScaleFunction =
     | ScaleBand<any, any>
     | ScaleLinear<any, any>
+    | ScaleThreshold<any, any>
     | ScaleTime<any, any>;
+
   // let format = scale.tickFormat ? scale.tickFormat() : identity;
   type FormatFunction = (val: any, index: number) => string;
+
   interface TickOptions {
     x: number;
     y: number;

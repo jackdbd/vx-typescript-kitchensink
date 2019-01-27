@@ -35,6 +35,7 @@
     "@vx/grid": "0.0.183",
     "@vx/group": "0.0.183",
     "@vx/heatmap": "0.0.183",
+    "@vx/legend": "0.0.183",
     "@vx/mock-data": "0.0.182",
     "@vx/pattern": "0.0.183",
     "@vx/responsive": "0.0.183",
