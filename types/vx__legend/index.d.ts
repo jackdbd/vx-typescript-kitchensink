@@ -5,13 +5,16 @@
 
 declare module "@vx/legend" {
   import { ScaleFunction } from "@vx/axis";
+  import React from "react";
 
-  interface LegendProps {
+  interface LegendProps extends React.DOMAttributes<HTMLDivElement> {
+    align?: string;
     children?: any;
     className?: string;
     direction?: string;
     domain?: any;
     fill?: any;
+    flexDirection?: string;
     itemDirection?: string;
     itemMargin?: string;
     labelAlign?: string;
@@ -19,7 +22,8 @@ declare module "@vx/legend" {
     labelFormat?: any;
     labelMargin?: string;
     labelTransform?: any;
-    scale: ScaleFunction;
+    margin?: any;
+    scale?: ScaleFunction;
     shape?: any;
     shapeHeight?: number | string;
     shapeMargin?: string;
@@ -29,5 +33,12 @@ declare module "@vx/legend" {
     size?: any;
   }
 
+  const Legend: React.ComponentType<LegendProps>;
+  const LegendItem: React.ComponentType<LegendProps>;
+  const LegendLabel: React.ComponentType<LegendProps>;
+  const LegendLinear: React.ComponentType<LegendProps>;
+  const LegendOrdinal: React.ComponentType<LegendProps>;
+  const LegendQuantile: React.ComponentType<LegendProps>;
+  const LegendSize: React.ComponentType<LegendProps>;
   const LegendThreshold: React.ComponentType<LegendProps>;
 }

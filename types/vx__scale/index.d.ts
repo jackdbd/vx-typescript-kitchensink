@@ -73,7 +73,7 @@ declare module "@vx/scale" {
   function scalePoint(scaleOptions: ScalePointOptions): any;
   function scaleLinear(
     scaleOptions: ScaleLinearOptions
-  ): ScaleLinear<number, number>;
+  ): ScaleLinear<number, any>;
   function scaleTime(scaleOptions: ScaleTimeOptions): ScaleTime<any, any>;
   function scaleUtc(scaleOptions: ScaleUtcOptions): any;
   function scaleLog(scaleOptions: ScaleLogOptions): ScaleLog<number, number>;

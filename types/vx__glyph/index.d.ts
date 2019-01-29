@@ -8,19 +8,14 @@ declare module "@vx/glyph" {
 
   interface GlyphProps {
     children?: any;
-    className?: string;
+    cx?: number;
+    cy?: number;
     left?: number;
-    top?: number;
-  }
-
-  interface GlyphDotProps {
-    children?: any;
-    cx: number;
-    cy: number;
-    r: number;
+    r?: number;
     fill: string;
     stroke?: string;
     strokeWidth?: number;
+    top?: number;
   }
 
   interface GlyphPropsWithSize extends GlyphProps {
@@ -31,7 +26,7 @@ declare module "@vx/glyph" {
   const GlyphCircle: React.ComponentType<GlyphPropsWithSize>;
   const GlyphCross: React.ComponentType<GlyphPropsWithSize>;
   const GlyphDiamond: React.ComponentType<GlyphPropsWithSize>;
-  const GlyphDot: React.ComponentType<GlyphDotProps>;
+  const GlyphDot: React.ComponentType<GlyphProps>;
   const GlyphSquare: React.ComponentType<GlyphPropsWithSize>;
   const GlyphStar: React.ComponentType<GlyphPropsWithSize>;
   const GlyphTriangle: React.ComponentType<GlyphPropsWithSize>;
