@@ -5,6 +5,7 @@ import styled, { keyframes } from "styled-components";
 
 import { AreaDemo, AreaDemoWithTooltip } from "../AreaDemo";
 import { AxisDemoResponsive } from "../AxisDemo";
+import { GlyphDemo } from "../GlyphDemo";
 import GradientsDemo from "../GradientsDemo";
 import HeatmapsDemo from "../HeatmapsDemo";
 import LegendDemo from "../LegendDemo";
@@ -166,6 +167,14 @@ class App extends React.Component<IProps> {
             {(props: ParentProps) => {
               const { width } = props;
               return <LegendDemo height={height} width={width} />;
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return (
+                <GlyphDemo height={height} margin={margin} width={width} />
+              );
             }}
           </ParentSize>
         </Grid>

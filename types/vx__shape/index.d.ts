@@ -70,6 +70,7 @@ declare module "@vx/shape" {
     curve: Curve;
     data: Datum[];
     stroke?: string;
+    strokeDasharray?: string;
     strokeWidth?: number;
     x: Accessor;
     y: Accessor;

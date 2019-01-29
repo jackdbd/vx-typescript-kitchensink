@@ -1061,6 +1061,16 @@
   dependencies:
     "@vx/point" "0.0.182"
 
+"@vx/glyph@0.0.183":
+  version "0.0.183"
+  resolved "https://registry.yarnpkg.com/@vx/glyph/-/glyph-0.0.183.tgz#ea76c0fe1e706392476af7e9193587c3c594f6d0"
+  integrity sha512-AFCNp22kPcBJ5z4zh9VpJ9whawHPelVHv8sSeKXhUZhC41jg5+8gqC+9XtmDWWia9y1s75WoXrt9j+GXHas7Ow==
+  dependencies:
+    "@vx/group" "0.0.183"
+    classnames "^2.2.5"
+    d3-shape "^1.2.0"
+    prop-types "^15.6.2"
+
 "@vx/gradient@0.0.183":
   version "0.0.183"
   resolved "https://registry.yarnpkg.com/@vx/gradient/-/gradient-0.0.183.tgz#85ba9764082d5ed2e044f1f4cab6aef9a2e2463d"
@@ -1097,7 +1107,7 @@
     classnames "^2.2.5"
     prop-types "^15.6.1"
 
-"@vx/legend@^0.0.183":
+"@vx/legend@0.0.183":
   version "0.0.183"
   resolved "https://registry.yarnpkg.com/@vx/legend/-/legend-0.0.183.tgz#b9f7b6a1cd20a0a0cb143b4dea8a30957b1838a8"
   integrity sha512-pb4EYhPythpvILzD9+89tmrZnsOym8f2nAh1s8luqKLL0KOZ1+r26kyVA7l16bECklVo+bXJeORfhjf5ZIddaA==

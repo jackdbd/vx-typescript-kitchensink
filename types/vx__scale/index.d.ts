@@ -37,24 +37,24 @@ declare module "@vx/scale" {
   interface ScaleLinearOptions extends SharedOptions {
     domain: number[];
     range?: number[] | string[];
-    rangeRound?: NumberLike[]; // TODO: this should be optional in vx-scale
+    rangeRound?: NumberLike[];
   }
 
   interface ScaleLogOptions extends SharedOptions {
     domain: number[];
     range?: number[] | string[];
-    rangeRound?: NumberLike[]; // TODO: this should be optional in vx-scale
+    rangeRound?: NumberLike[];
   }
 
   interface ScaleTimeOptions extends SharedOptions {
     domain: Date[] | number[];
-    range: Date[] | number[];
-    rangeRound?: NumberLike[]; // TODO: this should be optional in vx-scale
+    range?: Date[] | number[];
+    rangeRound?: NumberLike[];
   }
 
   interface ScaleUtcOptions extends SharedOptions {
     domain: Date[] | number[];
-    range: Date[] | number[];
+    range?: Date[] | number[];
   }
 
   interface ScaleLinear<Range, Output> extends D3ScaleLinear<Range, Output> {
