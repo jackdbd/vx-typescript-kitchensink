@@ -9,7 +9,9 @@ declare module "@vx/scale" {
     ScaleLinear as D3ScaleLinear,
     ScaleLogarithmic as D3ScaleLogarithmic,
     ScaleTime as D3ScaleTime,
+    ScaleOrdinal as D3ScaleOrdinal,
   } from "d3-scale";
+  import React from "react";
 
   type NumberLike = number | { valueOf(): number };
 
@@ -65,23 +67,44 @@ declare module "@vx/scale" {
     type: string;
   }
 
+  interface ScaleOrdinalOptions extends SharedOptions {
+    domain: number[] | string[];
+    range?: number[] | string[] | React.ReactElement[];
+  }
+
+  interface ScaleOrdinal<Range, Output> extends D3ScaleOrdinal<Range, Output> {
+    type: string;
+  }
+
   interface ScaleTime<Range, Output> extends D3ScaleTime<Range, Output> {
     type: string;
   }
 
   function scaleBand(scaleOptions: ScaleBandOptions): any;
+
   function scalePoint(scaleOptions: ScalePointOptions): any;
+
   function scaleLinear(
     scaleOptions: ScaleLinearOptions
   ): ScaleLinear<number, any>;
+
   function scaleTime(
     scaleOptions: ScaleTimeOptions
   ): ScaleTime<Date | number, number>;
+
   function scaleUtc(scaleOptions: ScaleUtcOptions): any;
+
   function scaleLog(scaleOptions: ScaleLogOptions): ScaleLog<number, number>;
+
   function scalePower(scaleOptions: any): any;
-  function scaleOrdinal(scaleOptions: any): any;
+
+  function scaleOrdinal(
+    scaleOptions: ScaleOrdinalOptions
+  ): ScaleOrdinal<number | string, React.ReactElement>;
+
   function scaleQuantize(scaleOptions: any): any;
+
   function scaleQuantile(scaleOptions: any): any;
+
   function scaleThreshold(scaleOptions: any): any;
 }
