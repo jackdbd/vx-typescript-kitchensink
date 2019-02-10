@@ -8,15 +8,15 @@ self.__precacheManifest = [
     "url": "/vx-typescript-kitchensink/static/js/runtime~main.4d56b8a9.js"
   },
   {
-    "revision": "7ca6d32a179e2dd68165",
-    "url": "/vx-typescript-kitchensink/static/js/main.7ca6d32a.chunk.js"
+    "revision": "6d8277dac231b6310aa9",
+    "url": "/vx-typescript-kitchensink/static/js/main.6d8277da.chunk.js"
   },
   {
-    "revision": "d7fb7b066b7354e1ee1e",
-    "url": "/vx-typescript-kitchensink/static/js/1.d7fb7b06.chunk.js"
+    "revision": "918c85911a26438aacdc",
+    "url": "/vx-typescript-kitchensink/static/js/1.918c8591.chunk.js"
   },
   {
-    "revision": "5e6c2a9399cd3bc215aeedb5ea520e00",
+    "revision": "82d80bbcd59518d12f0da1c45b924f7f",
     "url": "/vx-typescript-kitchensink/index.html"
   }
 ];
