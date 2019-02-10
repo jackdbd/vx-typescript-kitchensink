@@ -168,15 +168,11 @@ function handleTooltip(options: any) {
 }
 
 const AreaDemoWithTooltip = withTooltip((props: IAreaDemoWithTooltipProps) => {
-  const {
-    margin,
-    height,
-    showTooltip,
-    tooltipData,
-    tooltipLeft,
-    tooltipTop,
-    width,
-  } = props;
+  const { margin, height, showTooltip, tooltipData, width } = props;
+  // at first tooltipLeft and tooltipTop are undefined
+  const tooltipLeft = props.tooltipLeft || 0;
+  const tooltipTop = props.tooltipTop || 0;
+
   const xMax = width - margin.left - margin.right;
   const yMax = height - margin.top - margin.bottom;
 
@@ -194,10 +190,10 @@ const AreaDemoWithTooltip = withTooltip((props: IAreaDemoWithTooltipProps) => {
     handleTooltip({
       data: stock,
       event,
+      showTooltip,
       xAccessor: xStock,
       xScale,
       yScale,
-      showTooltip,
     });
   };
 

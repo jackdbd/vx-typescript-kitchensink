@@ -53,9 +53,9 @@ declare module "@vx/tooltip" {
 
   interface IProps {
     tooltipData: any;
-    tooltipLeft: number;
+    tooltipLeft: number | undefined; // at first it's undefined
     tooltipOpen: boolean;
-    tooltipTop: number;
+    tooltipTop: number | undefined; // at first it's undefined
   }
 
   interface WithTooltipProps extends IProps {
