@@ -1060,7 +1060,7 @@
     "@types/unist" "*"
     "@types/vfile-message" "*"
 
-"@vx/annotation@^0.0.184":
+"@vx/annotation@0.0.184":
   version "0.0.184"
   resolved "https://registry.yarnpkg.com/@vx/annotation/-/annotation-0.0.184.tgz#9769fecd60a37c198104349a2f29fc3d8e4c7795"
   integrity sha512-/Ms2yIRtSSPnatRMI9RV6By32NEQ78ZhfRVIpXAJ4bYcmWIIiv+zWbabS5nQIrQ+tlnts9rlOhaQfj+II9LFqQ==
@@ -1191,6 +1191,16 @@
     "@vx/group" "0.0.183"
     classnames "^2.2.5"
     prop-types "^15.5.10"
+
+"@vx/marker@^0.0.184":
+  version "0.0.184"
+  resolved "https://registry.yarnpkg.com/@vx/marker/-/marker-0.0.184.tgz#60cd5172e164d623348f2c0c98857062ffc3c870"
+  integrity sha512-Lnu/V4LLPHtG+uKZOqRv9kO89f8tEvVSCot5pk8xLCQXYVgaaoX9CZfkFb1gGGMiau0/TFlPyU/Cn2Tg9lzChA==
+  dependencies:
+    "@vx/group" "0.0.183"
+    "@vx/shape" "0.0.184"
+    classnames "^2.2.5"
+    prop-types "^15.6.2"
 
 "@vx/mock-data@0.0.182":
   version "0.0.182"
