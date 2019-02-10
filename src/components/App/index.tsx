@@ -5,6 +5,7 @@ import styled, { keyframes } from "styled-components";
 
 import { AreaDemo, AreaDemoWithTooltip } from "../AreaDemo";
 import { AxisDemoResponsive } from "../AxisDemo";
+import { GeoDemo } from "../GeoDemo";
 import { GlyphDemo } from "../GlyphDemo";
 import GradientsDemo from "../GradientsDemo";
 import HeatmapsDemo from "../HeatmapsDemo";
@@ -133,7 +134,7 @@ class App extends React.Component<IProps> {
                   height={height}
                   ruler={{ left: width / 2, top: height / 2 }}
                   margin={margin}
-                  onMouseMove={(event: Event) => console.warn("Move", event)}
+                  // onMouseMove={(event: Event) => console.warn("Move", event)}
                   width={width}
                 />
               );
@@ -175,6 +176,12 @@ class App extends React.Component<IProps> {
               return (
                 <GlyphDemo height={height} margin={margin} width={width} />
               );
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return <GeoDemo height={height} width={width} />;
             }}
           </ParentSize>
         </Grid>
