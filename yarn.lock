@@ -1079,6 +1079,14 @@
   dependencies:
     prop-types "^15.5.10"
 
+"@vx/brush@^0.0.182":
+  version "0.0.182"
+  resolved "https://registry.yarnpkg.com/@vx/brush/-/brush-0.0.182.tgz#b82ea8a4efaedadbf62d18be0494f66e4831b4cc"
+  integrity sha512-I/8PO2iSONH6DYNoFBTRkqaYbm5Uwd77Nbhx/m+fMiRk+IO6gLIs/nP1w3+WPrDJKiqJggHkyRMcgcnm3T/tjw==
+  dependencies:
+    classnames "^2.2.5"
+    recompose "^0.23.1"
+
 "@vx/clip-path@0.0.183":
   version "0.0.183"
   resolved "https://registry.yarnpkg.com/@vx/clip-path/-/clip-path-0.0.183.tgz#d56350a09e911bd499dcc15ffccff858e9eca61d"
@@ -1093,7 +1101,7 @@
   dependencies:
     d3-shape "^1.0.6"
 
-"@vx/drag@^0.0.183":
+"@vx/drag@0.0.183":
   version "0.0.183"
   resolved "https://registry.yarnpkg.com/@vx/drag/-/drag-0.0.183.tgz#91746aac64fd3e6354a37a84dd995a476980d97e"
   integrity sha512-jZ3xZPSOLgCS1esGD16WUpLeXkZnFa0RSIybqrBqSuFK3CBIZYbSwsM6PNYSJSQnhP9fdI/87AnBE6CX5tn/BA==
@@ -1265,6 +1273,16 @@
     "@vx/bounds" "0.0.182"
     classnames "^2.2.5"
     prop-types "^15.5.10"
+
+"@vx/voronoi@0.0.183":
+  version "0.0.183"
+  resolved "https://registry.yarnpkg.com/@vx/voronoi/-/voronoi-0.0.183.tgz#a798c0cdc9e0582564deb040c35572373cbfb570"
+  integrity sha512-72wZ6iEtem+ldmcePPdYEGkr73GVnRawK/Cloa8lYyrKUOmlexfD1hkibortRfahvTFum/lF+bGT70xtQkweaw==
+  dependencies:
+    "@vx/group" "0.0.183"
+    classnames "^2.2.5"
+    d3-voronoi "^1.1.2"
+    prop-types "^15.6.1"
 
 "@webassemblyjs/ast@1.7.6":
   version "1.7.6"
@@ -2649,6 +2667,11 @@ chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.4.1, chalk@^2.4
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
+change-emitter@^0.1.2:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/change-emitter/-/change-emitter-0.1.6.tgz#e8b2fe3d7f1ab7d69a32199aff91ea6931409515"
+  integrity sha1-6LL+PX8at9aaMhma/5HqaTFAlRU=
+
 character-entities-html4@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/character-entities-html4/-/character-entities-html4-1.1.2.tgz#c44fdde3ce66b52e8d321d6c1bf46101f0150610"
@@ -3537,6 +3560,11 @@ d3-time@1:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/d3-time/-/d3-time-1.0.10.tgz#8259dd71288d72eeacfd8de281c4bf5c7393053c"
   integrity sha512-hF+NTLCaJHF/JqHN5hE8HVGAXPStEq6/omumPE/SxyHVrR7/qQxusFDo0t0c/44+sCGHthC7yNGFZIEgju0P8g==
+
+d3-voronoi@^1.1.2:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/d3-voronoi/-/d3-voronoi-1.1.4.tgz#dd3c78d7653d2bb359284ae478645d95944c8297"
+  integrity sha512-dArJ32hchFsrQ8uMiTBLq256MpnZjeuBtdHpaDlYuQyjU0CVzCJl/BVW+SkszaAeH95D/8gxqAhgx0ouAWAfRg==
 
 d@1:
   version "1.0.0"
@@ -4602,7 +4630,7 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
-fbjs@^0.8.5:
+fbjs@^0.8.1, fbjs@^0.8.5:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
@@ -5508,6 +5536,11 @@ hoek@4.x.x:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.1.tgz#9634502aa12c445dd5a7c5734b572bb8738aacbb"
   integrity sha512-QLg82fGkfnJ/4iy1xZ81/9SIJiq1NGFUMGs6ParyjBZr6jW2Ufj/snDqTHixNlHdPNwN2RLVD0Pi3igeK9+JfA==
+
+hoist-non-react-statics@^1.0.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
+  integrity sha1-qkSM8JhtVcxAdzsXF0t90GbLfPs=
 
 home-or-tmp@^2.0.0:
   version "2.0.0"
@@ -10131,6 +10164,16 @@ realpath-native@^1.0.0:
   dependencies:
     util.promisify "^1.0.0"
 
+recompose@^0.23.1:
+  version "0.23.5"
+  resolved "https://registry.yarnpkg.com/recompose/-/recompose-0.23.5.tgz#72ac8261246bec378235d187467d02a721e8b1de"
+  integrity sha1-cqyCYSRr7DeCNdGHRn0CpyHosd4=
+  dependencies:
+    change-emitter "^0.1.2"
+    fbjs "^0.8.1"
+    hoist-non-react-statics "^1.0.0"
+    symbol-observable "^1.0.4"
+
 recursive-readdir@2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/recursive-readdir/-/recursive-readdir-2.2.2.tgz#9946fb3274e1628de6e36b2f6714953b4845094f"
@@ -11548,6 +11591,11 @@ svgo@^1.0.0, svgo@^1.0.5:
     stable "~0.1.6"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+symbol-observable@^1.0.4:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
+  integrity sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==
 
 symbol-tree@^3.2.2:
   version "3.2.2"

@@ -16,6 +16,7 @@ import PatternsDemo from "../PatternsDemo";
 import PolygonsDemo from "../PolygonsDemo";
 import TextDemo from "../TextDemo";
 import { ThresholdDemo } from "../ThresholdDemo";
+import { VoronoiDemo } from "../VoronoiDemo";
 import logo from "./logo.svg";
 
 const Div = styled.div`
@@ -198,6 +199,14 @@ class App extends React.Component<IProps> {
             {(props: ParentProps) => {
               const { width } = props;
               return <DragDemo height={height} margin={margin} width={width} />;
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return (
+                <VoronoiDemo height={height} margin={margin} width={width} />
+              );
             }}
           </ParentSize>
         </Grid>
