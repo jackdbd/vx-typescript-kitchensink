@@ -1093,6 +1093,14 @@
   dependencies:
     d3-shape "^1.0.6"
 
+"@vx/drag@^0.0.183":
+  version "0.0.183"
+  resolved "https://registry.yarnpkg.com/@vx/drag/-/drag-0.0.183.tgz#91746aac64fd3e6354a37a84dd995a476980d97e"
+  integrity sha512-jZ3xZPSOLgCS1esGD16WUpLeXkZnFa0RSIybqrBqSuFK3CBIZYbSwsM6PNYSJSQnhP9fdI/87AnBE6CX5tn/BA==
+  dependencies:
+    "@vx/event" "0.0.182"
+    prop-types "^15.5.10"
+
 "@vx/event@0.0.182":
   version "0.0.182"
   resolved "https://registry.yarnpkg.com/@vx/event/-/event-0.0.182.tgz#b5b20a4e14fcd383511ef7a318ca0a10e6da8140"
@@ -1239,7 +1247,7 @@
     prop-types "^15.6.2"
     reduce-css-calc "^1.3.0"
 
-"@vx/threshold@^0.0.184":
+"@vx/threshold@0.0.184":
   version "0.0.184"
   resolved "https://registry.yarnpkg.com/@vx/threshold/-/threshold-0.0.184.tgz#040fb3005b38d283eac0b81ed8616ef6af948c12"
   integrity sha512-DoEIubOVthpwo78rrOWCVpENRlRXDknphlLZe24fKQYAS8G0M/QX9Oc9ZeKBh6VY0aYpvTJMO57uZXJFP4fsMQ==

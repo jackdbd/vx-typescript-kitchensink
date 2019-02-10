@@ -5,6 +5,7 @@ import styled, { keyframes } from "styled-components";
 
 import { AreaDemo, AreaDemoWithTooltip } from "../AreaDemo";
 import { AxisDemoResponsive } from "../AxisDemo";
+import { DragDemo } from "../DragDemo";
 import { GeoDemo } from "../GeoDemo";
 import { GlyphDemo } from "../GlyphDemo";
 import GradientsDemo from "../GradientsDemo";
@@ -191,6 +192,12 @@ class App extends React.Component<IProps> {
               return (
                 <ThresholdDemo height={height} margin={margin} width={width} />
               );
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return <DragDemo height={height} margin={margin} width={width} />;
             }}
           </ParentSize>
         </Grid>
