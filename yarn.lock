@@ -937,7 +937,7 @@
   resolved "https://registry.yarnpkg.com/@types/d3-format/-/d3-format-1.3.0.tgz#c5e115fac8e6861ce656fe9861892b22f6b0cfcb"
   integrity sha512-ZiY4j3iJvAdOwzwW24WjlZbUNvqOsnPAMfPBmdXqxj3uKJbrzBlRrdGl5uC89pZpFs9Dc92E81KcwG2uEgkIZA==
 
-"@types/d3-geo@^1.11.0":
+"@types/d3-geo@1.11.0":
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/@types/d3-geo/-/d3-geo-1.11.0.tgz#f7921c5c50d1a43df928846d8a7e47140455687f"
   integrity sha512-/IbMHRG9cur+6hkWvBrRg3DnnUWtaSW8Bl6nu1OO1J8K25BxRYyLslyjIBbwlK0kV0haztlAR2LCIRuDc/U2LA==
@@ -1079,6 +1079,13 @@
   dependencies:
     prop-types "^15.5.10"
 
+"@vx/clip-path@0.0.183":
+  version "0.0.183"
+  resolved "https://registry.yarnpkg.com/@vx/clip-path/-/clip-path-0.0.183.tgz#d56350a09e911bd499dcc15ffccff858e9eca61d"
+  integrity sha512-mb+oLMRbPT46k6fFmrF6O05cWwgnm+sB3jPXX6Rzbi16zy1i8nUimyBRa9KzxX4c64vvW2MpFkOVg11I0wwx3Q==
+  dependencies:
+    prop-types "^15.5.10"
+
 "@vx/curve@0.0.182":
   version "0.0.182"
   resolved "https://registry.yarnpkg.com/@vx/curve/-/curve-0.0.182.tgz#55487fe71fb00ccc2299437e76b2c68b88c37c7f"
@@ -1207,6 +1214,19 @@
     d3-shape "^1.2.0"
     prop-types "^15.5.10"
 
+"@vx/shape@0.0.184":
+  version "0.0.184"
+  resolved "https://registry.yarnpkg.com/@vx/shape/-/shape-0.0.184.tgz#e4ba232644cb6a2bc82f8faf5b20928bd948d5fb"
+  integrity sha512-esO2ztlb4edFX/Vzb9xzh4K2wbXUo3HrKMjFgFnJ8vU9RAD+8PQ3NDm/1UYm+OaOjVqxbmX5pwW1r8kMlUcppw==
+  dependencies:
+    "@vx/curve" "0.0.182"
+    "@vx/group" "0.0.183"
+    "@vx/point" "0.0.182"
+    classnames "^2.2.5"
+    d3-path "^1.0.5"
+    d3-shape "^1.2.0"
+    prop-types "^15.5.10"
+
 "@vx/text@0.0.183":
   version "0.0.183"
   resolved "https://registry.yarnpkg.com/@vx/text/-/text-0.0.183.tgz#8bed9eef00eee169158dd0a0a5ee5cd3374c4db3"
@@ -1218,6 +1238,16 @@
     lodash "^4.17.4"
     prop-types "^15.6.2"
     reduce-css-calc "^1.3.0"
+
+"@vx/threshold@^0.0.184":
+  version "0.0.184"
+  resolved "https://registry.yarnpkg.com/@vx/threshold/-/threshold-0.0.184.tgz#040fb3005b38d283eac0b81ed8616ef6af948c12"
+  integrity sha512-DoEIubOVthpwo78rrOWCVpENRlRXDknphlLZe24fKQYAS8G0M/QX9Oc9ZeKBh6VY0aYpvTJMO57uZXJFP4fsMQ==
+  dependencies:
+    "@vx/clip-path" "0.0.183"
+    "@vx/shape" "0.0.184"
+    classnames "^2.2.5"
+    prop-types "^15.5.10"
 
 "@vx/tooltip@0.0.182":
   version "0.0.182"
@@ -3445,7 +3475,7 @@ d3-format@1, d3-format@1.3.2:
   resolved "https://registry.yarnpkg.com/d3-format/-/d3-format-1.3.2.tgz#6a96b5e31bcb98122a30863f7d92365c00603562"
   integrity sha512-Z18Dprj96ExragQ0DeGi+SYPQ7pPfRMtUXtsg/ChVIKNBCzjO8XYJvRTC1usblx52lqge56V5ect+frYTQc8WQ==
 
-d3-geo@^1.11.3:
+d3-geo@1.11.3, d3-geo@^1.11.3:
   version "1.11.3"
   resolved "https://registry.yarnpkg.com/d3-geo/-/d3-geo-1.11.3.tgz#5bb08388f45e4b281491faa72d3abd43215dbd1c"
   integrity sha512-n30yN9qSKREvV2fxcrhmHUdXP9TNH7ZZj3C/qnaoU0cVf/Ea85+yT7HY7i8ySPwkwjCNYtmKqQFTvLFngfkItQ==

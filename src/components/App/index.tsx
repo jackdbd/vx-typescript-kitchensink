@@ -14,6 +14,7 @@ import { LinesDemoResponsive } from "../LinesDemo";
 import PatternsDemo from "../PatternsDemo";
 import PolygonsDemo from "../PolygonsDemo";
 import TextDemo from "../TextDemo";
+import { ThresholdDemo } from "../ThresholdDemo";
 import logo from "./logo.svg";
 
 const Div = styled.div`
@@ -78,8 +79,8 @@ class App extends React.Component<IProps> {
   public static defaultProps: Partial<IProps> = {
     height: 400,
     margin: {
-      bottom: 10,
-      left: 10,
+      bottom: 30,
+      left: 50,
       right: 10,
       top: 10,
     },
@@ -182,6 +183,14 @@ class App extends React.Component<IProps> {
             {(props: ParentProps) => {
               const { width } = props;
               return <GeoDemo height={height} width={width} />;
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return (
+                <ThresholdDemo height={height} margin={margin} width={width} />
+              );
             }}
           </ParentSize>
         </Grid>
