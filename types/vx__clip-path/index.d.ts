@@ -6,7 +6,26 @@
 declare module "@vx/clip-path" {
   import React from "react";
 
-  type IProps = any; // TODO
+  interface IProps {
+    id: string;
+    children: any;
+  }
 
-  const RectClipPath: React.ComponentType<IProps>;
+  interface ICircleProps extends IProps {
+    cx?: number | string;
+    cy?: number | string;
+    r?: number | string;
+  }
+
+  interface IRectProps extends IProps {
+    height?: number | string;
+    width?: number | string;
+    x?: number | string;
+    y?: number | string;
+  }
+
+  const ClipPath: React.ComponentType<IProps>;
+
+  const CircleClipPath: React.ComponentType<ICircleProps>;
+  const RectClipPath: React.ComponentType<IRectProps>;
 }
