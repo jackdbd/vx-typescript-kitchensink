@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@types/styled-components": "4.1.6",
+    "@vx/annotation": "0.0.184",
     "@vx/axis": "0.0.183",
     "@vx/brush": "0.0.182",
     "@vx/clip-path": "0.0.183",

@@ -1,8 +1,6 @@
 import {
   curveBasis,
   curveBundle,
-  curveCardinal,
-  curveCatmullRom,
   curveLinear,
   curveMonotoneX,
   curveMonotoneY,

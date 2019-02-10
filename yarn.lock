@@ -1060,6 +1060,17 @@
     "@types/unist" "*"
     "@types/vfile-message" "*"
 
+"@vx/annotation@^0.0.184":
+  version "0.0.184"
+  resolved "https://registry.yarnpkg.com/@vx/annotation/-/annotation-0.0.184.tgz#9769fecd60a37c198104349a2f29fc3d8e4c7795"
+  integrity sha512-/Ms2yIRtSSPnatRMI9RV6By32NEQ78ZhfRVIpXAJ4bYcmWIIiv+zWbabS5nQIrQ+tlnts9rlOhaQfj+II9LFqQ==
+  dependencies:
+    "@vx/group" "0.0.183"
+    "@vx/point" "0.0.182"
+    "@vx/shape" "0.0.184"
+    classnames "^2.2.5"
+    prop-types "^15.5.10"
+
 "@vx/axis@0.0.183":
   version "0.0.183"
   resolved "https://registry.yarnpkg.com/@vx/axis/-/axis-0.0.183.tgz#20da1a331922a8a9f7c477c649f3c190471749b4"
@@ -1079,7 +1090,7 @@
   dependencies:
     prop-types "^15.5.10"
 
-"@vx/brush@^0.0.182":
+"@vx/brush@0.0.182":
   version "0.0.182"
   resolved "https://registry.yarnpkg.com/@vx/brush/-/brush-0.0.182.tgz#b82ea8a4efaedadbf62d18be0494f66e4831b4cc"
   integrity sha512-I/8PO2iSONH6DYNoFBTRkqaYbm5Uwd77Nbhx/m+fMiRk+IO6gLIs/nP1w3+WPrDJKiqJggHkyRMcgcnm3T/tjw==
