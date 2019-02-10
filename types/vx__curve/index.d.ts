@@ -4,7 +4,24 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 declare module "@vx/curve" {
-  type Curve = any; // TODO
-  function curveBasis(): any;
-  function curveMonotoneX(): any;
+  type Curve = () => void;
+
+  function curveBasis(): Curve;
+  function curveBasisClose(): Curve;
+  function curveBasisOpen(): Curve;
+  function curveBundle(): Curve;
+  function curveCardinal(): Curve;
+  function curveCardinalClosed(): Curve;
+  function curveCardinalOpen(): Curve;
+  function curveCatmullRom(): Curve;
+  function curveCatmullRomClosed(): Curve;
+  function curveCatmullRomOpen(): Curverve;
+  function curveLinear(): Curve;
+  function curveLinearClosed(): Curve;
+  function curveMonotoneX(): Curve;
+  function curveMonotoneY(): Curve;
+  function curveNatural(): Curve;
+  function curveStep(): Curve;
+  function curveStepAfter(): Curve;
+  function curveStepBefore(): Curve;
 }

@@ -68,7 +68,7 @@ declare module "@vx/shape" {
   }
 
   interface LinePathProps extends SVGAttributes<SVGPathElement> {
-    curve: Curve;
+    curve?: Curve;
     data: Datum[];
     stroke?: string;
     strokeDasharray?: string;

@@ -174,7 +174,7 @@ export class VoronoiDemo extends React.PureComponent<IProps, IState> {
               />
             );
           })}
-          {data.map(d => (
+          {data.map((d: IDatum) => (
             <circle
               cx={xScale(d.x)}
               cy={yScale(d.y)}
