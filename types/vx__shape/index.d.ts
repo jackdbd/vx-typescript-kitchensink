@@ -6,6 +6,7 @@
 declare module "@vx/shape" {
   import { Curve } from "@vx/curve";
   import { Accessor, ScaleFunction } from "@vx/scale";
+  import React, { SVGAttributes } from "react";
 
   type Datum = any; // TODO
 
@@ -66,7 +67,7 @@ declare module "@vx/shape" {
     to: Point;
   }
 
-  interface LinePathProps {
+  interface LinePathProps extends SVGAttributes<SVGPathElement> {
     curve: Curve;
     data: Datum[];
     stroke?: string;

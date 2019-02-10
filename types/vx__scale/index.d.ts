@@ -74,7 +74,9 @@ declare module "@vx/scale" {
   function scaleLinear(
     scaleOptions: ScaleLinearOptions
   ): ScaleLinear<number, any>;
-  function scaleTime(scaleOptions: ScaleTimeOptions): ScaleTime<any, any>;
+  function scaleTime(
+    scaleOptions: ScaleTimeOptions
+  ): ScaleTime<Date | number, number>;
   function scaleUtc(scaleOptions: ScaleUtcOptions): any;
   function scaleLog(scaleOptions: ScaleLogOptions): ScaleLog<number, number>;
   function scalePower(scaleOptions: any): any;

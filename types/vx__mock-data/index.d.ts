@@ -21,7 +21,7 @@ declare module "@vx/mock-data" {
     "Other/Unknown": string;
   }
 
-  interface CityTemperaturDatum {
+  interface CityTemperatureDatum {
     date: string;
     "New York": string;
     "San Francisco": string;
@@ -128,7 +128,7 @@ declare module "@vx/mock-data" {
   const letterFrequency: LetterFrequencyDatum[];
   const browserUsage: BrowserUsageDatum[];
   const groupDateValue: GroupDateValueDatum[];
-  const cityTemperature: CityTemperaturDatum[];
+  const cityTemperature: CityTemperatureDatum[];
   const lesMiserables: LesMiserablesGraph;
   const exoplanets: PlanetDatum[];
   const planets: PlanetDatum[];

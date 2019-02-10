@@ -11,11 +11,13 @@ declare module "@vx/grid" {
 
   interface SharedProps {
     className?: string;
+    height?: number;
     left?: number;
     stroke?: string;
     strokeDasharray?: string;
     strokeWidth?: string | number;
     top?: number;
+    width?: number;
   }
 
   interface ExtraProps {
@@ -23,7 +25,6 @@ declare module "@vx/grid" {
   }
 
   interface GridColumnsProps extends SharedProps {
-    height: number;
     lineStyle?: React.StyleHTMLAttributes<SVGLineElement> & ExtraProps;
     numTicks?: number;
     offset?: number;
@@ -37,7 +38,6 @@ declare module "@vx/grid" {
     offset?: number;
     scale: ScaleFunction;
     tickValues?: number[];
-    width: number;
   }
 
   interface GridProps extends SharedProps {
