@@ -1,49 +1,59 @@
-// Type definitions for @vx/mock-data 0.0.182
+// Type definitions for @vx/mock-data 0.0.185
 // Project: https://github.com/hshoff/vx
 // Definitions by: Giacomo Debidda <https://github.com/jackdbd>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 declare module "@vx/mock-data" {
-  interface AppleStockDatum {
-    date: string;
+  type AppleStockDatum = {
     close: number;
-  }
-
-  interface BrowserUsageDatum {
     date: string;
+  };
+
+  type PriceDatum = {
+    price: string;
+    time: string;
+  };
+
+  type BitcoinPrice = {
+    currency: string;
+    prices: PriceDatum;
+  };
+
+  type BrowserUsageDatum = {
+    date: string;
+    Firefox: string;
     "Google Chrome": string;
     "Internet Explorer": string;
-    Firefox: string;
-    Safari: string;
     "Microsoft Edge": string;
-    Opera: string;
     Mozilla: string;
+    Opera: string;
     "Other/Unknown": string;
-  }
+    Safari: string;
+  };
 
-  interface CityTemperatureDatum {
+  type CityTemperatureDatum = {
+    Austin: string;
     date: string;
     "New York": string;
     "San Francisco": string;
-    Austin: string;
-  }
+  };
 
-  interface LetterFrequencyDatum {
-    letter: string;
+  type LetterFrequencyDatum = {
     frequency: number;
-  }
+    letter: string;
+  };
 
-  interface GroupDateValueDatum {
+  type GroupDateValueDatum = {
+    date: string;
     key: string;
     value: string;
-    date: string;
-  }
+  };
 
-  interface ShakespeareDatum {
+  type ShakespeareDatum = {
     id: string;
     parent: string | null;
     size: number | null;
-  }
+  };
 
   declare namespace LesMiserables {
     interface Node {
@@ -57,21 +67,21 @@ declare module "@vx/mock-data" {
     }
   }
 
-  interface LesMiserablesGraph {
-    nodes: LesMiserables.Node[];
+  type LesMiserablesGraph = {
     links: LesMiserables.Link[];
-  }
+    nodes: LesMiserables.Node[];
+  };
 
-  interface PlanetDatum {
+  type PlanetDatum = {
+    distance: string;
     name: string;
     radius: string;
-    distance: string;
-  }
+  };
 
-  interface DateValueDatum {
+  type DateValueDatum = {
     date: Date; // not sure if this is the correct Date interface
     value: number;
-  }
+  };
 
   type ToConsumableArray = (arr: any) => void | any[];
 
@@ -84,53 +94,70 @@ declare module "@vx/mock-data" {
   //     count: CountFunction,
   // }
 
-  interface Bin {
+  type Bin = {
     bin: number;
     count: number;
-  }
+  };
 
-  interface BoxPlot {
-    x: string;
-    min: number;
+  type BoxPlot = {
     firstQuartile: number;
     median: number;
-    thirdQuartile: number;
     max: number;
+    min: number;
     outliers: number[];
-  }
+    thirdQuartile: number;
+    x: string;
+  };
 
-  interface BinDatum {
-    value: number;
+  type BinDatum = {
     count: number;
-  }
+    value: number;
+  };
 
-  interface StatsDatum {
-    boxPlot: BoxPlot;
+  type StatsDatum = {
     binData: BinDatum[];
-  }
+    boxPlot: BoxPlot;
+  };
 
-  function genDateValue(n: number): DateValueDatum[];
-  function genRandomNormalPoints(): [ToConsumableArray, ToConsumableArray];
-  function genRandomNormalPoints(
-    count: number
-  ): [ToConsumableArray, ToConsumableArray];
   function genBin(n: number): Bin;
   function genBin(n: number, bin: BinFunction): Bin;
   function genBin(n: number, bin: BinFunction, count: CountFunction): Bin;
+
   function genBins(
     x: number,
     y: number,
     bin?: BinFunction,
     count?: CountFunction
   ): Bin[];
+
+  function genDateValue(n: number): DateValueDatum[];
+
+  interface IConfig {
+    height: number;
+    radius: number;
+    width: number;
+  }
+  type IPhyllotaxisDatum = {
+    x: number;
+    y: number;
+  };
+  function genPhyllotaxis(ref: IConfig): (i: number) => IPhyllotaxisDatum;
+
+  function genRandomNormalPoints(): [ToConsumableArray, ToConsumableArray];
+  function genRandomNormalPoints(
+    count: number
+  ): [ToConsumableArray, ToConsumableArray];
+
   function genStats(number: number): StatsDatum[];
+
   const appleStock: AppleStockDatum[];
-  const letterFrequency: LetterFrequencyDatum[];
+  const bitcoinPrice: BitcoinPrice;
   const browserUsage: BrowserUsageDatum[];
-  const groupDateValue: GroupDateValueDatum[];
   const cityTemperature: CityTemperatureDatum[];
-  const lesMiserables: LesMiserablesGraph;
   const exoplanets: PlanetDatum[];
+  const groupDateValue: GroupDateValueDatum[];
+  const lesMiserables: LesMiserablesGraph;
+  const letterFrequency: LetterFrequencyDatum[];
   const planets: PlanetDatum[];
   const shakespeare: ShakespeareDatum[];
 }

@@ -10,7 +10,7 @@ declare module "@vx/event" {
   type Node = SVGGraphicsElement | SVGElement | null; // TODO: find the appropriate type
   type Point = { x: number; y: number };
 
-  const localPoint: (event: Event) => Point;
-  const localPoint: (node: any, event: Event) => Point;
+  const localPoint: (event: React.MouseEvent) => Point;
+  const localPoint: (node: any, event: React.MouseEvent) => Point;
   const touchPoint: (node: any, event: Event) => Point;
 }
