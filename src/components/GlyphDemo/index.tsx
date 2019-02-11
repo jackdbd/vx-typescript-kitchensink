@@ -42,7 +42,7 @@ interface IProps {
   width: number;
 }
 
-class GlyphDemo extends React.Component<IProps> {
+export class GlyphDemo extends React.Component<IProps> {
   public render() {
     const { height, margin, width } = this.props;
     const xMax = width - margin.left - margin.right;
@@ -109,5 +109,3 @@ class GlyphDemo extends React.Component<IProps> {
     );
   }
 }
-
-export { GlyphDemo };

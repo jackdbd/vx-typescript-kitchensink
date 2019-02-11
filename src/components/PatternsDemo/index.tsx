@@ -7,7 +7,7 @@ interface IProps {
   width: number;
 }
 
-const PatternsDemo = (props: IProps) => {
+export const PatternsDemo = (props: IProps) => {
   const { height, width } = props;
   const xMax = width;
   const yMax = height - 80;
@@ -139,5 +139,3 @@ const PatternsDemo = (props: IProps) => {
     </svg>
   );
 };
-
-export default PatternsDemo;

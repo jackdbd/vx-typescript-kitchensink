@@ -3,7 +3,7 @@ import { HeatmapCircle, HeatmapRect } from "@vx/heatmap";
 import { Bin, genBins } from "@vx/mock-data";
 import { scaleLinear } from "@vx/scale";
 import React from "react";
-import { clearLine } from "readline";
+
 import { IMargin } from "../../interfaces";
 
 const hot1 = "#77312f";
@@ -80,7 +80,7 @@ interface IProps {
   width: number;
 }
 
-const HeatmapsDemo = (props: IProps) => {
+export const HeatmapsDemo = (props: IProps) => {
   const { height, margin, separation, width } = props;
   // bounds
   let size = width;
@@ -172,5 +172,3 @@ const HeatmapsDemo = (props: IProps) => {
     </svg>
   );
 };
-
-export default HeatmapsDemo;

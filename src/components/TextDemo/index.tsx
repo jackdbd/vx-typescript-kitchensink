@@ -7,7 +7,7 @@ interface IProps {
   width: number;
 }
 
-const TextDemo = (props: IProps) => {
+export const TextDemo = (props: IProps) => {
   const { height, text, width } = props;
   return (
     <svg width={width} height={height}>
@@ -25,5 +25,3 @@ const TextDemo = (props: IProps) => {
     </svg>
   );
 };
-
-export default TextDemo;

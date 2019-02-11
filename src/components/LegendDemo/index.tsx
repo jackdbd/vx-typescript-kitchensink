@@ -75,7 +75,7 @@ interface IProps {
   width: number;
 }
 
-const LegendDemos = (props: IProps) => {
+export const LegendDemos = (props: IProps) => {
   return (
     <div className="chart">
       <LegendDemo title="Size">
@@ -294,5 +294,3 @@ function LegendDemo(props: ILegendDemoProps) {
     </div>
   );
 }
-
-export { LegendDemos };

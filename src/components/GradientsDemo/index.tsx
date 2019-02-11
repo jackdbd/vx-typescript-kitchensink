@@ -18,7 +18,7 @@ interface IProps {
   width: number;
 }
 
-const GradientsDemo = (props: IProps) => {
+export const GradientsDemo = (props: IProps) => {
   const { height, width } = props;
   const h = (height - 50) / 2;
   const w = width / 4;
@@ -117,5 +117,3 @@ const GradientsDemo = (props: IProps) => {
     </svg>
   );
 };
-
-export default GradientsDemo;

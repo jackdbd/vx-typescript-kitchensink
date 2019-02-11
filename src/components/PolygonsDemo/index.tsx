@@ -43,7 +43,7 @@ const yScale = scaleBand({
   padding: 20,
 });
 
-const PolygonsDemo = (props: IProps) => {
+export const PolygonsDemo = (props: IProps) => {
   const { height, width } = props;
   return (
     <svg width={width} height={height}>
@@ -62,5 +62,3 @@ const PolygonsDemo = (props: IProps) => {
     </svg>
   );
 };
-
-export default PolygonsDemo;
