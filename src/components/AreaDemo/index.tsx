@@ -149,6 +149,7 @@ export class AreaDemo extends React.Component<IProps> {
 
 type IAreaDemoWithTooltipProps = IProps & IWithTooltipProps;
 
+// TODO: improve types
 function handleTooltip(options: any) {
   const { data, event, xAccessor, xScale, yScale, showTooltip } = options;
   const { x } = localPoint(event);
