@@ -18,6 +18,7 @@ import { PolygonsDemo } from "../PolygonsDemo";
 import { TextDemo } from "../TextDemo";
 import { ThresholdDemo } from "../ThresholdDemo";
 import { VoronoiDemo } from "../VoronoiDemo";
+import { ZoomDemo } from "../ZoomDemo";
 import logo from "./logo.svg";
 
 const Div = styled.div`
@@ -216,6 +217,12 @@ class App extends React.Component<IProps> {
               return (
                 <CurveDemo height={height} margin={margin} width={width} />
               );
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return <ZoomDemo height={height} margin={margin} width={width} />;
             }}
           </ParentSize>
         </Grid>
