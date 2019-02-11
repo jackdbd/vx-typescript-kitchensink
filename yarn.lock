@@ -1083,7 +1083,7 @@
     classnames "^2.2.5"
     prop-types "^15.6.0"
 
-"@vx/bounds@0.0.182":
+"@vx/bounds@0.0.182", "@vx/bounds@^0.0.182":
   version "0.0.182"
   resolved "https://registry.yarnpkg.com/@vx/bounds/-/bounds-0.0.182.tgz#df3a7db90428f7dd03f428d5eabc67d16c00f7eb"
   integrity sha512-ep3jAh79fWBYAx9rdoe9z9pec8bNHfyWXP/E60t2HWsCfwoAdtsNXuPKpmHs4AiQlznOe+eqBlz0MG5yFA9o7g==
@@ -1192,7 +1192,7 @@
     classnames "^2.2.5"
     prop-types "^15.5.10"
 
-"@vx/marker@^0.0.184":
+"@vx/marker@0.0.184":
   version "0.0.184"
   resolved "https://registry.yarnpkg.com/@vx/marker/-/marker-0.0.184.tgz#60cd5172e164d623348f2c0c98857062ffc3c870"
   integrity sha512-Lnu/V4LLPHtG+uKZOqRv9kO89f8tEvVSCot5pk8xLCQXYVgaaoX9CZfkFb1gGGMiau0/TFlPyU/Cn2Tg9lzChA==

@@ -4,24 +4,12 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 declare module "@vx/tooltip" {
-  import React from "react";
   import {
-    Component as ReactComponent,
-    ComponentClass as ReactComponentClass,
-    FunctionComponent as ReactFunctionComponent,
-    PureComponent as ReactPureComponent,
-  } from "react";
-
-  type FunctionComponent = () => JSX.Element;
-  type FunctionComponentWithProps = (props: any) => JSX.Element;
-  type BaseComponent =
-    | FunctionComponent
-    | FunctionComponentWithProps
-    | ReactComponent
-    | ReactComponentClass
-    | ReactFunctionComponent
-    | ReactPureComponent;
-
+    BaseComponent,
+    IRectShape,
+    WithBoundingRectsProps,
+  } from "@vx/bounds";
+  import React from "react";
   interface TooltipProps {
     children: JSX.Element | string;
     className?: string;
@@ -31,22 +19,9 @@ declare module "@vx/tooltip" {
     // TODO restProps
   }
 
-  interface IRectShape {
-    bottom: number;
-    height: number;
-    left: number;
-    right: number;
-    top: number;
-    width: number;
-  }
-
-  interface IBoundingRectProps {
-    getRects: any; // TODO
-    parentRect: IRectShape;
-    rect: IRectShape;
-  }
-
-  interface TooltipWithBoundsProps extends TooltipProps, IBoundingRectProps {
+  interface TooltipWithBoundsProps
+    extends TooltipProps,
+      WithBoundingRectsProps {
     offsetLeft: number;
     offsetTop: number;
   }
