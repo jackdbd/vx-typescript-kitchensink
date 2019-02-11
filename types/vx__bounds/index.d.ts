@@ -30,15 +30,17 @@ declare module "@vx/bounds" {
     parentRect: IRectShape;
   };
 
-  interface WithBoundingRectsProps extends IProps {
+  interface IWithBoundingRectsProps extends IProps {
     getRects: () => RectAndParentRect;
     parentRect: IRectShape;
     rect: IRectShape;
   }
 
-  type WrappedComponent<P = {}> = BaseComponent<P & WithBoundingRectsProps>;
+  type WrappedComponent<P = {}> = BaseComponent<P & IWithBoundingRectsProps>;
 
-  const withBoundingRectsProps: WithBoundingRectsProps;
+  const withBoundingRectsProps: IWithBoundingRectsProps;
 
-  function withBoundingRects(WrappedComponent): (props) => JSX.Element;
+  function withBoundingRects(
+    WrappedComponent: WrappedComponent<P>
+  ): (props: P) => JSX.Element;
 }

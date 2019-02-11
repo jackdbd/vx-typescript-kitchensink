@@ -4,14 +4,9 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 declare module "@vx/responsive" {
-  import {
-    Component as ReactComponent,
-    ComponentClass as ReactComponentClass,
-    FunctionComponent as ReactFunctionComponent,
-    PureComponent as ReactPureComponent,
-  } from "react";
+  import React from "react";
 
-  interface WithParentSizeProps {
+  interface IWithParentSizeProps {
     debounceTime: number;
     parentHeight: number;
     parentWidth: number;
@@ -31,10 +26,10 @@ declare module "@vx/responsive" {
   type BaseComponent =
     | FunctionComponent
     | FunctionComponentWithProps
-    | ReactComponent
-    | ReactComponentClass
-    | ReactFunctionComponent
-    | ReactPureComponent;
+    | React.Component
+    | React.ComponentClass
+    | React.FunctionComponent
+    | React.PureComponent;
 
   function ParentSize(props: any): JSX.Element<ParentProps>;
 
@@ -43,12 +38,14 @@ declare module "@vx/responsive" {
     height: number;
     width: number;
   }
+
   function ScaleSVG(props: SVGProps): any;
 
-  // interface WrappedComponent extends BaseComponent extends PropsResponsive {}
-  // type WrappedComponent = BaseComponent<P = {}>;
-  type WrappedComponent<P = {}> = BaseComponent<P & WithParentSizeProps>;
-  // interface WrappedComponent<P = {}> extends BaseComponent< P & WithParentSizeProps>
-  function withParentSize(WrappedComponent): (props) => JSX.Element;
+  type WrappedComponent<P = {}> = BaseComponent<P & IWithParentSizeProps>;
+
+  function withParentSize(
+    WrappedComponent: WrappedComponent<P>
+  ): (props: P) => JSX.Element;
+
   function withScreenSize(BaseComponent: BaseComponent): JSX.Element;
 }

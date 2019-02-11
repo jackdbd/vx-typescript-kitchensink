@@ -4,7 +4,7 @@ import { GridColumns, GridRows } from "@vx/grid";
 import { appleStock, AppleStockDatum } from "@vx/mock-data";
 import { scaleLinear, scaleTime } from "@vx/scale";
 import { AreaClosed, Bar, Line } from "@vx/shape";
-import { Tooltip, withTooltip, WithTooltipProps } from "@vx/tooltip";
+import { IWithTooltipProps, Tooltip, withTooltip } from "@vx/tooltip";
 import { bisector } from "d3-array";
 import { timeFormat } from "d3-time-format";
 import React from "react";
@@ -37,7 +37,7 @@ interface IProps {
   width: number;
 }
 
-class AreaDemo extends React.Component<IProps> {
+export class AreaDemo extends React.Component<IProps> {
   public render() {
     const { width, height, margin, ruler } = this.props;
     if (width < 10) {
@@ -147,7 +147,7 @@ class AreaDemo extends React.Component<IProps> {
   }
 }
 
-type IAreaDemoWithTooltipProps = IProps & WithTooltipProps;
+type IAreaDemoWithTooltipProps = IProps & IWithTooltipProps;
 
 function handleTooltip(options: any) {
   const { data, event, xAccessor, xScale, yScale, showTooltip } = options;
@@ -167,68 +167,68 @@ function handleTooltip(options: any) {
   });
 }
 
-const AreaDemoWithTooltip = withTooltip((props: IAreaDemoWithTooltipProps) => {
-  const { margin, height, showTooltip, tooltipData, width } = props;
-  // at first tooltipLeft and tooltipTop are undefined
-  const tooltipLeft = props.tooltipLeft || 0;
-  const tooltipTop = props.tooltipTop || 0;
+export const AreaDemoWithTooltip = withTooltip(
+  (props: IAreaDemoWithTooltipProps) => {
+    const { margin, height, showTooltip, tooltipData, width } = props;
+    // at first tooltipLeft and tooltipTop are undefined
+    const tooltipLeft = props.tooltipLeft || 0;
+    const tooltipTop = props.tooltipTop || 0;
 
-  const xMax = width - margin.left - margin.right;
-  const yMax = height - margin.top - margin.bottom;
+    const xMax = width - margin.left - margin.right;
+    const yMax = height - margin.top - margin.bottom;
 
-  const xScale = scaleTime({
-    domain: extent(stock, xStock),
-    range: [0, xMax],
-  });
-  const yScale = scaleLinear({
-    domain: [0, max(stock, yStock) + yMax / 3],
-    nice: true,
-    range: [yMax, 0],
-  });
-
-  const onMouseMove = (event: MouseEvent) => {
-    handleTooltip({
-      data: stock,
-      event,
-      showTooltip,
-      xAccessor: xStock,
-      xScale,
-      yScale,
+    const xScale = scaleTime({
+      domain: extent(stock, xStock),
+      range: [0, xMax],
     });
-  };
+    const yScale = scaleLinear({
+      domain: [0, max(stock, yStock) + yMax / 3],
+      nice: true,
+      range: [yMax, 0],
+    });
 
-  return (
-    <div>
-      <AreaDemo
-        {...props}
-        onMouseMove={onMouseMove}
-        ruler={{ left: tooltipLeft, top: tooltipTop }}
-      />
-      {tooltipData && (
-        <div>
-          <Tooltip
-            top={tooltipTop - 12}
-            left={tooltipLeft + 12}
-            style={{
-              backgroundColor: "rgba(92, 119, 235, 1.000)",
-              color: "white",
-            }}
-          >
-            {`$${yStock(tooltipData)}`}
-          </Tooltip>
-          <Tooltip
-            top={yMax - 14}
-            left={tooltipLeft}
-            style={{
-              transform: "translateX(-50%)",
-            }}
-          >
-            {formatDate(xStock(tooltipData))}
-          </Tooltip>
-        </div>
-      )}
-    </div>
-  );
-});
+    const onMouseMove = (event: MouseEvent) => {
+      handleTooltip({
+        data: stock,
+        event,
+        showTooltip,
+        xAccessor: xStock,
+        xScale,
+        yScale,
+      });
+    };
 
-export { AreaDemo, AreaDemoWithTooltip };
+    return (
+      <div>
+        <AreaDemo
+          {...props}
+          onMouseMove={onMouseMove}
+          ruler={{ left: tooltipLeft, top: tooltipTop }}
+        />
+        {tooltipData && (
+          <div>
+            <Tooltip
+              top={tooltipTop - 12}
+              left={tooltipLeft + 12}
+              style={{
+                backgroundColor: "rgba(92, 119, 235, 1.000)",
+                color: "white",
+              }}
+            >
+              {`$${yStock(tooltipData)}`}
+            </Tooltip>
+            <Tooltip
+              top={yMax - 14}
+              left={tooltipLeft}
+              style={{
+                transform: "translateX(-50%)",
+              }}
+            >
+              {formatDate(xStock(tooltipData))}
+            </Tooltip>
+          </div>
+        )}
+      </div>
+    );
+  }
+);

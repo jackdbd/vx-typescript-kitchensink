@@ -7,7 +7,7 @@ declare module "@vx/tooltip" {
   import {
     BaseComponent,
     IRectShape,
-    WithBoundingRectsProps,
+    IWithBoundingRectsProps,
   } from "@vx/bounds";
   import React from "react";
   interface TooltipProps {
@@ -21,7 +21,7 @@ declare module "@vx/tooltip" {
 
   interface TooltipWithBoundsProps
     extends TooltipProps,
-      WithBoundingRectsProps {
+      IWithBoundingRectsProps {
     offsetLeft: number;
     offsetTop: number;
   }
@@ -33,15 +33,18 @@ declare module "@vx/tooltip" {
     tooltipTop: number | undefined; // at first it's undefined
   }
 
-  interface WithTooltipProps extends IProps {
+  interface IWithTooltipProps extends IProps {
     hideTooltip: () => void;
     showTooltip: () => void;
     updateTooltip: (props: IProps) => void;
   }
 
-  type WrappedComponent<P = {}> = BaseComponent<P & WithTooltipProps>;
+  type WrappedComponent<P = {}> = BaseComponent<P & IWithTooltipProps>;
 
-  function withTooltip(WrappedComponent): (props) => JSX.Element;
+  function withTooltip(
+    WrappedComponent: WrappedComponent<P>
+  ): (props: P) => JSX.Element;
+
   const Tooltip: React.ComponentType<TooltipProps>;
   const TooltipWithBounds: React.ComponentType<TooltipWithBoundsProps>;
 }

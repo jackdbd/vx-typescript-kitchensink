@@ -2,7 +2,7 @@ import { curveMonotoneX } from "@vx/curve";
 import { GridRows } from "@vx/grid";
 import { Group } from "@vx/group";
 import { DateValueDatum, genDateValue } from "@vx/mock-data";
-import { withParentSize, WithParentSizeProps } from "@vx/responsive";
+import { IWithParentSizeProps, withParentSize } from "@vx/responsive";
 import { Accessor, scaleLinear, scaleTime } from "@vx/scale";
 import { LinePath } from "@vx/shape";
 import { extent, max } from "d3-array";
@@ -29,7 +29,7 @@ interface IProps {
   margin: IMargin;
 }
 
-const LinesDemo = (props: IProps) => {
+export const LinesDemo = (props: IProps) => {
   const { height, width, margin } = props;
   const xMax = width;
   const yMax = height / 8;
@@ -78,18 +78,14 @@ const LinesDemo = (props: IProps) => {
   );
 };
 
-interface ILinesDemoResponsiveProps extends WithParentSizeProps {
+interface ILinesDemoResponsiveProps extends IWithParentSizeProps {
   margin: IMargin;
 }
 
-const LinesDemoResponsive = withParentSize(
+export const LinesDemoResponsive = withParentSize(
   (props: ILinesDemoResponsiveProps) => {
     const { margin, parentWidth } = props;
     // TODO: parentHeight causes a resize every time
     return <LinesDemo height={400} width={parentWidth} margin={margin} />;
   }
 );
-
-export { LinesDemo, LinesDemoResponsive };
-
-export default LinesDemo;

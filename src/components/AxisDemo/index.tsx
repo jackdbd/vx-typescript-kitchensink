@@ -4,7 +4,7 @@ import { GradientOrangeRed } from "@vx/gradient";
 import { Grid } from "@vx/grid";
 import { Group } from "@vx/group";
 import { DateValueDatum, genDateValue } from "@vx/mock-data";
-import { withParentSize, WithParentSizeProps } from "@vx/responsive";
+import { IWithParentSizeProps, withParentSize } from "@vx/responsive";
 import { Accessor, scaleLinear, scaleTime } from "@vx/scale";
 import { Area, Line, LinePath } from "@vx/shape";
 import { extent } from "d3-array";
@@ -42,7 +42,7 @@ export interface IProps {
   margin: IMargin;
 }
 
-const AxisDemo = (props: IProps) => {
+export const AxisDemo = (props: IProps) => {
   const { width, height, margin } = props;
 
   const xMax = width - margin.left - margin.right;
@@ -210,16 +210,14 @@ const AxisDemo = (props: IProps) => {
   );
 };
 
-interface IAxisDemoResponsiveProps extends WithParentSizeProps {
+interface IAxisDemoResponsiveProps extends IWithParentSizeProps {
   margin: IMargin;
 }
 
-const AxisDemoResponsive = withParentSize((props: IAxisDemoResponsiveProps) => {
-  const { margin, parentWidth } = props;
-  // TODO: parentHeight causes a resize every time
-  return <AxisDemo height={400} width={parentWidth} margin={margin} />;
-});
-
-export { AxisDemo, AxisDemoResponsive };
-
-export default AxisDemo;
+export const AxisDemoResponsive = withParentSize(
+  (props: IAxisDemoResponsiveProps) => {
+    const { margin, parentWidth } = props;
+    // TODO: parentHeight causes a resize every time
+    return <AxisDemo height={400} width={parentWidth} margin={margin} />;
+  }
+);
