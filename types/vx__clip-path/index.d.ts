@@ -4,21 +4,23 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 declare module "@vx/clip-path" {
-  import React from "react";
+  import React, { SVGAttributes } from "react";
 
   interface IProps {
     id: string;
-    children: any;
+    children: React.ReactNode;
   }
 
-  interface ICircleProps extends IProps {
+  interface ICircleProps extends SVGAttributes<SVGCircleElement> {
+    id: string;
     cx?: number | string;
     cy?: number | string;
     r?: number | string;
   }
 
-  interface IRectProps extends IProps {
+  interface IRectProps extends SVGAttributes<SVGRectElement> {
     height?: number | string;
+    id: string;
     width?: number | string;
     x?: number | string;
     y?: number | string;
