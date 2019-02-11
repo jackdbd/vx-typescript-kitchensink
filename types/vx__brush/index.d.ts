@@ -5,9 +5,23 @@
 
 declare module "@vx/brush" {
   import { WrappedComponent } from "@vx/bounds";
+  // import { Point } from "@vx/point";
   import React from "react";
 
-  interface IWithBrushProps {}
+  type Point = { x: number; y: number };
+  type BrushHandler = (_ref: React.Ref) => any; // TODO: avoid any
+
+  interface IWithBrushProps {
+    domain?: any;
+    end?: Point;
+    isBrushing?: boolean;
+    onBrushDrag?: BrushHandler;
+    onBrushEnd?: BrushHandler;
+    onBrushStart?: BrushHandler;
+    start?: Point;
+    onBrushReset?: BrushHandler;
+    updateBrush?: any;
+  }
 
   interface IProps {
     className?: string;
@@ -21,8 +35,6 @@ declare module "@vx/brush" {
     y?: number;
     // other props
   }
-
-  type Point = { x: number; y: number };
 
   type WrappedComponent<P = {}> = BaseComponent<P & IWithBrushProps>;
 
