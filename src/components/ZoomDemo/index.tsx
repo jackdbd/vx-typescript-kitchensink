@@ -174,7 +174,7 @@ export class ZoomDemo extends React.Component<IProps, IState> {
   }
 
   private toggleMiniMap() {
-    this.setState((prevState) => {
+    this.setState(prevState => {
       return {
         showMiniMap: !prevState.showMiniMap,
       };

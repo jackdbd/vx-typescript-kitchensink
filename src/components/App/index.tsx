@@ -12,6 +12,7 @@ import { GlyphDemo } from "../GlyphDemo";
 import { GradientsDemo } from "../GradientsDemo";
 import { HeatmapsDemo } from "../HeatmapsDemo";
 import { LegendDemos } from "../LegendDemo";
+import { LineRadialDemo } from "../LineRadialDemo";
 import { LinesDemoResponsive } from "../LinesDemo";
 import { PatternsDemo } from "../PatternsDemo";
 import { PolygonsDemo } from "../PolygonsDemo";
@@ -223,6 +224,12 @@ class App extends React.Component<IProps> {
             {(props: ParentProps) => {
               const { width } = props;
               return <ZoomDemo height={height} margin={margin} width={width} />;
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return <LineRadialDemo height={height} width={width} />;
             }}
           </ParentSize>
         </Grid>
