@@ -15,6 +15,7 @@ import { LegendDemos } from "../LegendDemo";
 import { LineRadialDemo } from "../LineRadialDemo";
 import { LinesDemoResponsive } from "../LinesDemo";
 import { PatternsDemo } from "../PatternsDemo";
+import { PieDemo } from "../PieDemo";
 import { PolygonsDemo } from "../PolygonsDemo";
 import { TextDemo } from "../TextDemo";
 import { ThresholdDemo } from "../ThresholdDemo";
@@ -230,6 +231,12 @@ class App extends React.Component<IProps> {
             {(props: ParentProps) => {
               const { width } = props;
               return <LineRadialDemo height={height} width={width} />;
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return <PieDemo height={height} margin={margin} width={width} />;
             }}
           </ParentSize>
         </Grid>
