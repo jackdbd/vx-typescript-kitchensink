@@ -19,6 +19,11 @@ declare module "@vx/mock-data" {
     prices: PriceDatum;
   };
 
+  type Browser = {
+    label: string;
+    usage: number;
+  };
+
   type BrowserUsageDatum = {
     date: string;
     Firefox: string;
@@ -36,6 +41,11 @@ declare module "@vx/mock-data" {
     date: string;
     "New York": string;
     "San Francisco": string;
+  };
+
+  type Letter = {
+    label: string;
+    letter: string;
   };
 
   type LetterFrequencyDatum = {

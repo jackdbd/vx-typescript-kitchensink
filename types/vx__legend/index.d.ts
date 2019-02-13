@@ -33,12 +33,16 @@ declare module "@vx/legend" {
     size?: any;
   }
 
+  const Circle: any;
+  const Rect: any;
+
   const Legend: React.ComponentType<LegendProps>;
   const LegendItem: React.ComponentType<LegendProps>;
   const LegendLabel: React.ComponentType<LegendProps>;
   const LegendLinear: React.ComponentType<LegendProps>;
   const LegendOrdinal: React.ComponentType<LegendProps>;
   const LegendQuantile: React.ComponentType<LegendProps>;
+  const LegendShape: React.ComponentType<LegendProps>;
   const LegendSize: React.ComponentType<LegendProps>;
   const LegendThreshold: React.ComponentType<LegendProps>;
 }

@@ -12,8 +12,8 @@ const blue = "#aeeef8";
 const darkgreen = "#dff84d";
 const bg = "#744cca";
 
-const dateAccessor: Accessor<AppleStockDatum, Date> = (d) => new Date(d.date);
-const closeAccessor: Accessor<AppleStockDatum, number> = (d) => +d.close;
+const dateAccessor: Accessor<AppleStockDatum, Date> = d => new Date(d.date);
+const closeAccessor: Accessor<AppleStockDatum, number> = d => +d.close;
 
 const xDomain = extent(appleStock.map(dateAccessor)) as [Date, Date];
 const xScale = scaleTime({

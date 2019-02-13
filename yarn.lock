@@ -944,6 +944,11 @@
   dependencies:
     "@types/geojson" "*"
 
+"@types/d3-path@*", "@types/d3-path@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@types/d3-path/-/d3-path-1.0.7.tgz#a0736fceed688a695f48265a82ff7a3369414b81"
+  integrity sha512-U8dFRG+8WhkLJr2sxZ9Cw/5WeRgBnNqMxGdA1+Z0+ZG6tK0s75OQ4OXnxeyfKuh6E4wQPY8OAKr1+iNDx01BEQ==
+
 "@types/d3-scale-chromatic@1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@types/d3-scale-chromatic/-/d3-scale-chromatic-1.3.0.tgz#b8b58a7a262a583fc1c95ce851d5a75811875034"
@@ -955,6 +960,13 @@
   integrity sha512-vLzRDF5lRxZdCLUOvmw90pkiuSsZdgroBQaat0Ov7Z7OnO9iJsPSm/TZw3wW6m2z/NhIn1E4N0RLNfEi1k4kAA==
   dependencies:
     "@types/d3-time" "*"
+
+"@types/d3-shape@1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@types/d3-shape/-/d3-shape-1.3.0.tgz#ea195c543a1f6d3e250ceb07a7d208d80ee37b01"
+  integrity sha512-ERWJ8bNZjkzfWfPAlkN3XCqYOOsWTnqTX0jX2Bx+WLd2AfEl97WXr2igwssFc91MadrZLw7HNS/JTUZPQL5sZQ==
+  dependencies:
+    "@types/d3-path" "*"
 
 "@types/d3-time-format@2.1.0":
   version "2.1.0"
@@ -1207,7 +1219,7 @@
     classnames "^2.2.5"
     prop-types "^15.6.2"
 
-"@vx/mock-data@^0.0.185":
+"@vx/mock-data@0.0.185":
   version "0.0.185"
   resolved "https://registry.yarnpkg.com/@vx/mock-data/-/mock-data-0.0.185.tgz#c73c2998152eac905abd9a2efdb4c0ec96c0bbf8"
   integrity sha512-zUXnrIFTN6ybBGQ1BrgKRXSNHgSw6PIs/2nEXWNkZ2Ar5wMSNnsTkgYxyOxHU/eXQV2mzqgSaGW2ylCxbg+NFQ==
@@ -3554,7 +3566,7 @@ d3-interpolate@1:
   dependencies:
     d3-color "1"
 
-d3-path@1, d3-path@^1.0.5:
+d3-path@1, d3-path@^1.0.5, d3-path@^1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/d3-path/-/d3-path-1.0.7.tgz#8de7cd693a75ac0b5480d3abaccd94793e58aae8"
   integrity sha512-q0cW1RpvA5c5ma2rch62mX8AYaiLX0+bdaSM2wxSU9tXjU4DNvkx9qiUvjkuWCj3p22UO/hlPivujqMiR9PDzA==
@@ -3583,6 +3595,13 @@ d3-scale@2.1.2, d3-scale@^2.0.0:
     d3-interpolate "1"
     d3-time "1"
     d3-time-format "2"
+
+d3-shape@1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-1.3.4.tgz#358e76014645321eecc7c364e188f8ae3d2a07d4"
+  integrity sha512-izaz4fOpOnY3CD17hkZWNxbaN70sIGagLR/5jb6RS96Y+6VqX+q1BQf1av6QSBRdfULi3Gb8Js4CzG4+KAPjMg==
+  dependencies:
+    d3-path "1"
 
 d3-shape@^1.0.6, d3-shape@^1.2.0:
   version "1.3.3"

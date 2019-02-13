@@ -6,7 +6,17 @@
 declare module "@vx/shape" {
   import { Curve } from "@vx/curve";
   import { Accessor, ScaleFunction } from "@vx/scale";
+  import { Arc } from "d3-shape";
   import React, { SVGAttributes } from "react";
+
+  // TODO: remove this. It's just to understand how Arc and Pie work
+  // import { Browser } from "@vx/mock-data";
+
+  // "@vx/group"
+  // "@vx/point"
+  // "classnames"
+  // "d3-path"
+  // "d3-shape"
 
   type Datum = any;
   type NumberOrNumberAccessor = number | Accessor<any, number>;
@@ -146,23 +156,43 @@ declare module "@vx/shape" {
     strokeWidth?: number;
   }
 
+  type SortValues<T> = (a: T, b: T) => number;
+
+  interface ArcInner<T> {
+    // data: {label: "Google Chrome", usage: 48.09}
+    data: T;
+    endAngle: number;
+    index: number;
+    padAngle: number;
+    startAngle: number;
+    value: number;
+  }
+
+  // are path and pie d3 functions (d3-shape, d3-path)?
+  // TODO: this type should be returned by Pie and it should extract its Datum automatically
+  type PieInner<T> = {
+    arcs: ArcInner<T>[];
+    path: Arc<This, ArcInner<T>>;
+    pie: any;
+  };
+
   interface IPieProps {
     centroid?: NumberOrNumberAccessor;
     children?: any;
-    className: string;
+    className?: string;
     cornerRadius?: NumberOrNumberAccessor;
     data: Datum[];
     endAngle?: NumberOrNumberAccessor;
     innerRadius?: NumberOrNumberAccessor;
-    left: number;
+    left?: number;
     outerRadius?: NumberOrNumberAccessor;
     padAngle?: NumberOrNumberAccessor;
     padRadius?: NumberOrNumberAccessor;
-    pieSort: any;
-    pieSortValues: any;
-    pieValue: NumberOrNumberAccessor;
+    pieSort?: any;
+    pieSortValues?: SortValues<any>;
+    pieValue?: NumberOrNumberAccessor;
     startAngle?: NumberOrNumberAccessor;
-    top: number;
+    top?: number;
   }
 
   interface IPolygonProps {
