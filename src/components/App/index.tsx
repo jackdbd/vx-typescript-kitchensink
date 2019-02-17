@@ -8,6 +8,7 @@ import { AxisDemoResponsive } from "../AxisDemo";
 import { BarGroupDemo } from "../BarGroupDemo";
 import { BarGroupHorizontalDemo } from "../BarGroupHorizontalDemo";
 import { BarStackDemo } from "../BarStackDemo";
+import { BarStackHorizontalDemo } from "../BarStackHorizontalDemo";
 import { CurveDemo } from "../CurveDemo";
 import { DragDemo } from "../DragDemo";
 import { GeoDemo } from "../GeoDemo";
@@ -267,6 +268,18 @@ class App extends React.Component<IProps> {
               const { width } = props;
               return (
                 <BarStackDemo height={height} margin={margin} width={width} />
+              );
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return (
+                <BarStackHorizontalDemo
+                  height={height}
+                  margin={margin}
+                  width={width}
+                />
               );
             }}
           </ParentSize>

@@ -1,10 +1,9 @@
-import { AxisBottom, TextAnchor } from "@vx/axis";
-import { Grid } from "@vx/grid";
+import { AxisBottom, AxisLeft, TextAnchor } from "@vx/axis";
 import { Group } from "@vx/group";
 import { LegendOrdinal } from "@vx/legend";
-import { cityTemperature } from "@vx/mock-data";
+import { cityTemperature, CityTemperatureDatum } from "@vx/mock-data";
 import { scaleBand, scaleLinear, scaleOrdinal } from "@vx/scale";
-import { BarStack } from "@vx/shape";
+import { BarStackHorizontal } from "@vx/shape";
 import { timeFormat, timeParse } from "d3-time-format";
 import React from "react";
 import styled from "styled-components";
@@ -36,7 +35,7 @@ const bg = "#eaedff";
 const data = cityTemperature.slice(0, 12);
 const keys = Object.keys(data[0]).filter((d) => d !== "date");
 
-const totals = data.reduce((prev: any, current: any) => {
+const totals: number[] = data.reduce((prev: any, current: any) => {
   const t = keys.reduce((dailyTotal, k) => {
     dailyTotal += parseInt(current[k], 10);
     return dailyTotal;
@@ -51,16 +50,16 @@ const formatDate = (dateString: string) => {
   return format(date!);
 };
 
-const xAccessor = (d: any) => d.date;
+const yAccessor = (d: CityTemperatureDatum) => d.date;
 
-const xScale = scaleBand({
-  domain: data.map(xAccessor),
-  padding: 0.2,
-});
-
-const yScale = scaleLinear({
+const xScale = scaleLinear({
   domain: [0, Math.max(...totals)],
   nice: true,
+});
+
+const yScale = scaleBand({
+  domain: data.map(yAccessor),
+  padding: 0.2,
 });
 
 const colorScale = scaleOrdinal({
@@ -74,7 +73,7 @@ interface IProps {
   width: number;
 }
 
-export class BarStackDemo extends React.Component<IProps> {
+export class BarStackHorizontalDemo extends React.Component<IProps> {
   public constructor(props: IProps) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -97,23 +96,13 @@ export class BarStackDemo extends React.Component<IProps> {
     return (
       <Container>
         <svg width={width} height={height}>
-          <rect x={0} y={0} width={width} height={height} fill={bg} rx={14} />
-          <Grid
-            top={margin.top}
-            left={margin.left}
-            xScale={xScale}
-            yScale={yScale}
-            width={xMax}
-            height={yMax}
-            stroke={"black"}
-            strokeOpacity={0.1}
-            xOffset={xScale.bandwidth() / 2}
-          />
-          <Group top={margin.top}>
-            <BarStack
+          <rect width={width} height={height} fill={bg} rx={14} />
+          <Group top={margin.top} left={margin.left}>
+            <BarStackHorizontal
               data={data}
               keys={keys}
-              x={xAccessor}
+              height={yMax}
+              y={yAccessor}
               xScale={xScale}
               yScale={yScale}
               color={colorScale}
@@ -121,16 +110,24 @@ export class BarStackDemo extends React.Component<IProps> {
               {(layers: any) => {
                 return layers.map(this.renderStackLayer);
               }}
-            </BarStack>
+            </BarStackHorizontal>
+            <AxisLeft
+              hideAxisLine={true}
+              hideTicks={true}
+              scale={yScale}
+              tickFormat={formatDate}
+              stroke={purple3}
+              tickStroke={purple3}
+              tickLabelProps={tickLabelFunction}
+            />
+            <AxisBottom
+              top={yMax}
+              scale={xScale}
+              stroke={purple3}
+              tickStroke={purple3}
+              tickLabelProps={tickLabelFunction}
+            />
           </Group>
-          <AxisBottom
-            top={yMax + margin.top}
-            scale={xScale}
-            tickFormat={formatDate}
-            stroke={purple3}
-            tickStroke={purple3}
-            tickLabelProps={tickLabelFunction}
-          />
         </svg>
         <Div margin={margin}>
           <LegendOrdinal
@@ -144,9 +141,9 @@ export class BarStackDemo extends React.Component<IProps> {
   }
 
   private handleClick(event: React.MouseEvent) {
-    const dataset = (event.target as any).dataset;
-    const { key, value } = dataset;
-    alert(JSON.stringify({ key, value }));
+    const dataset = (event.currentTarget as any).dataset;
+    const { indexBar, indexLayer, key, value } = dataset;
+    alert(`clicked: ${JSON.stringify({ indexBar, indexLayer, key, value })}`);
   }
 
   private renderBar(d: any, i: number) {

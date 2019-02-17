@@ -142,13 +142,20 @@ declare module "@vx/shape" {
     y1Scale: ScaleFunction;
   }
 
-  interface IBarStackProps extends SVGAttributes<SVGRectElement> {
-    x: ValueOrAccessor;
+  interface IBarStackSharedProps extends SVGAttributes<SVGRectElement> {
     color: ScaleFunction;
     data?: Datum[];
     keys?: any;
     xScale: ScaleFunction;
     yScale: ScaleFunction;
+  }
+
+  interface IBarStackProps extends IBarStackSharedProps {
+    x: ValueOrAccessor;
+  }
+
+  interface IBarStackHorizontalProps extends IBarStackSharedProps {
+    y: ValueOrAccessor;
   }
 
   interface ICircle {
@@ -279,7 +286,7 @@ declare module "@vx/shape" {
   const BarGroup: React.ComponentType<IBarGroupProps>;
   const BarGroupHorizontal: React.ComponentType<IBarGroupHorizontalProps>;
   const BarStack: React.ComponentType<IBarStackProps>;
-  const BarStackHorizontal: React.ComponentType<IBarStackProps>;
+  const BarStackHorizontal: React.ComponentType<IBarStackHorizontalProps>;
 
   const Circle: React.ComponentType<ICircleProps>;
 
