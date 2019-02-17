@@ -100,7 +100,7 @@ export class BarGroupDemo extends React.Component<IProps> {
           stroke={green}
           tickStroke={green}
           hideAxisLine={true}
-          tickLabelProps={renderTick}
+          tickLabelProps={tickLabelPropsFunction}
         />
       </svg>
     );
@@ -141,7 +141,7 @@ export class BarGroupDemo extends React.Component<IProps> {
   }
 }
 
-function renderTick(value: any, index: number) {
+function tickLabelPropsFunction(value: any, index: number) {
   const textAnchor = "middle" as TextAnchor;
   return { fill: green, fontSize: 11, textAnchor };
 }

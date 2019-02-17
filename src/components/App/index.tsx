@@ -6,7 +6,7 @@ import styled, { keyframes } from "styled-components";
 import { AreaDemo, AreaDemoWithTooltip } from "../AreaDemo";
 import { AxisDemoResponsive } from "../AxisDemo";
 import { BarGroupDemo } from "../BarGroupDemo";
-// import { BarGroupHorizontalDemo } from "../BarGroupHorizontalDemo";
+import { BarGroupHorizontalDemo } from "../BarGroupHorizontalDemo";
 import { CurveDemo } from "../CurveDemo";
 import { DragDemo } from "../DragDemo";
 import { GeoDemo } from "../GeoDemo";
@@ -249,7 +249,7 @@ class App extends React.Component<IProps> {
               );
             }}
           </ParentSize>
-          {/* <ParentSize>
+          <ParentSize>
             {(props: ParentProps) => {
               const { width } = props;
               return (
@@ -260,7 +260,7 @@ class App extends React.Component<IProps> {
                 />
               );
             }}
-          </ParentSize> */}
+          </ParentSize>
         </Grid>
       </Div>
     );
