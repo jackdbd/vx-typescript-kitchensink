@@ -32,9 +32,9 @@ declare module "@vx/axis" {
   }
 
   interface TickLabelProps {
-    dy: string;
+    dy?: string;
     fill: string;
-    fontFamily: string;
+    fontFamily?: string;
     fontSize: number;
     textAnchor: TextAnchor;
   }

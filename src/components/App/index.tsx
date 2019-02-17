@@ -5,6 +5,8 @@ import styled, { keyframes } from "styled-components";
 
 import { AreaDemo, AreaDemoWithTooltip } from "../AreaDemo";
 import { AxisDemoResponsive } from "../AxisDemo";
+import { BarGroupDemo } from "../BarGroupDemo";
+// import { BarGroupHorizontalDemo } from "../BarGroupHorizontalDemo";
 import { CurveDemo } from "../CurveDemo";
 import { DragDemo } from "../DragDemo";
 import { GeoDemo } from "../GeoDemo";
@@ -239,6 +241,26 @@ class App extends React.Component<IProps> {
               return <PieDemo height={height} margin={margin} width={width} />;
             }}
           </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return (
+                <BarGroupDemo height={height} margin={margin} width={width} />
+              );
+            }}
+          </ParentSize>
+          {/* <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return (
+                <BarGroupHorizontalDemo
+                  height={height}
+                  margin={margin}
+                  width={width}
+                />
+              );
+            }}
+          </ParentSize> */}
         </Grid>
       </Div>
     );

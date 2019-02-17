@@ -28,7 +28,7 @@ declare module "@vx/scale" {
   }
 
   interface ScaleBandOptions extends SharedOptions {
-    domain: number[];
+    domain: number[] | string[];
     padding: number;
   }
 

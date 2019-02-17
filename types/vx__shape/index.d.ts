@@ -21,6 +21,8 @@ declare module "@vx/shape" {
   type Datum = any;
 
   type NumberOrNumberAccessor = number | Accessor<any, number>;
+  type StringOrStringAccessor = string | Accessor<any, string>;
+  type ValueOrAccessor = NumberOrNumberAccessor | StringOrStringAccessor;
 
   // are path and pie d3 functions (d3-shape, d3-path)?
   // TODO: this type should be returned by Pie and it should extract its Datum automatically
@@ -120,7 +122,25 @@ declare module "@vx/shape" {
     ref?: React.Ref;
   }
 
-  interface IBarGroupProps extends SVGAttributes<SVGGElement> {}
+  interface IBarGroupSharedProps extends SVGAttributes<SVGGElement> {
+    color: any;
+    data?: Datum[];
+    keys?: any;
+  }
+
+  interface IBarGroupProps extends IBarGroupSharedProps {
+    x0: ValueOrAccessor;
+    x0Scale: ScaleFunction;
+    x1Scale: ScaleFunction;
+    yScale: ScaleFunction;
+  }
+
+  interface IBarGroupHorizontalProps extends IBarGroupSharedProps {
+    xScale: ScaleFunction;
+    y0: ValueOrAccessor;
+    y0Scale: ScaleFunction;
+    y1Scale: ScaleFunction;
+  }
 
   interface IBarStackProps extends SVGAttributes<SVGRectElement> {}
 
@@ -250,7 +270,7 @@ declare module "@vx/shape" {
 
   const Bar: React.ComponentType<IBarProps>;
   const BarGroup: React.ComponentType<IBarGroupProps>;
-  const BarGroupHorizontal: React.ComponentType<IBarGroupProps>;
+  const BarGroupHorizontal: React.ComponentType<IBarGroupHorizontalProps>;
   const BarStack: React.ComponentType<IBarStackProps>;
   const BarStackHorizontal: React.ComponentType<IBarStackProps>;
 
