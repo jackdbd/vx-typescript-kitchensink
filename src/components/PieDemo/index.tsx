@@ -32,7 +32,7 @@ const browsers = browserNames.map((k: string) => {
   return browser;
 });
 
-const usageAccessor: Accessor<Browser, number> = (d) => d.usage;
+const usageAccessor: Accessor<Browser, number> = d => d.usage;
 const frequencyAccessor: Accessor<LetterFrequencyDatum, number> = (
   d: LetterFrequencyDatum
 ) => d.frequency;

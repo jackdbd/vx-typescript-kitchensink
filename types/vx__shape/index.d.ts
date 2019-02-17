@@ -19,10 +19,32 @@ declare module "@vx/shape" {
   // "d3-shape"
 
   type Datum = any;
+
   type NumberOrNumberAccessor = number | Accessor<any, number>;
+
+  // are path and pie d3 functions (d3-shape, d3-path)?
+  // TODO: this type should be returned by Pie and it should extract its Datum automatically
+  type PieInner<T> = {
+    arcs: ArcInner<T>[];
+    path: Arc<This, ArcInner<T>>;
+    pie: any;
+  };
+
   type Point = { x: number; y: number };
 
-  interface IArcProps {
+  type SortValues<T> = (a: T, b: T) => number;
+
+  interface ArcInner<T> {
+    // data: {label: "Google Chrome", usage: 48.09}
+    data: T;
+    endAngle: number;
+    index: number;
+    padAngle: number;
+    startAngle: number;
+    value: number;
+  }
+
+  interface IArcProps extends SVGAttributes<SVGPathElement> {
     centroid?: NumberOrNumberAccessor;
     children: any;
     className?: string;
@@ -37,15 +59,13 @@ declare module "@vx/shape" {
     startAngle?: NumberOrNumberAccessor;
   }
 
-  interface IAreaProps extends SVGAttributes<SVGElement> {
+  interface IAreaProps extends SVGAttributes<SVGPathElement> {
     children?: any;
     classname?: string;
     curve: Curve;
     data: Datum[];
     defined?: boolean;
     innerRef?: React.Ref;
-    stroke?: string;
-    strokeWidth?: number;
     x: NumberOrNumberAccessor;
     x0?: NumberOrNumberAccessor;
     x1?: NumberOrNumberAccessor;
@@ -54,7 +74,7 @@ declare module "@vx/shape" {
     y1?: NumberOrNumberAccessor;
   }
 
-  interface IAreaClosedProps extends SVGAttributes<SVGElement> {
+  interface IAreaClosedProps extends SVGAttributes<SVGPathElement> {
     children?: any;
     classname?: string;
     curve: Curve;
@@ -70,7 +90,7 @@ declare module "@vx/shape" {
     yScale: ScaleFunction;
   }
 
-  interface IAreaStackProps {
+  interface IAreaStackProps extends SVGAttributes<SVGPathElement> {
     children?: any;
     classname?: string;
     color: ScaleFunction;
@@ -93,24 +113,16 @@ declare module "@vx/shape" {
   interface IBarProps extends SVGAttributes<SVGRectElement> {
     classname?: string;
     data?: Datum[];
-    // fill: string;
-    // height: number;
     onMouseLeave?: (event: MouseEvent) => void;
     onMouseMove?: (event: MouseEvent) => void;
     onTouchMove?: EventListener;
     onTouchStart?: EventListener;
     ref?: React.Ref;
-    // rx?: number;
-    // ry?: number;
-    // stroke?: string;
-    // strokeWidth?: number;
-    // width: number;
-    // x: number;
-    // y: number;
   }
 
-  interface IBarGroupProps {}
-  interface IBarStackProps {}
+  interface IBarGroupProps extends SVGAttributes<SVGGElement> {}
+
+  interface IBarStackProps extends SVGAttributes<SVGRectElement> {}
 
   interface ICircle {
     className?: string;
@@ -121,13 +133,10 @@ declare module "@vx/shape" {
     pointerEvents: string;
   }
 
-  interface ILineProps {
+  interface ILineProps extends SVGAttributes<SVGLineElement> {
     className?: string;
     from: Point;
     innerRef?: React.Ref;
-    stroke?: string;
-    strokeDasharray?: string;
-    strokeWidth?: number;
     style?: React.StyleHTMLAttributes<SVGLineElement> & IExtraProps;
     to: Point;
   }
@@ -136,10 +145,6 @@ declare module "@vx/shape" {
     curve?: Curve;
     data: Datum[];
     defined?: boolean;
-    // radius?: number | string | Accessor<any, number>;
-    // stroke?: string;
-    // strokeDasharray?: string;
-    // strokeWidth?: number;
     x: NumberOrNumberAccessor;
     y: NumberOrNumberAccessor;
   }
@@ -151,30 +156,59 @@ declare module "@vx/shape" {
     data: Datum[];
     innerRef?: React.Ref;
     radius?: number | string | Accessor<any, number>;
-    stroke?: string;
-    strokeDasharray?: string;
-    strokeWidth?: number;
   }
 
-  type SortValues<T> = (a: T, b: T) => number;
-
-  interface ArcInner<T> {
-    // data: {label: "Google Chrome", usage: 48.09}
-    data: T;
-    endAngle: number;
-    index: number;
-    padAngle: number;
-    startAngle: number;
-    value: number;
+  interface ILinkProps {
+    source: any;
+    target: any;
   }
 
-  // are path and pie d3 functions (d3-shape, d3-path)?
-  // TODO: this type should be returned by Pie and it should extract its Datum automatically
-  type PieInner<T> = {
-    arcs: ArcInner<T>[];
-    path: Arc<This, ArcInner<T>>;
-    pie: any;
-  };
+  interface ILinkHorizontalProps extends ILinkProps {
+    children: any;
+    innerRef: React.Ref;
+    path: any;
+    x: Accessor<any, number>;
+    y: Accessor<any, number>;
+  }
+  interface ILinkHorizontalCurveProps extends ILinkHorizontalProps {
+    percent: number;
+  }
+
+  interface ILinkHorizontalStepProps extends ILinkHorizontalProps {
+    percent: number;
+  }
+
+  interface ILinkRadialProps extends ILinkProps {
+    children: any;
+    innerRef: React.Ref;
+    path: any;
+    x: Accessor<any, number>;
+    y: Accessor<any, number>;
+  }
+
+  interface ILinkRadialCurveProps extends ILinkRadialProps {
+    percent: number;
+  }
+
+  interface ILinkRadialStepProps extends ILinkRadialProps {
+    percent: number;
+  }
+
+  interface ILinkVerticalProps extends ILinkProps {
+    children: any;
+    innerRef: React.Ref;
+    path: any;
+    x: Accessor<any, number>;
+    y: Accessor<any, number>;
+  }
+
+  interface ILinkVerticalCurveProps extends ILinkVerticalProps {
+    percent: number;
+  }
+
+  interface ILinkVerticalStepProps extends ILinkVerticalProps {
+    percent: number;
+  }
 
   interface IPieProps {
     centroid?: NumberOrNumberAccessor;
@@ -226,25 +260,24 @@ declare module "@vx/shape" {
   const LinePath: React.ComponentType<ILinePathProps>;
   const LineRadial: React.ComponentType<ILineRadialProps>;
 
+  const LinkHorizontal: React.ComponentType<ILinkHorizontalProps>;
+  const LinkHorizontalCurve: React.ComponentType<ILinkHorizontalCurveProps>;
+  const LinkHorizontalLine: React.ComponentType<ILinkHorizontalProps>;
+  const LinkHorizontalStep: React.ComponentType<ILinkHorizontalStepProps>;
+
+  const LinkRadial: React.ComponentType<ILinkRadialProps>;
+  const LinkRadialCurve: React.ComponentType<ILinkRadialCurveProps>;
+  const LinkRadialLine: React.ComponentType<ILinkRadialProps>;
+  const LinkRadialStep: React.ComponentType<ILinkRadialStepProps>;
+
+  const LinkVertical: React.ComponentType<ILinkVerticalProps>;
+  const LinkVerticalCurve: React.ComponentType<ILinkVerticalCurveProps>;
+  const LinkVerticalLine: React.ComponentType<ILinkVerticalProps>;
+  const LinkVerticalStep: React.ComponentType<ILinkVerticalStepProps>;
+
   const Pie: React.ComponentType<IPieProps>;
 
   const Polygon: React.ComponentType<IPolygonProps>;
 
   const Stack: React.ComponentType<IStackProps>;
-
-  const LinkHorizontalCurve: React.ComponentType<any>;
-  const LinkRadialCurve: React.ComponentType<any>;
-  const LinkVerticalCurve: React.ComponentType<any>;
-
-  const LinkHorizontal: React.ComponentType<any>;
-  const LinkRadial: React.ComponentType<any>;
-  const LinkVertical: React.ComponentType<any>;
-
-  const LinkHorizontalLine: React.ComponentType<any>;
-  const LinkRadialLine: React.ComponentType<any>;
-  const LinkVerticalLine: React.ComponentType<any>;
-
-  const LinkHorizontalStep: React.ComponentType<any>;
-  const LinkRadialStep: React.ComponentType<any>;
-  const LinkVerticalStep: React.ComponentType<any>;
 }
