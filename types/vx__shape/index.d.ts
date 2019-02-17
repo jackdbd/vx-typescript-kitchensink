@@ -142,7 +142,14 @@ declare module "@vx/shape" {
     y1Scale: ScaleFunction;
   }
 
-  interface IBarStackProps extends SVGAttributes<SVGRectElement> {}
+  interface IBarStackProps extends SVGAttributes<SVGRectElement> {
+    x: ValueOrAccessor;
+    color: ScaleFunction;
+    data?: Datum[];
+    keys?: any;
+    xScale: ScaleFunction;
+    yScale: ScaleFunction;
+  }
 
   interface ICircle {
     className?: string;

@@ -7,15 +7,12 @@
 declare module "@vx/grid" {
   import { ScaleFunction } from "@vx/scale";
   import { ScaleBand, ScaleLinear, ScaleTime } from "d3-scale";
-  import React from "react";
+  import React, { SVGAttributes } from "react";
 
-  interface SharedProps {
+  interface SharedProps extends SVGAttributes<SVGGElement> {
     className?: string;
     height?: number;
     left?: number;
-    stroke?: string;
-    strokeDasharray?: string;
-    strokeWidth?: string | number;
     top?: number;
     width?: number;
   }
@@ -55,7 +52,7 @@ declare module "@vx/grid" {
     width: number;
   }
 
+  const Grid: React.FunctionComponent<GridProps>;
   const GridColumns: React.FunctionComponent<GridColumnsProps>;
   const GridRows: React.FunctionComponent<GridRowsProps>;
-  const Grid: React.FunctionComponent<GridProps>;
 }

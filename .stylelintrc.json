@@ -5,6 +5,6 @@
   ],
   "processors": ["stylelint-processor-styled-components"],
   "rules": {
-    "unit-whitelist": ["em", "deg", "fr", "px", "rem", "s", "vh", "vmin"]
+    "unit-whitelist": ["em", "deg", "fr", "px", "rem", "s", "vh", "vmin", "%"]
   }
 }

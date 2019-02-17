@@ -32,7 +32,7 @@ const browsers = browserNames.map((k: string) => {
   return browser;
 });
 
-const usageAccessor: Accessor<Browser, number> = d => d.usage;
+const usageAccessor: Accessor<Browser, number> = (d) => d.usage;
 const frequencyAccessor: Accessor<LetterFrequencyDatum, number> = (
   d: LetterFrequencyDatum
 ) => d.frequency;
@@ -70,7 +70,7 @@ export class PieDemo extends React.Component<IProps> {
             padAngle={0}
           >
             {(pie: PieInner<Browser>) => {
-              console.warn("pie browser usage", pie);
+              // console.warn("pie browser usage", pie);
               return pie.arcs.map((arc, i) => {
                 const opacity = 1 / (i + 2);
                 const [centroidX, centroidY] = pie.path.centroid(arc);
@@ -105,7 +105,7 @@ export class PieDemo extends React.Component<IProps> {
             outerRadius={radius - 135}
           >
             {(pie: PieInner<Letter>) => {
-              console.warn("pie letters frequency", pie);
+              // console.warn("pie letters frequency", pie);
               return pie.arcs.map((arc, i) => {
                 const opacity = 1 / (i + 2);
                 const [centroidX, centroidY] = pie.path.centroid(arc);
