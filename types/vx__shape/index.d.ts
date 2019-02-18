@@ -12,11 +12,16 @@ declare module "@vx/shape" {
   // TODO: remove this. It's just to understand how Arc and Pie work
   // import { Browser } from "@vx/mock-data";
 
-  // "@vx/group"
-  // "@vx/point"
-  // "classnames"
-  // "d3-path"
-  // "d3-shape"
+  // dependecies
+  /*
+"@vx/curve": "0.0.182",
+    "@vx/group": "0.0.183",
+    "@vx/point": "0.0.182",
+    "classnames": "^2.2.5",
+    "d3-path": "^1.0.5",
+    "d3-shape": "^1.2.0",
+    "prop-types": "^15.5.10"
+*/
 
   type Datum = any;
 
@@ -193,16 +198,17 @@ declare module "@vx/shape" {
   }
 
   interface ILinkProps {
-    source: any;
-    target: any;
+    source?: any;
+    target?: any;
   }
 
-  interface ILinkHorizontalProps extends ILinkProps {
-    children: any;
-    innerRef: React.Ref;
-    path: any;
-    x: Accessor<any, number>;
-    y: Accessor<any, number>;
+  interface ILinkHorizontalProps extends ILinkProps, SVGAttributes<SVGElement> {
+    children?: any;
+    data: Datum[];
+    innerRef?: React.Ref;
+    path?: any;
+    x?: Accessor<any, number>;
+    y?: Accessor<any, number>;
   }
   interface ILinkHorizontalCurveProps extends ILinkHorizontalProps {
     percent: number;

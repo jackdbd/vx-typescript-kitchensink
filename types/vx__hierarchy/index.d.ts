@@ -7,25 +7,35 @@ declare module "@vx/hierarchy" {
   import { TreemapLayout, HierarchyNode } from "d3-hierarchy";
   import React from "react";
 
-  type Node = {
-    children?: Node[];
+  // dependencies
+  /*
+  "@vx/group": "0.0.183",
+    "classnames": "^2.2.5",
+    "d3-hierarchy": "^1.1.4",
+    "prop-types": "^15.6.1"
+  */
+
+  interface INode {
+    children?: INode[];
     data: any;
     depth: number;
     height: 1;
-    parent?: Node;
+    parent?: INode;
     value: number;
-    x0: number;
-    x1: number;
-    y0: number;
-    y1: number;
-  };
+    x?: number;
+    x0?: number;
+    x1?: number;
+    y?: number;
+    y0?: number;
+    y1?: number;
+  }
 
   interface ISharedProps {
     children: React.ReactElement;
     className?: string;
     left?: number;
     nodeComponent?: any;
-    root: object;
+    root: HierarchyNode<any>;
     size?: number[];
     top?: number;
   }
@@ -41,7 +51,7 @@ declare module "@vx/hierarchy" {
   }
 
   interface IHierarchyDefaultNodeProps {
-    node: any;
+    node: INode;
   }
 
   interface IPackProps extends ISharedProps {
@@ -57,7 +67,7 @@ declare module "@vx/hierarchy" {
   interface ITreeProps extends ISharedProps {
     linkComponent?: any;
     nodeComponent?: any;
-    nodeSize: number;
+    nodeSize?: number;
     separation?: number;
   }
 
