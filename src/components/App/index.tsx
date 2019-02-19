@@ -19,6 +19,7 @@ import { HeatmapsDemo } from "../HeatmapsDemo";
 import { LegendDemos } from "../LegendDemo";
 import { LineRadialDemo } from "../LineRadialDemo";
 import { LinesDemoResponsive } from "../LinesDemo";
+import { PackDemo } from "../PackDemo";
 import { PatternsDemo } from "../PatternsDemo";
 import { PieDemo } from "../PieDemo";
 import { PolygonsDemo } from "../PolygonsDemo";
@@ -286,23 +287,23 @@ class App extends React.Component<IProps> {
               );
             }}
           </ParentSize>
-          <ParentSize>
+          {/* <ParentSize>
             {(props: ParentProps) => {
               const { width } = props;
               return (
                 <TreemapDemo height={height} margin={margin} width={width} />
               );
             }}
-          </ParentSize>
-          <ParentSize>
+          </ParentSize> */}
+          {/* <ParentSize>
             {(props: ParentProps) => {
               const { width } = props;
               return (
                 <TreesDemo height={height} margin={margin} width={width} />
               );
             }}
-          </ParentSize>
-          <ParentSize>
+          </ParentSize> */}
+          {/* <ParentSize>
             {(props: ParentProps) => {
               const { width } = props;
               return (
@@ -312,6 +313,12 @@ class App extends React.Component<IProps> {
                   width={width}
                 />
               );
+            }}
+          </ParentSize> */}
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return <PackDemo height={height} margin={margin} width={width} />;
             }}
           </ParentSize>
         </Grid>

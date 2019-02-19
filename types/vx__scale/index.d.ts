@@ -22,6 +22,8 @@ declare module "@vx/scale" {
 
   type Accessor<T, R> = (datum: T) => R;
 
+  // TODO: replace number[] with [number, number]
+
   interface SharedOptions {
     clamp?: boolean;
     nice?: boolean;
@@ -72,6 +74,11 @@ declare module "@vx/scale" {
     range?: number[] | string[] | React.ReactElement[];
   }
 
+  interface ScaleQuantizeOptions extends SharedOptions {
+    domain: [number, number] | [string, string] | [undefined, undefined];
+    range?: [number, number] | [string, string] | React.ReactElement[];
+  }
+
   interface ScaleOrdinal<Range, Output> extends D3ScaleOrdinal<Range, Output> {
     type: string;
   }
@@ -102,7 +109,7 @@ declare module "@vx/scale" {
     scaleOptions: ScaleOrdinalOptions
   ): ScaleOrdinal<number | string, React.ReactElement>;
 
-  function scaleQuantize(scaleOptions: any): any;
+  function scaleQuantize(scaleOptions: ScaleQuantizeOptions): any;
 
   function scaleQuantile(scaleOptions: any): any;
 
