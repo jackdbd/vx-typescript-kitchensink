@@ -10,6 +10,7 @@ import { BarGroupHorizontalDemo } from "../BarGroupHorizontalDemo";
 import { BarStackDemo } from "../BarStackDemo";
 import { BarStackHorizontalDemo } from "../BarStackHorizontalDemo";
 import { CurveDemo } from "../CurveDemo";
+import { DendrogramsDemo } from "../DendrogramsDemo";
 import { DragDemo } from "../DragDemo";
 import { GeoDemo } from "../GeoDemo";
 import { GlyphDemo } from "../GlyphDemo";
@@ -298,6 +299,18 @@ class App extends React.Component<IProps> {
               const { width } = props;
               return (
                 <TreesDemo height={height} margin={margin} width={width} />
+              );
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return (
+                <DendrogramsDemo
+                  height={height}
+                  margin={margin}
+                  width={width}
+                />
               );
             }}
           </ParentSize>

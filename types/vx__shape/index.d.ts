@@ -234,12 +234,13 @@ declare module "@vx/shape" {
     percent: number;
   }
 
-  interface ILinkVerticalProps extends ILinkProps {
-    children: any;
-    innerRef: React.Ref;
-    path: any;
-    x: Accessor<any, number>;
-    y: Accessor<any, number>;
+  interface ILinkVerticalProps extends ILinkProps, SVGAttributes<SVGElement> {
+    children?: any;
+    data: Datum[];
+    innerRef?: React.Ref;
+    path?: any;
+    x?: Accessor<any, number>;
+    y?: Accessor<any, number>;
   }
 
   interface ILinkVerticalCurveProps extends ILinkVerticalProps {
