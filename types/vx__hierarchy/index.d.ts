@@ -15,6 +15,8 @@ declare module "@vx/hierarchy" {
     "prop-types": "^15.6.1"
   */
 
+  type NumberOrNumberAccessor = number | Accessor<any, number>;
+
   interface INode {
     children?: INode[];
     data: any;
@@ -43,7 +45,7 @@ declare module "@vx/hierarchy" {
   interface IClusterProps extends ISharedProps {
     linkComponent?: any;
     nodeSize?: number[];
-    separation?: any;
+    separation?: NumberOrNumberAccessor;
   }
 
   interface IHierarchyDefaultLinkProps {
@@ -68,7 +70,7 @@ declare module "@vx/hierarchy" {
     linkComponent?: any;
     nodeComponent?: any;
     nodeSize?: number;
-    separation?: number;
+    separation?: NumberOrNumberAccessor;
   }
 
   interface ITreemapProps extends ISharedProps {

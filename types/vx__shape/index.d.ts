@@ -316,6 +316,20 @@ declare module "@vx/shape" {
   const LinkVerticalLine: React.ComponentType<ILinkVerticalProps>;
   const LinkVerticalStep: React.ComponentType<ILinkVerticalStepProps>;
 
+  type LinkComponent =
+    | LinkHorizontal
+    | LinkHorizontalCurve
+    | LinkHorizontalLine
+    | LinkHorizontalStep
+    | LinkRadial
+    | LinkRadialCurve
+    | LinkRadialLine
+    | LinkRadialStep
+    | LinkVertical
+    | LinkVerticalCurve
+    | LinkVerticalLine
+    | LinkVerticalStep;
+
   const Pie: React.ComponentType<IPieProps>;
 
   const Polygon: React.ComponentType<IPolygonProps>;
