@@ -1,3 +1,4 @@
+import { localPoint } from "@vx/event";
 import { GradientPinkRed } from "@vx/gradient";
 import { Group } from "@vx/group";
 import { genRandomNormalPoints, Point } from "@vx/mock-data";
@@ -5,12 +6,22 @@ import { Accessor, scaleLinear } from "@vx/scale";
 import { Circle } from "@vx/shape";
 import { IWithTooltipProps, Tooltip, withTooltip } from "@vx/tooltip";
 import React from "react";
+import styled from "styled-components";
 
-import { localPoint } from "@vx/event";
 import { IMargin } from "../../interfaces";
 
+const Div = styled.div`
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  font-size: 1rem;
+  height: 2em;
+  margin: 0;
+  padding: 0;
+`;
+
 const points = genRandomNormalPoints(600).filter((_, i) => {
-  return i < 100;
+  return i < 500;
 });
 
 const xAccessor: Accessor<Point, number> = (d) => d[0];
@@ -21,8 +32,8 @@ interface IProps {
   margin: IMargin;
   width: number;
 
-  onMouseEnter?: (event: MouseEvent) => void;
-  onMouseLeave?: (event: MouseEvent) => void;
+  onMouseEnter?: (event: React.MouseEvent) => void;
+  onMouseLeave?: (event: React.MouseEvent) => void;
 }
 
 export class DotsDemo extends React.Component<IProps> {
@@ -76,69 +87,34 @@ export class DotsDemo extends React.Component<IProps> {
 
 type IDotsDemoWithTooltipProps = IProps & IWithTooltipProps;
 
-// let tooltipTimeout: number;
-
-// TODO: improve types
-function handleTooltip(options: any) {
-  const { data, event, xScale, yScale, showTooltip } = options;
-  const { x } = localPoint(event);
-  const x0 = xScale.invert(x);
-  // const index = bisectDate(data, x0, 1);
-  // const d0 = data[index - 1];
-  // const d1 = data[index];
-  // let d = d0;
-  // if (d1 && d1.date) {
-  //   d = x0 - xAccessor(d0) > xAccessor(d1) - x0 ? d1 : d0;
-  // }
-  console.warn("x0", x0, "x", x, "data", data, "options", options);
-  // showTooltip({
-  //   tooltipData: d,
-  //   tooltipLeft: x,
-  //   tooltipTop: yScale(d.close),
-  // });
-}
+let tooltipTimeout: any;
+const delay = 500;
 
 export const DotsDemoWithTooltip = withTooltip(
   (props: IDotsDemoWithTooltipProps) => {
-    // const { margin, height, showTooltip, tooltipData, width } = props;
+    const { hideTooltip, showTooltip, tooltipData, tooltipOpen } = props;
+
     // at first tooltipLeft and tooltipTop are undefined
     const tooltipLeft = props.tooltipLeft || 0;
     const tooltipTop = props.tooltipTop || 0;
 
-    console.warn("props", props);
-
-    // const xMax = width - margin.left - margin.right;
-    // const yMax = height - margin.top - margin.bottom;
-
-    // const xScale = scaleLinear({
-    //   clamp: true,
-    //   domain: [1.3, 2.2],
-    //   range: [0, xMax],
-    // });
-
-    // const yScale = scaleLinear({
-    //   clamp: true,
-    //   domain: [0.75, 1.6],
-    //   range: [yMax, 0],
-    // });
-
-    const onMouseEnter = (event: MouseEvent) => {
-      console.warn("mouse ENTER", event);
-      // handleTooltip({
-      //   data: stock,
-      //   event,
-      //   showTooltip,
-      //   xAccessor: xStock,
-      //   xScale,
-      //   yScale,
-      // });
+    const onMouseEnter = (event: React.MouseEvent) => {
+      if (tooltipTimeout) {
+        clearTimeout(tooltipTimeout);
+      }
+      const { x, y } = localPoint(event);
+      showTooltip({
+        tooltipData: `x: ${x}; y: ${y}`,
+        tooltipLeft: x,
+        tooltipTop: y,
+      });
     };
 
-    const onMouseLeave = (event: MouseEvent) => {
-      console.warn("mouse LEAVE", event);
+    const onMouseLeave = (event: React.MouseEvent) => {
+      tooltipTimeout = setTimeout(() => {
+        hideTooltip();
+      }, delay);
     };
-
-    const tooltipOpen = true;
 
     return (
       <div>
@@ -151,12 +127,9 @@ export const DotsDemoWithTooltip = withTooltip(
           <Tooltip
             top={tooltipTop - 12}
             left={tooltipLeft + 12}
-            style={{
-              backgroundColor: "rgba(92, 119, 235, 1.000)",
-              color: "white",
-            }}
+            style={{ padding: 0 }}
           >
-            {`TODO: show tooltip`}
+            <Div>{tooltipData}</Div>
           </Tooltip>
         )}
       </div>

@@ -10,6 +10,7 @@ declare module "@vx/tooltip" {
     IWithBoundingRectsProps,
   } from "@vx/bounds";
   import React from "react";
+
   interface TooltipProps {
     children: JSX.Element | string;
     className?: string;
@@ -35,7 +36,7 @@ declare module "@vx/tooltip" {
 
   interface IWithTooltipProps extends IProps {
     hideTooltip: () => void;
-    showTooltip: () => void;
+    showTooltip: (props: Partial<IProps>) => void;
     updateTooltip: (props: IProps) => void;
   }
 
