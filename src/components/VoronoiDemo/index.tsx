@@ -42,6 +42,9 @@ const data: IDatum[] = Array(200)
     return datum;
   });
 
+const xDomain = extent(data, xAccessor) as [number, number];
+const yDomain = extent(data, yAccessor) as [number, number];
+
 interface IProps {
   height: number;
   margin: IMargin;
@@ -66,12 +69,12 @@ export class VoronoiDemo extends React.PureComponent<IProps, IState> {
     const innerHeight = height - margin.top - margin.bottom;
 
     const xScale = scaleLinear({
-      domain: extent(data, xAccessor),
+      domain: xDomain,
       range: [0, innerWidth],
     });
 
     const yScale = scaleLinear({
-      domain: extent(data, yAccessor),
+      domain: yDomain,
       range: [innerHeight, 0],
     });
 

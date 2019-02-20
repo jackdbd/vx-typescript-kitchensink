@@ -14,6 +14,8 @@ declare module "@vx/scale" {
   import React from "react";
 
   type NumberLike = number | { valueOf(): number };
+  // type NumberOutput = number;
+  // type NumberRange = [number, number];
 
   type ScaleFunction =
     | ScaleBand<any>
@@ -21,8 +23,6 @@ declare module "@vx/scale" {
     | ScaleTime<any, any>;
 
   type Accessor<T, R> = (datum: T) => R;
-
-  // TODO: replace number[] with [number, number]
 
   interface SharedOptions {
     clamp?: boolean;
@@ -35,30 +35,30 @@ declare module "@vx/scale" {
   }
 
   interface ScalePointOptions extends SharedOptions {
-    domain: number[];
+    domain: [number, number];
   }
 
   interface ScaleLinearOptions extends SharedOptions {
-    domain: number[];
-    range?: number[] | string[];
+    domain: [number, number];
+    range?: [number, number] | [string, string];
     rangeRound?: NumberLike[];
   }
 
   interface ScaleLogOptions extends SharedOptions {
-    domain: number[];
-    range?: number[] | string[];
+    domain: [number, number];
+    range?: [number, number] | [string, string];
     rangeRound?: NumberLike[];
   }
 
   interface ScaleTimeOptions extends SharedOptions {
-    domain: Date[] | number[];
-    range?: Date[] | number[];
+    domain: [Date, Date] | [number, number];
+    range?: [Date, Date] | [number, number];
     rangeRound?: NumberLike[];
   }
 
   interface ScaleUtcOptions extends SharedOptions {
-    domain: Date[] | number[];
-    range?: Date[] | number[];
+    domain: [Date, Date] | [number, number];
+    range?: [Date, Date] | [number, number];
   }
 
   interface ScaleLinear<Range, Output> extends D3ScaleLinear<Range, Output> {
@@ -76,7 +76,7 @@ declare module "@vx/scale" {
 
   interface ScaleQuantizeOptions extends SharedOptions {
     domain: [number, number] | [string, string] | [undefined, undefined];
-    range?: [number, number] | [string, string] | React.ReactElement[];
+    range?: number[] | string[] | React.ReactElement[];
   }
 
   interface ScaleOrdinal<Range, Output> extends D3ScaleOrdinal<Range, Output> {
@@ -91,9 +91,7 @@ declare module "@vx/scale" {
 
   function scalePoint(scaleOptions: ScalePointOptions): any;
 
-  function scaleLinear(
-    scaleOptions: ScaleLinearOptions
-  ): ScaleLinear<number, any>;
+  function scaleLinear(scaleOptions: ScaleLinearOptions): ScaleLinear<any, any>;
 
   function scaleTime(
     scaleOptions: ScaleTimeOptions

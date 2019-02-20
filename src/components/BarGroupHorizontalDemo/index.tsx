@@ -1,8 +1,9 @@
 import { AxisLeft, TextAnchor } from "@vx/axis";
 import { Group } from "@vx/group";
-import { cityTemperature } from "@vx/mock-data";
-import { scaleBand, scaleLinear, scaleOrdinal } from "@vx/scale";
+import { cityTemperature, CityTemperatureDatum } from "@vx/mock-data";
+import { Accessor, scaleBand, scaleLinear, scaleOrdinal } from "@vx/scale";
 import { Bar, BarGroupHorizontal } from "@vx/shape";
+import { extent } from "d3-array";
 import { timeFormat, timeParse } from "d3-time-format";
 import React from "react";
 
@@ -17,12 +18,13 @@ const formatDate = (dateString: string) => {
 const max = (arr: any, fn: any) => Math.max(...arr.map(fn));
 
 const data = cityTemperature.slice(0, 4);
-const keys = Object.keys(data[0]).filter(d => d !== "date");
+const keys = Object.keys(data[0]).filter((d) => d !== "date");
 
-const y0Accessor = (d: any) => d.date;
+const y0Accessor: Accessor<CityTemperatureDatum, string> = (d) => d.date;
+const timeDomain = extent(data.map(y0Accessor)) as [string, string];
 
 const y0Scale = scaleBand({
-  domain: data.map(y0Accessor),
+  domain: timeDomain,
   padding: 0.2,
 });
 const y1Scale = scaleBand({
@@ -125,7 +127,7 @@ export class BarGroupHorizontalDemo extends React.Component<IProps> {
     const { y0, bars } = barGroup;
     const key = `group-${i}-y0-${y0}`;
     return (
-      <Group key={y0} top={y0}>
+      <Group key={key} top={y0}>
         {bars.map(this.renderBar)}
       </Group>
     );

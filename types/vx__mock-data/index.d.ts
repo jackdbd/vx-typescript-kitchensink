@@ -4,6 +4,8 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 declare module "@vx/mock-data" {
+  // import { RandomNormal } from "d3-random";
+
   type AppleStockDatum = {
     close: number;
     date: string;
@@ -93,7 +95,7 @@ declare module "@vx/mock-data" {
     value: number;
   };
 
-  type ToConsumableArray = (arr: any) => void | any[];
+  // type ToConsumableArray = (arr: any) => void | any[];
 
   type BinFunction = (i: number, n: number) => number;
   type CountFunction = (i: number, n: number) => number;
@@ -153,10 +155,9 @@ declare module "@vx/mock-data" {
   };
   function genPhyllotaxis(ref: IConfig): (i: number) => IPhyllotaxisDatum;
 
-  function genRandomNormalPoints(): [ToConsumableArray, ToConsumableArray];
-  function genRandomNormalPoints(
-    count: number
-  ): [ToConsumableArray, ToConsumableArray];
+  // function genRandomNormalPoints(): [ToConsumableArray, ToConsumableArray];
+  type Point = [number, number, number];
+  function genRandomNormalPoints(count: number): Point[];
 
   function genStats(number: number): StatsDatum[];
 

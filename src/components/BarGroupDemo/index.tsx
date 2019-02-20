@@ -1,7 +1,7 @@
 import { AxisBottom, TextAnchor } from "@vx/axis";
 import { Group } from "@vx/group";
 import { cityTemperature, CityTemperatureDatum } from "@vx/mock-data";
-import { scaleBand, scaleLinear, scaleOrdinal } from "@vx/scale";
+import { Accessor, scaleBand, scaleLinear, scaleOrdinal } from "@vx/scale";
 import { BarGroup } from "@vx/shape";
 import { timeFormat, timeParse } from "d3-time-format";
 import React from "react";
@@ -14,7 +14,10 @@ const purple = "#9caff6";
 const bg = "#612efb";
 
 const data = cityTemperature.slice(0, 8);
-const keys = Object.keys(data[0]).filter((d: string) => d !== "date");
+const keys = Object.keys(data[0]).filter((d: string) => d !== "date") as [
+  string,
+  string
+];
 
 const parseDate = timeParse("%Y%m%d");
 const format = timeFormat("%b %d");
@@ -23,10 +26,11 @@ const formatDate = (dateString: string) => {
   return format(date!);
 };
 
-const x0Accessor = (d: CityTemperatureDatum) => d.date;
+const x0Accessor: Accessor<CityTemperatureDatum, string> = (d) => d.date;
+const timeDomain = data.map(x0Accessor) as [string, string];
 
 const x0Scale = scaleBand({
-  domain: data.map(x0Accessor),
+  domain: timeDomain,
   padding: 0.2,
 });
 
@@ -40,7 +44,8 @@ const yDomain = [
   Math.max(
     ...data.map((d: any) => Math.max(...keys.map((key: any) => d[key])))
   ),
-];
+] as [number, number];
+
 const yScale = scaleLinear({
   domain: yDomain,
 });

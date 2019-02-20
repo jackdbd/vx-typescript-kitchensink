@@ -2,10 +2,10 @@ import { curveMonotoneX } from "@vx/curve";
 import { localPoint } from "@vx/event";
 import { GridColumns, GridRows } from "@vx/grid";
 import { appleStock, AppleStockDatum } from "@vx/mock-data";
-import { scaleLinear, scaleTime } from "@vx/scale";
+import { Accessor, scaleLinear, scaleTime } from "@vx/scale";
 import { AreaClosed, Bar, Line } from "@vx/shape";
 import { IWithTooltipProps, Tooltip, withTooltip } from "@vx/tooltip";
-import { bisector } from "d3-array";
+import { bisector, extent, max, min } from "d3-array";
 import { timeFormat } from "d3-time-format";
 import React from "react";
 
@@ -14,12 +14,13 @@ import { IMargin } from "../../interfaces";
 const stock = appleStock.slice(800);
 const formatDate = timeFormat("%b %d, '%y");
 
-const min = (arr: any, fn: any) => Math.min(...arr.map(fn));
-const max = (arr: any, fn: any) => Math.max(...arr.map(fn));
-const extent = (arr: any, fn: any) => [min(arr, fn), max(arr, fn)];
-const xStock = (d: AppleStockDatum) => new Date(d.date);
-const yStock = (d: AppleStockDatum) => d.close;
-const bisectDate = bisector((d: AppleStockDatum) => new Date(d.date)).left;
+const xStock: Accessor<AppleStockDatum, Date> = (d) => new Date(d.date);
+const timeDomain = extent(appleStock.map(xStock)) as [Date, Date];
+
+const yStock: Accessor<AppleStockDatum, number> = (d) => d.close;
+const maxClose = max(appleStock.map(yStock)) as number;
+
+const bisectDate = bisector<AppleStockDatum, Date>((d) => new Date(d.date)).left;
 
 interface IRuler {
   left: number;
@@ -48,11 +49,12 @@ export class AreaDemo extends React.Component<IProps> {
     const yMax = height - margin.top - margin.bottom;
 
     const xScale = scaleTime({
-      domain: extent(stock, xStock),
+      domain: timeDomain,
       range: [0, xMax],
     });
+
     const yScale = scaleLinear({
-      domain: [0, max(stock, yStock) + yMax / 3],
+      domain: [0, maxClose + yMax / 3],
       nice: true,
       range: [yMax, 0],
     });
@@ -179,11 +181,11 @@ export const AreaDemoWithTooltip = withTooltip(
     const yMax = height - margin.top - margin.bottom;
 
     const xScale = scaleTime({
-      domain: extent(stock, xStock),
+      domain: timeDomain,
       range: [0, xMax],
     });
     const yScale = scaleLinear({
-      domain: [0, max(stock, yStock) + yMax / 3],
+      domain: [0, maxClose + yMax / 3],
       nice: true,
       range: [yMax, 0],
     });

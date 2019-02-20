@@ -20,8 +20,8 @@ const data = series.reduce((rec, d) => {
   return rec.concat(d);
 }, []);
 
-const x: Accessor<DateValueDatum, Date> = (d: DateValueDatum) => d.date;
-const y: Accessor<DateValueDatum, number> = (d: DateValueDatum) => d.value;
+const xAccessor: Accessor<DateValueDatum, Date> = (d) => d.date;
+const yAccessor: Accessor<DateValueDatum, number> = (d) => d.value;
 
 interface IProps {
   width: number;
@@ -34,18 +34,18 @@ export const LinesDemo = (props: IProps) => {
   const xMax = width;
   const yMax = height / 8;
 
-  const [minDate, maxDate] = extent(data, x) as [Date, Date];
+  const [minDate, maxDate] = extent(data, xAccessor) as [Date, Date];
   const scaleTimeOptions = {
-    domain: [minDate, maxDate],
-    range: [0, xMax],
+    domain: [minDate, maxDate] as [Date, Date],
+    range: [0, xMax] as [number, number],
   };
   const xScale = scaleTime(scaleTimeOptions);
 
-  const maxValue = max(data, y) as number;
+  const maxValue = max(data, yAccessor) as number;
   const scaleLinearOptions = {
-    domain: [0, maxValue],
-    range: [yMax, 0],
-    rangeRound: [1, 2],
+    domain: [0, maxValue] as [number, number],
+    range: [yMax, 0] as [number, number],
+    rangeRound: [1, 2] as [number, number],
   };
   const yScale = scaleLinear(scaleLinearOptions);
 
@@ -65,8 +65,8 @@ export const LinesDemo = (props: IProps) => {
             <Group key={`lines-${i}`} top={(i * yMax) / 2}>
               <LinePath
                 data={d}
-                x={(dd: any) => xScale(x(dd))}
-                y={(dd: any) => yScale(y(dd))}
+                x={(dd: DateValueDatum) => xScale(xAccessor(dd))}
+                y={(dd: DateValueDatum) => yScale(yAccessor(dd))}
                 stroke={"#ffffff"}
                 strokeWidth={1}
                 curve={i % 2 === 0 ? curveMonotoneX : undefined}

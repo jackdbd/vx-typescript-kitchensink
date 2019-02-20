@@ -7,14 +7,17 @@ import { DateValueDatum, genDateValue } from "@vx/mock-data";
 import { IWithParentSizeProps, withParentSize } from "@vx/responsive";
 import { Accessor, scaleLinear, scaleTime } from "@vx/scale";
 import { Area, Line, LinePath } from "@vx/shape";
-import { extent } from "d3-array";
+import { extent, max } from "d3-array";
 import React from "react";
 // import { Text } from "@vx/text";
 import { IMargin } from "../../interfaces";
 
 const data = genDateValue(20);
-const x: Accessor<DateValueDatum, Date> = (d: DateValueDatum) => d.date;
-const y: Accessor<DateValueDatum, number> = (d: DateValueDatum) => d.value;
+const xAccessor: Accessor<DateValueDatum, Date> = (d) => d.date;
+const yAccessor: Accessor<DateValueDatum, number> = (d) => d.value;
+
+const timeDomain = extent(data.map(xAccessor)) as [Date, Date];
+const yMaxValue = max(data.map(yAccessor)) as number;
 
 function numTicksForHeight(height: number) {
   if (height <= 300) {
@@ -49,15 +52,16 @@ export const AxisDemo = (props: IProps) => {
   const yMax = height - margin.top - margin.bottom;
 
   const scaleTimeOptions = {
-    domain: extent(data, x) as [Date, Date],
-    range: [0, xMax],
+    domain: timeDomain,
+    range: [0, xMax] as [number, number],
   };
   const xScale = scaleTime(scaleTimeOptions);
 
+  // TODO: double-check yMax
   const linearScaleOptions = {
-    domain: [0, Math.max(...data.map(y))],
+    domain: [0, yMaxValue] as [number, number],
     nice: true,
-    range: [yMax, 0],
+    range: [yMax, 0] as [number, number],
   };
   const yScale = scaleLinear(linearScaleOptions);
 
@@ -91,9 +95,9 @@ export const AxisDemo = (props: IProps) => {
       <Group top={margin.top} left={margin.left}>
         <Area
           data={data}
-          x={(d: DateValueDatum) => xScale(x(d))}
+          x={(d: DateValueDatum) => xScale(xAccessor(d))}
           y0={(d: DateValueDatum) => yScale.range()[0]}
-          y1={(d: DateValueDatum) => yScale(y(d))}
+          y1={(d: DateValueDatum) => yScale(yAccessor(d))}
           stroke={"transparent"}
           strokeWidth={2}
           fill={"url(#linear)"}
@@ -101,8 +105,8 @@ export const AxisDemo = (props: IProps) => {
         />
         <LinePath
           data={data}
-          x={(d: DateValueDatum) => xScale(x(d))}
-          y={(d: DateValueDatum) => yScale(y(d))}
+          x={(d: DateValueDatum) => xScale(xAccessor(d))}
+          y={(d: DateValueDatum) => yScale(yAccessor(d))}
           stroke={"url('#linear')"}
           strokeWidth={2}
           curve={curveBasis}
