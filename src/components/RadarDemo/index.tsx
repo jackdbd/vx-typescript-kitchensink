@@ -13,6 +13,7 @@ const pumpkin = "#f5810c";
 const silver = "#d9d9d9";
 const bg = "#FAF7E9";
 
+const LEVELS = 5;
 const ANG = 360;
 const data = letterFrequency.slice(2, 12);
 const webs = genAngles(data.length);
@@ -34,8 +35,6 @@ interface IProps {
 export class RadarDemo extends React.Component<IProps> {
   public render() {
     const { height, margin, width } = this.props;
-    const levels = 5;
-
     const xMax = width - margin.left - margin.right;
     const yMax = height - margin.top - margin.bottom;
     const radius = Math.min(xMax, yMax) / 2;
@@ -46,32 +45,21 @@ export class RadarDemo extends React.Component<IProps> {
     });
 
     const points = genPoints(data.length, radius);
-    const renderLine = (_: number, i: number) =>
-      renderLineWithPoints.bind(points);
     const polygonPoints = genPolygonPoints(data, yScale, yAccessor);
-    const polygonPointsString = genPolygonPointsString(data, yScale, yAccessor);
+    const polygonPointsString = genPolygonPointsString(polygonPoints);
+    // console.warn(polygonPointsString);
+
+    const ringLines = [...Array(LEVELS)].map((_, i) => {
+      const r = ((i + 1) * radius) / LEVELS;
+      return r;
+    });
 
     return (
       <svg width={width} height={height}>
         <rect fill={bg} width={width} height={height} rx={14} />
         <Group top={height / 2 - margin.top} left={width / 2}>
-          {[...Array(levels)].map((_, i) => {
-            const r = ((i + 1) * radius) / levels;
-            return (
-              <LineRadial
-                key={`web-${i}`}
-                data={webs}
-                angle={(d) => radiusScale(d.angle)}
-                radius={r}
-                fill="none"
-                stroke={silver}
-                strokeWidth={2}
-                strokeOpacity={0.8}
-                strokeLinecap="round"
-              />
-            );
-          })}
-          {[...Array(data.length)].map(renderLine)}
+          {ringLines.map(renderRing)}
+          {points.map(renderLine)}
           <polygon
             points={polygonPointsString}
             fill={orange}
@@ -86,7 +74,7 @@ export class RadarDemo extends React.Component<IProps> {
   }
 }
 
-function genAngles(length: any) {
+function genAngles(length: number) {
   return [...Array(length + 1)].map((_, i) => {
     return {
       angle: i * (ANG / length),
@@ -94,7 +82,7 @@ function genAngles(length: any) {
   });
 }
 
-function genPoints(length: any, radius: any) {
+function genPoints(length: number, radius: number) {
   const step = (Math.PI * 2) / length;
   return [...Array(length)].map((_, i) => {
     return {
@@ -122,28 +110,8 @@ function genPolygonPoints(
   return points;
 }
 
-// TODO: refactor
-function genPolygonPointsString(
-  dataBis: LetterFrequencyDatum[],
-  scale: ScaleLinear<number | string, number>,
-  accessor: Accessor<LetterFrequencyDatum, any>
-) {
-  const step = (Math.PI * 2) / dataBis.length;
-  const points = genPolygonPoints(dataBis, scale, accessor);
-  // console.warn(points, points.length);
-  const pointString: string = new Array(dataBis.length + 1)
-    .fill("")
-    .reduce((res: string, _: any, i: number) => {
-      if (i > dataBis.length) {
-        return res;
-      }
-      const x = scale(accessor(dataBis[i - 1])) * Math.sin(i * step);
-      const y = scale(accessor(dataBis[i - 1])) * Math.cos(i * step);
-      points[i - 1].x = x;
-      points[i - 1].y = y;
-      return (res += `${x},${y} `);
-    });
-  return pointString;
+function genPolygonPointsString(points: Point[]) {
+  return points.map(stringifyPoint).join(" ");
 }
 
 function renderPoint(point: Point, i: number) {
@@ -158,13 +126,28 @@ function renderPoint(point: Point, i: number) {
   );
 }
 
-function renderLineWithPoints(points: Point[], _: any, i: number) {
+function stringifyPoint(point: Point) {
+  return `${point.x},${point.y}`;
+}
+
+function renderRing(r: number, i: number) {
   return (
-    <Line
-      from={zeroPoint}
-      key={`radar-line-${i}`}
-      to={points[i]}
+    <LineRadial
+      key={`web-${i}`}
+      data={webs}
+      angle={(d) => radiusScale(d.angle)}
+      radius={r}
+      fill="none"
       stroke={silver}
+      strokeWidth={2}
+      strokeOpacity={0.8}
+      strokeLinecap="round"
     />
+  );
+}
+
+function renderLine(point: any, i: number) {
+  return (
+    <Line from={zeroPoint} key={`radar-line-${i}`} to={point} stroke={silver} />
   );
 }
