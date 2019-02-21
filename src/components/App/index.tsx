@@ -25,6 +25,7 @@ import { PackDemo } from "../PackDemo";
 import { PatternsDemo } from "../PatternsDemo";
 import { PieDemo } from "../PieDemo";
 import { PolygonsDemo } from "../PolygonsDemo";
+import { RadarDemo } from "../RadarDemo";
 import { TextDemo } from "../TextDemo";
 import { ThresholdDemo } from "../ThresholdDemo";
 import { TreemapDemo } from "../TreemapDemo";
@@ -346,6 +347,14 @@ class App extends React.Component<IProps> {
                   margin={margin}
                   width={width}
                 />
+              );
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return (
+                <RadarDemo height={height} margin={margin} width={width} />
               );
             }}
           </ParentSize>
