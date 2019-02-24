@@ -362,9 +362,7 @@ class App extends React.Component<IProps> {
           <ParentSize>
             {(props: ParentProps) => {
               const { width } = props;
-              return (
-                <ChordDemo height={height} margin={margin} width={width} />
-              );
+              return <ChordDemo height={height} width={width} />;
             }}
           </ParentSize>
         </Grid>
