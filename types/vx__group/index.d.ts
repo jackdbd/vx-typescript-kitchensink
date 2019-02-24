@@ -4,23 +4,13 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 declare module "@vx/group" {
-  import React from "react";
+  import React, { SVGAttributes } from "react";
 
-  interface GroupProps {
+  interface GroupProps extends SVGAttributes<SVGGElement> {
     top?: number;
     left?: number;
-    transform?: string;
-    className?: string;
-    children: React.ReactElement | React.ReactElement[];
-    key?: React.Key;
     [prop: string]: any; // ...restProps
   }
 
-  // interface GroupComponent<P> extends FunctionComponent<P> {
-  //   (
-  //     props: P & { children: React.ReactNode },
-  //     context?: any
-  //   ): JSX.IntrinsicElements.g;
-  // }
   const Group: React.FunctionComponent<GroupProps>;
 }

@@ -71,7 +71,8 @@ declare module "@vx/scale" {
 
   interface ScaleOrdinalOptions extends SharedOptions {
     domain: number[] | string[];
-    range?: number[] | string[] | React.ReactElement[];
+    // range?: number[] | string[] | React.ReactElement[];
+    range?: any;
   }
 
   interface ScaleQuantizeOptions extends SharedOptions {
@@ -105,7 +106,7 @@ declare module "@vx/scale" {
 
   function scaleOrdinal(
     scaleOptions: ScaleOrdinalOptions
-  ): ScaleOrdinal<number | string, React.ReactElement>;
+  ): ScaleOrdinal<number | string | React.ReactElement>;
 
   function scaleQuantize(scaleOptions: ScaleQuantizeOptions): any;
 

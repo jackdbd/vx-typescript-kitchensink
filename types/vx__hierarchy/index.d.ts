@@ -33,7 +33,7 @@ declare module "@vx/hierarchy" {
   }
 
   interface ISharedProps {
-    children: React.ReactElement;
+    children: any; // React.ReactElement;
     className?: string;
     left?: number;
     nodeComponent?: any;
