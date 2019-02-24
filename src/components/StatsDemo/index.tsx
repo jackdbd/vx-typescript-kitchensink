@@ -49,8 +49,6 @@ export class StatsDemo extends React.Component<IProps> {
       rangeRound: [0, xMax],
     });
 
-    console.warn("XXX", data, data.map(xAccessor));
-
     const cb = (d: StatsDatum, i: number) => {
       const { min, max } = d.boxPlot;
       return [min, max];

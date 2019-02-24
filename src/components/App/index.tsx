@@ -14,6 +14,7 @@ import { CurveDemo } from "../CurveDemo";
 import { DendrogramsDemo } from "../DendrogramsDemo";
 import { DotsDemo, DotsDemoWithTooltip } from "../DotsDemo";
 import { DragDemo } from "../DragDemo";
+import { DragDemoBis } from "../DragDemoBis";
 import { GeoDemo } from "../GeoDemo";
 import { GlyphDemo } from "../GlyphDemo";
 import { GradientsDemo } from "../GradientsDemo";
@@ -384,6 +385,12 @@ class App extends React.Component<IProps> {
             {(props: ParentProps) => {
               const { width } = props;
               return <StreamgraphDemo height={height} width={width} />;
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return <DragDemoBis height={height} width={width} />;
             }}
           </ParentSize>
         </Grid>

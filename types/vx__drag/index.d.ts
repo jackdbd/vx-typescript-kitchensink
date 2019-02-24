@@ -15,6 +15,24 @@ declare module "@vx/drag" {
 
   type EventHandler = (event: React.MouseEvent | React.TouchEvent) => void;
 
+  interface IDragStartProps {
+    dx: number;
+    dy: number;
+    event: any;
+    isDragging: boolean;
+    x: number;
+    y: number;
+  }
+
+  interface IDragMoveProps {
+    dx: number;
+    dy: number;
+    event: any;
+    isDragging: boolean;
+    x: number;
+    y: number;
+  }
+
   interface IDragProps {
     dragEnd: EventHandler;
     dragMove: EventHandler;
@@ -28,12 +46,12 @@ declare module "@vx/drag" {
 
   interface IProps {
     captureDragArea?: boolean;
-    children: React.ReactNode;
+    children: React.FunctionComponent<IDragProps>;
     height: number;
     onDragEnd?: EventHandler;
-    onDragMove?: EventHandler;
-    onDragStart?: EventHandler;
-    resetOnStart?: EventHandler;
+    onDragMove?: (props: IDragMoveProps) => void;
+    onDragStart?: (props: IDragStartProps) => void;
+    resetOnStart?: EventHandler | boolean;
     width: number;
   }
 
