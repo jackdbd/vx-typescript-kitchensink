@@ -6,30 +6,16 @@
 declare module "@vx/shape" {
   import { Curve } from "@vx/curve";
   import { Accessor, ScaleFunction } from "@vx/scale";
-  import { Arc } from "d3-shape";
+  import { Arc, Stack } from "d3-shape";
   import React, { SVGAttributes } from "react";
-
-  // TODO: remove this. It's just to understand how Arc and Pie work
-  // import { Browser } from "@vx/mock-data";
-
-  // dependecies
-  /*
-"@vx/curve": "0.0.182",
-    "@vx/group": "0.0.183",
-    "@vx/point": "0.0.182",
-    "classnames": "^2.2.5",
-    "d3-path": "^1.0.5",
-    "d3-shape": "^1.2.0",
-    "prop-types": "^15.5.10"
-*/
 
   type Datum = any;
 
   type NumberOrNumberAccessor = number | Accessor<any, number>;
+
   type StringOrStringAccessor = string | Accessor<any, string>;
   type ValueOrAccessor = NumberOrNumberAccessor | StringOrStringAccessor;
 
-  // are path and pie d3 functions (d3-shape, d3-path)?
   // TODO: this type should be returned by Pie and it should extract its Datum automatically
   type PieInner<T> = {
     arcs: ArcInner<T>[];
@@ -109,7 +95,7 @@ declare module "@vx/shape" {
     offset: any; // func | array | string
     top: number;
     value: NumberOrNumberAccessor;
-    x: NumberOrNumberAccessor;
+    x: NumberOrNumberAccessorWithIndex;
     x0: NumberOrNumberAccessor;
     x1: NumberOrNumberAccessor;
     y: NumberOrNumberAccessor;
@@ -281,7 +267,30 @@ declare module "@vx/shape" {
     size: number;
   }
 
-  interface IStackProps {}
+  interface IStackProps {
+    children: React.FunctionComponent<{
+      path: (stack: Stack) => string;
+      stack: Stack;
+      stacks: any; //SeriesPoint[];
+    }>;
+    className?: string;
+    color?: any;
+    curve?: any;
+    data: Datum[];
+    defined?: boolean;
+    keys?: any;
+    left?: number;
+    offset?: any;
+    order?: any;
+    top?: number;
+    value?: NumberOrNumberAccessor;
+    x?: (d: any, i: number) => number;
+    x0?: NumberOrNumberAccessor;
+    x1?: NumberOrNumberAccessor;
+    y?: NumberOrNumberAccessor;
+    y0?: NumberOrNumberAccessor;
+    y1?: NumberOrNumberAccessor;
+  }
 
   const Arc: React.ComponentType<IArcProps>;
 
