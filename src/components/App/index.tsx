@@ -22,6 +22,7 @@ import { LegendDemos } from "../LegendDemo";
 import { LineRadialDemo } from "../LineRadialDemo";
 import { LinesDemoResponsive } from "../LinesDemo";
 import { LinkTypesDemo } from "../LinkTypesDemo";
+import { NetworkDemo } from "../NetworkDemo";
 import { PackDemo } from "../PackDemo";
 import { PatternsDemo } from "../PatternsDemo";
 import { PieDemo } from "../PieDemo";
@@ -363,6 +364,12 @@ class App extends React.Component<IProps> {
             {(props: ParentProps) => {
               const { width } = props;
               return <ChordDemo height={height} width={width} />;
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return <NetworkDemo height={height} width={width} />;
             }}
           </ParentSize>
         </Grid>
