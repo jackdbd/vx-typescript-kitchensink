@@ -9,6 +9,7 @@ import { BarGroupDemo } from "../BarGroupDemo";
 import { BarGroupHorizontalDemo } from "../BarGroupHorizontalDemo";
 import { BarStackDemo } from "../BarStackDemo";
 import { BarStackHorizontalDemo } from "../BarStackHorizontalDemo";
+import { ChordDemo } from "../ChordDemo";
 import { CurveDemo } from "../CurveDemo";
 import { DendrogramsDemo } from "../DendrogramsDemo";
 import { DotsDemo, DotsDemoWithTooltip } from "../DotsDemo";
@@ -355,6 +356,14 @@ class App extends React.Component<IProps> {
               const { width } = props;
               return (
                 <RadarDemo height={height} margin={margin} width={width} />
+              );
+            }}
+          </ParentSize>
+          <ParentSize>
+            {(props: ParentProps) => {
+              const { width } = props;
+              return (
+                <ChordDemo height={height} margin={margin} width={width} />
               );
             }}
           </ParentSize>

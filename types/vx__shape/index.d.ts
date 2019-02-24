@@ -53,16 +53,16 @@ declare module "@vx/shape" {
 
   interface IArcProps extends SVGAttributes<SVGPathElement> {
     centroid?: NumberOrNumberAccessor;
-    children: any;
+    children?: any;
     className?: string;
     cornerRadius?: NumberOrNumberAccessor;
     data: Datum[];
-    endAngle: NumberOrNumberAccessor;
+    endAngle?: NumberOrNumberAccessor;
     innerRadius: NumberOrNumberAccessor;
-    innerRef: React.Ref;
+    innerRef?: React.Ref;
     outerRadius: NumberOrNumberAccessor;
-    padAngle: NumberOrNumberAccessor;
-    padRadius: NumberOrNumberAccessor;
+    padAngle?: NumberOrNumberAccessor;
+    padRadius?: NumberOrNumberAccessor;
     startAngle?: NumberOrNumberAccessor;
   }
 
