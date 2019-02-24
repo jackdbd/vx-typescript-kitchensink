@@ -4,9 +4,11 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 declare module "@vx/pattern" {
+  import React, { SVGAttributes } from "react";
+
   type Orientation = "diagonal" | "horizontal" | "vertical";
 
-  interface PatternCirclesProps {
+  interface PatternCirclesProps extends SVGAttributes<SVGPatternElement> {
     complement?: boolean;
     fill: string;
     height: number;
@@ -14,7 +16,7 @@ declare module "@vx/pattern" {
     width: number;
   }
 
-  interface PatternLinesProps {
+  interface PatternLinesProps extends SVGAttributes<SVGPatternElement> {
     height: number;
     id: string;
     orientation?: Orientation[];
@@ -23,7 +25,7 @@ declare module "@vx/pattern" {
     width: number;
   }
 
-  interface PatternWavesProps {
+  interface PatternWavesProps extends SVGAttributes<SVGPatternElement> {
     complement?: boolean;
     fill: string;
     height: number;

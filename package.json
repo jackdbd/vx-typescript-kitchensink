@@ -52,6 +52,7 @@
     "@vx/responsive": "0.0.184",
     "@vx/scale": "0.0.182",
     "@vx/shape": "0.0.184",
+    "@vx/stats": "0.0.183",
     "@vx/text": "0.0.183",
     "@vx/threshold": "0.0.184",
     "@vx/tooltip": "0.0.184",
