@@ -17,7 +17,7 @@ const LEVELS = 5;
 const ANG = 360;
 const data = letterFrequency.slice(2, 12);
 const webs = genAngles(data.length);
-const zeroPoint = new Point({ x: 0, y: 0 });
+const zeroPoint = new Point({});
 
 const yAccessor: Accessor<LetterFrequencyDatum, number> = (d) => d.frequency;
 

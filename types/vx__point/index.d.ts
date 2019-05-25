@@ -1,22 +1,19 @@
-// Type definitions for @vx/point 0.0.182
+// Type definitions for @vx/point 0.0.189
 // Project: https://github.com/hshoff/vx
 // Definitions by: Giacomo Debidda <https://github.com/jackdbd>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 declare module "@vx/point" {
-  interface options {
-    x?: number;
-    y?: number;
+  interface Options {
+    readonly x?: number;
+    readonly y?: number;
   }
-  declare class Point {
-    constructor(x: number, y: number);
-    constructor(options);
 
-    get x(): number;
-    set x(newX: number): void;
+  export class Point {
+    constructor(options: Options);
 
-    get y(): number;
-    set y(newY: number): void;
+    readonly x: number;
+    readonly y: number;
 
     toArray(): [number, number];
     value(): { x: number; y: number };
