@@ -1,4 +1,3 @@
-import { appleStock } from "@vx/mock-data";
 import { ParentProps, ParentSize } from "@vx/responsive";
 import React from "react";
 import styled, { keyframes } from "styled-components";
@@ -80,7 +79,7 @@ const Grid = styled.div`
   background-color: #282c34;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
-  grid-gap: ${(props: IGridProps) => `${props.gridGap}` + "rem"};
+  grid-gap: ${(props: IGridProps) => `${props.gridGap}rem`};
 `;
 
 interface IMargin {
@@ -94,8 +93,6 @@ interface IProps {
   height: number;
   margin: IMargin;
 }
-
-const stock = appleStock.slice(800);
 
 class App extends React.Component<IProps> {
   public static defaultProps: Partial<IProps> = {

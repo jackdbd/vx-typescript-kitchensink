@@ -1,5 +1,5 @@
 import { Group } from "@vx/group";
-import { INode, Pack } from "@vx/hierarchy";
+import { Pack } from "@vx/hierarchy";
 import { exoplanets as exoplanetsData, PlanetDatum } from "@vx/mock-data";
 import { Accessor, scaleQuantize } from "@vx/scale";
 import { extent } from "d3-array";

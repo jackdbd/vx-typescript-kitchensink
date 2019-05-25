@@ -1,6 +1,6 @@
 import { LinearGradient } from "@vx/gradient";
 import { Group } from "@vx/group";
-import { Cluster, IHierarchyDefaultNodeProps, ITreeProps } from "@vx/hierarchy";
+import { Cluster, IHierarchyDefaultNodeProps } from "@vx/hierarchy";
 import { LinkVertical } from "@vx/shape";
 import { hierarchy, HierarchyNode } from "d3-hierarchy";
 import React from "react";

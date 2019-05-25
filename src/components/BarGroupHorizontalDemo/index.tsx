@@ -2,7 +2,7 @@ import { AxisLeft, TextAnchor } from "@vx/axis";
 import { Group } from "@vx/group";
 import { cityTemperature, CityTemperatureDatum } from "@vx/mock-data";
 import { Accessor, scaleBand, scaleLinear, scaleOrdinal } from "@vx/scale";
-import { Bar, BarGroupHorizontal } from "@vx/shape";
+import { BarGroupHorizontal } from "@vx/shape";
 import { extent } from "d3-array";
 import { timeFormat, timeParse } from "d3-time-format";
 import React from "react";

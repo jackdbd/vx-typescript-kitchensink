@@ -5,7 +5,7 @@ import { appleStock, AppleStockDatum } from "@vx/mock-data";
 import { Accessor, scaleLinear, scaleTime } from "@vx/scale";
 import { AreaClosed, Bar, Line } from "@vx/shape";
 import { IWithTooltipProps, Tooltip, withTooltip } from "@vx/tooltip";
-import { bisector, extent, max, min } from "d3-array";
+import { bisector, extent, max } from "d3-array";
 import { timeFormat } from "d3-time-format";
 import React from "react";
 

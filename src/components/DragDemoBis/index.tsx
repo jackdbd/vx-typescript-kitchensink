@@ -1,5 +1,5 @@
 import { curveBasis } from "@vx/curve";
-import { Drag, IDragProps, IDragStartProps } from "@vx/drag";
+import { Drag, IDragStartProps } from "@vx/drag";
 // import { localPoint } from "@vx/event";
 import { LinearGradient } from "@vx/gradient";
 import { LinePath } from "@vx/shape";
