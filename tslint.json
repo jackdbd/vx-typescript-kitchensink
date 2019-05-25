@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint:recommended", "tslint:latest"],
+  "extends": ["tslint:recommended", "tslint:latest", "tslint-config-prettier"],
   "rules": {
     "no-console": {
       "options": ["debug", "log"]
