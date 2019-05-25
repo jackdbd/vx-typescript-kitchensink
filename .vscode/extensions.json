@@ -1,13 +1,18 @@
 {
   "recommendations": [
     "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+    "coenraads.bracket-pair-colorizer",
     "davidanson.vscode-markdownlint",
+    "donjayamanne.githistory",
     "EditorConfig.EditorConfig",
-    "eg2.tslint",
     "eg2.vscode-npm-script",
     "esbenp.prettier-vscode",
     "jpoissonnier.vscode-styled-components",
     "mgmcdermott.vscode-language-babel",
-    "shinnn.stylelint"
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "shinnn.stylelint",
+    "vscode-icons-team.vscode-icons",
+    "wix.vscode-import-cost"
   ]
 }
