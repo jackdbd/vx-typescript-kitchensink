@@ -24,7 +24,9 @@
     "nuke": "rimraf node_modules && rm yarn.lock",
     "predeploy": "yarn clean && yarn build",
     "start": "react-scripts start",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "@vx/annotation": "0.0.189",
@@ -74,7 +76,8 @@
     "react-scripts": "3.0.1",
     "styled-components": "4.2.0",
     "topojson-client": "3.0.0",
-    "typescript": "3.4.5"
+    "typescript": "3.4.5",
+    "snyk": "^1.217.0"
   },
   "devDependencies": {
     "@types/d3-array": "2.0.0",
@@ -117,5 +120,6 @@
     "typescript",
     "visualization",
     "vx"
-  ]
+  ],
+  "snyk": true
 }
